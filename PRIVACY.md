@@ -3,9 +3,9 @@ Privacy Policy
 
 Last updated: September 15, 2025
 
-This Privacy Policy describes Our policies and procedures on the collection, use, and disclosure of Your information when You use the Service and explains Your privacy rights and how the law protects You.
+This Privacy Policy describes our policies and procedures on the collection, use, and disclosure of your information when you use the Service and explains your privacy rights and how the law protects you.
 
-By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy.
+By using the Service, you agree to the collection and use of information in accordance with this Privacy Policy.
 
 ⸻
 
@@ -17,7 +17,7 @@ The words with an initial capital letter have meanings defined under the followi
 
 Definitions
 
-For the purposes of this Privacy Policy:
+For this Privacy Policy:
 	•	Account means a unique account created for You to access our Service or parts of our Service.
 	•	Application refers to TicketSaver, the software program provided by the Company.
 	•	Company (referred to as “the Company”, “We”, “Us”, or “Our”) refers to TicketSaver.
@@ -37,7 +37,7 @@ Types of Data Collected
 
 Personal Data
 
-While using Our Service, We may ask You to provide certain personally identifiable information, including but not limited to:
+While using Our Service, we may ask you to provide certain personally identifiable information, including but not limited to:
 	•	Email address
 	•	Authentication details (when using email/password, Apple, or Facebook login)
 	•	Usage Data
@@ -52,11 +52,11 @@ It may include:
 
 Information from Third-Party Login Services
 
-If You log in via Apple or Facebook, we may receive your name, email address, and identifiers associated with those accounts.
+If you log in via Apple or Facebook, we may receive your name, email address, and identifiers associated with those accounts.
 
 Information from Device Access
 
-With Your permission, the Service may access:
+With your permission, the Service may access:
 	•	Camera and photo library (when uploading tickets)
 	•	Files (to store tickets locally and export to the iOS Files app)
 
@@ -71,27 +71,42 @@ The Company may use Personal Data for the following purposes:
 	•	To enforce account restrictions – e.g., free accounts may store up to 5 events; premium accounts may store unlimited events.
 	•	To validate purchases – using server-side receipt validation to detect fraud or abuse of free trials.
 	•	To manage device sessions – including device/session binding to prevent account sharing. Device IDs may be retained even after account deletion to prevent repeated abuse.
-	•	To send transactional emails – via Mailgun, for example to forward ticket confirmation emails.
-	•	To collect feedback – via Google Forms, if You voluntarily provide input.
+	•	To send transactional emails – via Mailgun, for example, to forward ticket confirmation emails.
+	•	To collect feedback – via Google Forms, if you voluntarily provide input.
 	•	To monitor app stability and crashes – via Firebase Crashlytics.
 	•	To comply with legal obligations – e.g., preventing fraud, abuse, or misuse of services.
 
 ⸻
 
+**Consent Management**
+
+- Before you can use the Service, you must explicitly accept our Terms of Service and Privacy Policy.  
+- Your consent is first stored locally on your Device. This ensures that you cannot use the App without giving consent.  
+- If you later create or sign in to an Account, your local consent is synchronized to that Account in our Firestore database.  
+- During this synchronization, we record:  
+  • the version of the Terms and Privacy Policy you accepted,  
+  • the **original date and time of your first acceptance** (as registered on your Device),  
+  • the **date and time of your most recent confirmation** (synchronization at login),  
+  • technical context, such as your device identifier and app version at acceptance.  
+- Each time you log in with a new or different Account on the same Device, your prior acceptance is automatically applied to that Account and saved in Firestore.  
+- This ensures that all accounts used on your Device are covered by the same legal consent you provided.  
+
+⸻
+
 Sharing Your Personal Data
 
-We may share Your personal data in the following cases:
+We may share your personal data in the following cases:
 	•	With Service Providers – such as Firebase (hosting, authentication, crash reporting), Mailgun (email forwarding), and Google Forms (feedback collection).
 	•	For fraud prevention – e.g., device/session binding, receipt validation.
 	•	For legal reasons – to comply with applicable law or protect rights, property, or safety.
 
-We do not sell Your data to third parties.
+We do not sell your data to third parties.
 
 ⸻
 
 Data Retention
 	•	Account and ticket data are retained while your account is active.
-	•	If You delete your account, we will remove your personal data from our active systems.
+	•	If you delete your account, we will remove your personal data from our active systems.
 	•	Certain identifiers (e.g., device ID) may be temporarily retained to enforce fraud-prevention rules, such as blocking trial abuse.
 	•	Crash and diagnostic data may be stored by Firebase for up to 90 days.
 
@@ -100,7 +115,7 @@ Data Retention
 Your Rights
 
 You have the right to:
-	•	Request access to the data we hold about You.
+	•	Request access to the data we hold about you.
 	•	Request deletion of your account and related personal data (except where retention is required by law or necessary to enforce fraud-prevention measures).
 	•	Withdraw consent for optional data (such as camera or photo access).
 
@@ -117,7 +132,7 @@ However, no system is completely secure, and we cannot guarantee absolute securi
 
 Children’s Privacy
 
-The Service is not directed to children under 13. We do not knowingly collect Personal Data from children under 13. If You are aware that a child has provided Personal Data, please contact Us.
+The Service is not directed to children under 13. We do not knowingly collect Personal Data from children under 13. If you are aware that a child has provided Personal Data, please contact us.
 
 ⸻
 
@@ -132,7 +147,7 @@ Important Disclaimers
 	•	The Company is not responsible for lost, deleted, or corrupted tickets, including cases of device loss or app removal.
 	•	The Company is not responsible if event organizers refuse to accept or recognize tickets stored in the Application.
 	•	Users remain fully responsible for verifying ticket validity with event organizers.
-	•	Premium access is subscription-based; if cancelled, You will lose access to tickets beyond the free account limit, though they remain stored.
+	•	Premium access is subscription-based; if cancelled, you will lose access to tickets beyond the free account limit, though they remain stored.
 
 ⸻
 
