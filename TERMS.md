@@ -77,7 +77,7 @@ The App relies on third-party services, including but not limited to:
 	•	Apple App Store (subscriptions, billing),
 	•	Social logins (Apple, Facebook).
 
-TicketSaver is not responsible for downtime, errors, or data handling practices of these third parties. Their use is governed by their own terms and privacy policies.
+TicketSaver is not responsible for the downtime, errors, or data handling practices of these third parties. Their use is governed by their own terms and privacy policies.
 
 ⸻
 
@@ -92,33 +92,45 @@ The App is provided on an “AS IS” and “AS AVAILABLE” basis. TicketSaver 
 
 9. Limitation of Liability
 
-To the maximum extent permitted by law:
-	•	TicketSaver shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of data, revenue, profits, or event access.
-	•	TicketSaver’s total liability for direct damages shall not exceed the greater of:
-(a) the amount You paid for Premium in the past 12 months, or
-(b) €25.
-	•	You acknowledge and agree that use of the App is entirely at Your own risk.
+To the maximum extent permitted by applicable law:
+	•	Exclusion of damages. TicketSaver shall not be liable for any indirect, incidental, special, consequential, exemplary, or punitive damages, including but not limited to loss of data, revenue, profits, goodwill, or event access, arising out of or in connection with the use of the App.
+	•	Free users. If you use the Service without a paid subscription, you agree that TicketSaver shall have no liability whatsoever for any claim, damage, or loss of any kind.
+	•	Premium users. If you have a paid subscription, TicketSaver’s total aggregate liability for direct damages shall not exceed the amount you actually paid for Premium during the twelve (12) months immediately preceding the event giving rise to the claim.
+	•	Scope. These limitations apply to all claims, whether based on contract, tort (including negligence), strict liability, or otherwise, even if TicketSaver has been advised of the possibility of such damages.
+	•	Mandatory law carve-out. Nothing in these Terms excludes or limits liability that cannot be excluded or limited under applicable law, such as liability for fraud, intentional misconduct, or gross negligence.
+
+You acknowledge and agree that use of the App is entirely at your own risk, and that these limitations are an essential basis of the bargain between you and TicketSaver.
 
 ⸻
 
 10. Termination
 
-We may suspend or terminate Your account or access to the App if You:
+We may suspend or terminate your account or access to the App if you:
 	•	Violate these Terms,
 	•	Misuse the App,
 	•	Engage in fraud, abuse, or unlawful conduct.
 
-You may also terminate Your account at any time by deleting it within the App.
+You may also terminate your account at any time by deleting it within the App.
 
 ⸻
 
-11. Governing Law & Jurisdiction
+11 Acceptance of Terms and Privacy Policy
+
+- Use of the App is only permitted if you have accepted both the Terms of Service and the Privacy Policy.  
+- Your acceptance is stored locally on your Device.  
+- When you create or sign in to an Account, your existing acceptance is automatically synchronized and recorded in our systems for that Account.  
+- The synchronization updates the account record with the version of the Terms and Privacy Policy you accepted, the original acceptance date, and the most recent confirmation at login.  
+- By signing in with multiple accounts on the same Device, you confirm that each account is bound by your acceptance of the Terms and Privacy Policy.  
+
+⸻
+
+12. Governing Law & Jurisdiction
 	•	These Terms are governed by the laws of the Netherlands.
 	•	Any dispute shall be submitted exclusively to the competent courts of Amsterdam, the Netherlands.
 
 ⸻
 
-12. Contact
+13. Contact
 
 For questions about these Terms, please contact:
 📧 maxbrouwermd@gmail.com
