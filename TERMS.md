@@ -1,0 +1,94 @@
+Terms of Service
+==============
+
+Last updated: September 15, 2025
+
+These Terms of Service (“Terms”) govern your use of the TicketSaver mobile application (“App”).
+By using the App, you agree to these Terms. If you do not agree, you may not use the App.
+
+⸻
+
+1. Service Description
+
+TicketSaver is a personal tool that allows users to:
+    •    Store event tickets and related files locally on their device.
+    •    Forward confirmation emails and attachments (via Mailgun) to be processed and displayed in the App.
+    •    Manage events with limitations depending on subscription status (free tier vs. Premium).
+
+TicketSaver is not an event organizer, ticket issuer, or reseller. We only provide a digital storage and management tool.
+
+⸻
+
+2. No Guarantee of Ticket Validity
+    •    TicketSaver does not guarantee that any ticket stored in the App will be accepted by an event organizer.
+    •    Event organizers and venues remain solely responsible for ticket verification and admission.
+    •    TicketSaver is not liable if a ticket is rejected, invalid, duplicated, expired, or otherwise not honored by an organizer.
+
+⸻
+
+3. No Liability for Loss of Tickets or Accounts
+    •    Tickets are primarily stored locally on your device. You are responsible for backing up your tickets (e.g., in your Files app or cloud storage).
+    •    If you delete the App, delete your account, or lose access to your device, your tickets may be permanently lost.
+    •    TicketSaver is not responsible for the loss, corruption, or deletion of tickets, attachments, or account data.
+
+⸻
+
+4. Premium & Subscriptions
+    •    Premium features (e.g., unlimited events) require an active paid subscription.
+    •    When a subscription ends (including after a free trial), you will only have access to the first 5 events you created. Other events remain stored but inaccessible until you re-activate Premium.
+    •    Subscriptions are managed via the Apple App Store. TicketSaver has no control over billing, renewals, or refunds. Refunds must be requested directly from Apple.
+
+⸻
+
+5. Anti-Abuse Controls
+
+To prevent fraud and abuse:
+    •    We validate purchase receipts server-side.
+    •    We bind accounts to devices (single active device at a time).
+    •    We may retain device identifiers or transaction IDs even after account deletion for fraud-prevention purposes.
+
+⸻
+
+6. Acceptable Use
+
+You agree not to:
+    •    Use the App for unlawful purposes.
+    •    Share, resell, or mass-import tickets in violation of an event organizer’s terms.
+    •    Attempt to bypass our anti-abuse systems.
+
+⸻
+
+7. Disclaimer of Warranties
+
+The App is provided on an “AS IS” and “AS AVAILABLE” basis.
+TicketSaver makes no warranties (express or implied) that:
+    •    The App will be error-free, uninterrupted, or free of harmful components.
+    •    Tickets stored in the App will be valid, accepted, or recognized by third parties.
+
+⸻
+
+8. Limitation of Liability
+
+To the maximum extent permitted by law:
+    •    TicketSaver is not liable for any indirect, incidental, special, consequential, or punitive damages.
+    •    TicketSaver’s total liability for direct damages shall not exceed the greater of (a) the amount you paid for Premium in the last 12 months, or (b) €25.
+    •    You acknowledge that use of the App is at your own risk.
+
+⸻
+
+9. Termination
+
+We may suspend or terminate your account if you violate these Terms or misuse the App.
+
+⸻
+
+10. Governing Law
+
+These Terms are governed by the laws of the Netherlands, without regard to conflict of law principles. Disputes shall be submitted exclusively to the courts of Amsterdam, the Netherlands.
+
+⸻
+
+11. Contact
+
+For questions about these Terms, contact:
+📧 maxbrouwermd@gmail.com
