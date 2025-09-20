@@ -1,13 +1,13 @@
 Terms of Service
 ==============
 
-Last updated: September 15, 2025
+Last updated: September 20, 2025
 
 These Terms of Service (“Terms”) govern your use of the TicketSaver mobile application (“App”) and related services. By downloading, installing, or using the App, you agree to be bound by these Terms. If you do not agree, you may not use the App.
 
 ⸻
 
-1. Service Description
+Service Description
 
 TicketSaver is a personal tool that allows users to:
 	•	Store event tickets and related files locally on their device.
@@ -18,14 +18,14 @@ TicketSaver is not an event organizer, ticket issuer, or reseller. We only provi
 
 ⸻
 
-2. No Guarantee of Ticket Validity
+No Guarantee of Ticket Validity
 	•	TicketSaver does not verify, validate, or guarantee that any ticket stored in the App will be accepted by an event organizer, venue, or third party.
 	•	Event organizers and venues remain solely responsible for ticket verification, admission, and enforcement of their own terms.
 	•	TicketSaver is not liable if a ticket is rejected, invalid, duplicated, expired, misused, or otherwise not honored.
 
 ⸻
 
-3. No Liability for Loss of Tickets or Accounts
+No Liability for Loss of Tickets or Accounts
 	•	Tickets are primarily stored locally on your device. You are solely responsible for backing up your tickets (e.g., in the Files app or cloud storage).
 	•	If you delete the App, delete your account, or lose access to your device, your tickets may be permanently lost.
 	•	TicketSaver is not responsible for:
@@ -35,7 +35,7 @@ TicketSaver is not an event organizer, ticket issuer, or reseller. We only provi
 
 ⸻
 
-4. Premium & Subscriptions
+Premium & Subscriptions
 	•	Premium features (e.g., unlimited events) require an active paid subscription.
 	•	Subscriptions are managed through the Apple App Store. TicketSaver has no control over billing, renewals, or refunds. Refund requests must be directed to Apple.
 	•	Free trials are offered once per user and may be restricted to prevent abuse.
@@ -45,7 +45,7 @@ TicketSaver is not an event organizer, ticket issuer, or reseller. We only provi
 
 ⸻
 
-5. Anti-Abuse & Fraud Prevention
+Anti-Abuse & Fraud Prevention
 
 To protect the Service:
 	•	We validate purchases using server-side receipt validation.
@@ -57,7 +57,7 @@ To protect the Service:
 
 ⸻
 
-6. Acceptable Use
+Acceptable Use
 
 You agree not to use the App to:
 	•	Violate applicable laws or third-party rights.
@@ -69,10 +69,10 @@ Violation of these rules may result in suspension or termination of your account
 
 ⸻
 
-7. Third-Party Services
+Third-Party Services
 
 The App relies on third-party services, including but not limited to:
-	•	Firebase (authentication, database, crash reporting, cloud functions),
+	•	Firebase (authentication, database, crash reporting, analytics, cloud functions),
 	•	Mailgun (email forwarding and delivery),
 	•	Apple App Store (subscriptions, billing),
 	•	Social logins (Apple, Facebook).
@@ -81,7 +81,7 @@ TicketSaver is not responsible for the downtime, errors, or data handling practi
 
 ⸻
 
-8. Disclaimer of Warranties
+Disclaimer of Warranties
 
 The App is provided on an “AS IS” and “AS AVAILABLE” basis. TicketSaver makes no representations or warranties of any kind, express or implied, including but not limited to:
 	•	That the App will function uninterrupted, error-free, or without security issues.
@@ -90,7 +90,7 @@ The App is provided on an “AS IS” and “AS AVAILABLE” basis. TicketSaver 
 
 ⸻
 
-9. Limitation of Liability
+Limitation of Liability
 
 To the maximum extent permitted by applicable law:
 	•	Exclusion of damages. TicketSaver shall not be liable for any indirect, incidental, special, consequential, exemplary, or punitive damages, including but not limited to loss of data, revenue, profits, goodwill, or event access, arising out of or in connection with the use of the App.
@@ -103,7 +103,7 @@ You acknowledge and agree that use of the App is entirely at your own risk, and 
 
 ⸻
 
-10. Termination
+Termination
 
 We may suspend or terminate your account or access to the App if you:
 	•	Violate these Terms,
@@ -114,23 +114,22 @@ You may also terminate your account at any time by deleting it within the App.
 
 ⸻
 
-11 Acceptance of Terms and Privacy Policy
+Acceptance of Terms and Privacy Policy
 
-- Use of the App is only permitted if you have accepted both the Terms of Service and the Privacy Policy.  
-- Your acceptance is stored locally on your Device.  
-- When you create or sign in to an Account, your existing acceptance is automatically synchronized and recorded in our systems for that Account.  
-- The synchronization updates the account record with the version of the Terms and Privacy Policy you accepted, the original acceptance date, and the most recent confirmation at login.  
-- By signing in with multiple accounts on the same Device, you confirm that each account is bound by your acceptance of the Terms and Privacy Policy.  
+Use of the App is only permitted if you have accepted both the Terms of Service and the Privacy Policy.
+Your acceptance is stored locally on your Device.
+When you create or sign in to an Account, your existing acceptance is automatically synchronized and recorded in our systems for that Account. The synchronization updates the account record with the version of the Terms and Privacy Policy you accepted, the original acceptance date, and the most recent confirmation at login.
+By signing in with multiple accounts on the same Device, you confirm that each account is bound by your acceptance of the Terms and Privacy Policy.
 
 ⸻
 
-12. Governing Law & Jurisdiction
+Governing Law & Jurisdiction
 	•	These Terms are governed by the laws of the Netherlands.
 	•	Any dispute shall be submitted exclusively to the competent courts of Amsterdam, the Netherlands.
 
 ⸻
 
-13. Contact
+Contact
 
 For questions about these Terms, please contact:
 📧 maxbrouwermd@gmail.com
