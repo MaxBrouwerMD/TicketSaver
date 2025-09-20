@@ -1,7 +1,7 @@
 Privacy Policy  
 ==============
 
-Last updated: September 15, 2025
+Last updated: September 20, 2025
 
 This Privacy Policy describes our policies and procedures on the collection, use, and disclosure of your information when you use the Service and explains your privacy rights and how the law protects you.
 
@@ -13,7 +13,7 @@ Interpretation and Definitions
 
 Interpretation
 
-The words with an initial capital letter have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or plural.
+Words with an initial capital letter have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or plural.
 
 Definitions
 
@@ -22,7 +22,7 @@ For this Privacy Policy:
 	•	Application refers to TicketSaver, the software program provided by the Company.
 	•	Company (referred to as “the Company”, “We”, “Us”, or “Our”) refers to TicketSaver.
 	•	Country refers to: The Netherlands.
-	•	Device means any device that can access the Service such as a smartphone or tablet.
+	•	Device means any device that can access the Service, such as a smartphone or tablet.
 	•	Personal Data is any information that relates to an identified or identifiable individual.
 	•	Service refers to the Application (TicketSaver).
 	•	Service Providers means third-party companies or individuals employed by the Company to facilitate the Service (e.g., hosting, crash reporting, analytics, email delivery).
@@ -40,27 +40,56 @@ Personal Data
 While using Our Service, we may ask you to provide certain personally identifiable information, including but not limited to:
 	•	Email address
 	•	Authentication details (when using email/password, Apple, or Facebook login)
-	•	Usage Data
+	•	Purchase receipts (for premium validation)
+	•	Consent metadata (e.g., version/date of accepted Terms & Privacy Policy, app version at acceptance, device identifier used for consent sync)
 
 Usage Data
 
-Usage Data is collected automatically when using the Service.
-It may include:
-	•	IP address, device identifiers, operating system, app version
+Usage Data is collected automatically when using the Service. It may include:
+	•	IP address, Device identifiers, operating system, app version, language and region
 	•	Diagnostic information and crash logs (via Firebase Crashlytics)
-	•	Purchase receipts (for premium validation)
+	•	Interactions within the app (e.g., screens opened, certain actions) when analytics is enabled with your consent
+
+Advertising IDs: TicketSaver does not use IDFA/AdTracking. We do not use Google Signals or Advertising Features.
 
 Information from Third-Party Login Services
 
-If you log in via Apple or Facebook, we may receive your name, email address, and identifiers associated with those accounts.
+If you log in via Apple or Facebook, we may receive your name, email address, and identifiers associated with those accounts, as permitted by you.
 
 Information from Device Access
 
 With your permission, the Service may access:
-	•	Camera and photo library (when uploading tickets)
+	•	Camera and photo library (to import tickets)
 	•	Files (to store tickets locally and export to the iOS Files app)
 
 You can enable or disable access via your Device settings at any time.
+
+⸻
+
+SDKs and Providers We Use
+
+Firebase Analytics (Google)
+
+We use Firebase Analytics to understand how the app is used and to improve functionality. When enabled:
+	•	It collects event data (e.g., successful login/sign-up, ticket categorized, premium purchase), app instance identifiers, device/OS info, and approximate location (country/region) derived from IP for aggregated reporting (e.g., the “map” you may see in dashboards).
+	•	We disable analytics until you give consent. You can withdraw consent at any time in the app settings, where available (or by contacting us).
+	•	We do not enable Google Advertising Features or Google Signals in TicketSaver.
+
+Retention: Firebase Analytics retains user and event data according to Google’s standard retention settings (typically 2 months by default and configurable up to 14 months, subject to Google’s policies).
+
+Firebase Crashlytics
+
+We use Firebase Crashlytics to monitor app stability and fix crashes. Crash reports may include:
+	•	Device model, OS version, app version, timestamp, non-sensitive logs around the crash
+	•	No advertising identifiers, and no content of your tickets
+
+Retention: Crash data is typically retained by Google for around 90 days (subject to Google’s policies).
+
+Mailgun (Email processing)
+
+If you forward confirmation emails/attachments, Mailgun processes and delivers these emails for ingestion by TicketSaver. Attachments may be temporarily processed to extract relevant ticket data.
+
+For all providers above, processing takes place under the providers’ terms and data processing agreements. International transfers may occur and are protected by appropriate safeguards (see International Transfers).
 
 ⸻
 
@@ -74,50 +103,79 @@ The Company may use Personal Data for the following purposes:
 	•	To send transactional emails – via Mailgun, for example, to forward ticket confirmation emails.
 	•	To collect feedback – via Google Forms, if you voluntarily provide input.
 	•	To monitor app stability and crashes – via Firebase Crashlytics.
-	•	To comply with legal obligations – e.g., preventing fraud, abuse, or misuse of services.
+	•	To analyze usage – via Firebase Analytics, only with your consent to improve the app and user experience.
+	•	To comply with legal obligations – e.g., preventing fraud, abuse, or misuse of services, and responding to lawful requests.
 
 ⸻
 
-**Consent Management**
+Legal Bases for Processing (GDPR/AVG)
 
-- Before you can use the Service, you must explicitly accept our Terms of Service and Privacy Policy.  
-- Your consent is first stored locally on your Device. This ensures that you cannot use the App without giving consent.  
-- If you later create or sign in to an Account, your local consent is synchronized to that Account in our Firestore database.  
-- During this synchronization, we record:  
-  • the version of the Terms and Privacy Policy you accepted,  
-  • the **original date and time of your first acceptance** (as registered on your Device),  
-  • the **date and time of your most recent confirmation** (synchronization at login),  
-  • technical context, such as your device identifier and app version at acceptance.  
-- Each time you log in with a new or different Account on the same Device, your prior acceptance is automatically applied to that Account and saved in Firestore.  
-- This ensures that all accounts used on your Device are covered by the same legal consent you provided.  
+Where applicable law (e.g., EU/EEA, UK) requires a legal basis:
+	•	Contract/Performance: Providing the core Service you request (account, ticket storage).
+	•	Consent: Analytics and optional features that are not strictly necessary (we collect analytics only after you consent).
+	•	Legitimate Interests: Security, anti-fraud (e.g., device/session binding, receipt validation), and app stability (Crashlytics) in a way that respects your rights.
+	•	Legal Obligation: Where we must comply with the law.
+
+You may withdraw consent at any time (see Your Choices & Controls).
+
+⸻
+
+Your Choices & Controls
+	•	Analytics Consent: In-app analytics is off by default until you accept. You may later disable analytics in the app settings (where provided) or by contacting us; we will then stop sending future analytics events from that device/account.
+	•	Device Permissions: You can manage camera/photos/files access in iOS Settings.
+	•	Email Preferences: Transactional emails are necessary for the Service; we do not send marketing emails.
+	•	Access/Deletion Requests: See Your Rights below.
+
+⸻
+
+Consent Management
+
+Before you can use the Service, you must explicitly accept our Terms of Service and Privacy Policy.
+Your consent is stored locally on your Device and synchronized to your Account upon login. During synchronization, we record:
+	•	the version of the Terms/Privacy you accepted,
+	•	the original date/time of first acceptance (from your Device),
+	•	the most recent confirmation date/time (at login),
+	•	app version and a device identifier used for consent sync.
+
+Using multiple Accounts on the same Device applies the same consent to each Account.
 
 ⸻
 
 Sharing Your Personal Data
 
 We may share your personal data in the following cases:
-	•	With Service Providers – such as Firebase (hosting, authentication, crash reporting), Mailgun (email forwarding), and Google Forms (feedback collection).
-	•	For fraud prevention – e.g., device/session binding, receipt validation.
+	•	With Service Providers – such as Firebase (authentication, database, crash reporting, analytics, cloud functions), Mailgun (email forwarding), and Google Forms (feedback collection).
+	•	For fraud prevention and security – e.g., device/session binding, receipt validation.
 	•	For legal reasons – to comply with applicable law or protect rights, property, or safety.
 
 We do not sell your data to third parties.
 
 ⸻
 
+International Transfers
+
+Our Service Providers may process data in the EU/EEA, the United States, and other jurisdictions. Where required, transfers are protected by recognized safeguards (e.g., Standard Contractual Clauses and provider-implemented measures). You can contact us for more details.
+
+⸻
+
 Data Retention
 	•	Account and ticket data are retained while your account is active.
 	•	If you delete your account, we will remove your personal data from our active systems.
-	•	Certain identifiers (e.g., device ID) may be temporarily retained to enforce fraud-prevention rules, such as blocking trial abuse.
-	•	Crash and diagnostic data may be stored by Firebase for up to 90 days.
+	•	Certain identifiers (e.g., device ID) may be temporarily retained to enforce fraud-prevention rules (e.g., repeat trial abuse).
+	•	Crash data (Crashlytics) is typically retained for about 90 days.
+	•	Analytics data retention follows Firebase Analytics’ settings/policies (commonly 2–14 months).
+	•	We may retain limited data where required by law or to resolve disputes.
 
 ⸻
 
 Your Rights
 
-You have the right to:
+Subject to applicable law, you have the right to:
 	•	Request access to the data we hold about you.
-	•	Request deletion of your account and related personal data (except where retention is required by law or necessary to enforce fraud-prevention measures).
-	•	Withdraw consent for optional data (such as camera or photo access).
+	•	Request correction or deletion of your data (except where retention is required by law or necessary to enforce anti-abuse measures).
+	•	Withdraw consent for optional processing (e.g., analytics).
+	•	Object to or request restriction of certain processing.
+	•	Data portability, where applicable.
 
 Requests can be submitted to maxbrouwermd@gmail.com.
 
@@ -125,8 +183,7 @@ Requests can be submitted to maxbrouwermd@gmail.com.
 
 Security of Data
 
-We take commercially reasonable steps to protect your information.
-However, no system is completely secure, and we cannot guarantee absolute security.
+We take commercially reasonable steps to protect your information. However, no system is completely secure, and we cannot guarantee absolute security.
 
 ⸻
 
@@ -160,4 +217,4 @@ We may update this Privacy Policy from time to time. Updates will be posted here
 Contact Us
 
 If you have questions about this Privacy Policy, contact us:
-	•	By email: maxbrouwermd@gmail.com
+Email: maxbrouwermd@gmail.com
