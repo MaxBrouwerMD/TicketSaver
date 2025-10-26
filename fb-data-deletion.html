@@ -5,15 +5,120 @@
   <title>Facebook User Data Deletion – TicketSaver</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="index,follow">
-  <style>body{max-width:800px;margin:40px auto;font:16px/1.5 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;padding:0 16px}</style>
+  <meta name="description" content="How to request deletion of your Facebook Login data and TicketSaver account data.">
+  <link rel="canonical" href="https://maxbrouwermd.github.io/TicketSaver/fb-data-deletion.html">
+  <style>
+    :root{--fg:#111;--muted:#555;--link:#0a66c2;--bg:#fff;--card:#fafafa}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+    main{max-width:860px;margin:40px auto;padding:0 16px}
+    h1{font-size:28px;margin:0 0 8px}
+    h2{font-size:20px;margin:28px 0 8px}
+    p,li{color:var(--fg)}
+    small,.muted{color:var(--muted)}
+    code,kbd{background:var(--card);padding:2px 6px;border-radius:6px;font-family:ui-monospace,Menlo,Consolas,monospace}
+    .note{background:var(--card);border:1px solid #eee;border-radius:10px;padding:12px 14px;margin:16px 0}
+    ul,ol{padding-left:20px}
+    a{color:var(--link);text-decoration:none}
+    a:hover{text-decoration:underline}
+    table{width:100%;border-collapse:collapse;margin:8px 0 16px}
+    th,td{border:1px solid #eee;padding:10px;vertical-align:top}
+    th{background:#f6f6f6;text-align:left}
+    footer{margin:40px 0 24px}
+  </style>
 </head>
 <body>
-  <h1>Facebook User Data Deletion</h1>
-  <p>If you signed in with Facebook and want your TicketSaver account data deleted, you can:</p>
-  <ol>
-    <li>Open the TicketSaver app → Profile → <strong>Delete account</strong>.</li>
-    <li>Or email <a href="mailto:maxbrouwermd@gmail.com">maxbrouwermd@gmail.com</a> (from the address linked to your Facebook account) with subject “Facebook Data Deletion”.</li>
-  </ol>
-  <p><strong>Note:</strong> Deleting your TicketSaver account does not cancel an Apple subscription; manage billing in your Apple ID settings.</p>
+<main>
+  <header>
+    <h1>Facebook User Data Deletion</h1>
+    <p class="muted">Last updated: October 26, 2025</p>
+    <p>This page explains how to delete data related to your use of <strong>Facebook Login</strong> with TicketSaver, and how we process deletion requests. It complements our <a href="https://maxbrouwermd.github.io/TicketSaver/privacy.html">Privacy Policy</a>.</p>
+  </header>
+
+  <section id="self-serve">
+    <h2>Fastest method: delete your account in the app</h2>
+    <ol>
+      <li>Open the TicketSaver app.</li>
+      <li>Go to <strong>Profile</strong> → <strong>Delete account</strong> and confirm.</li>
+      <li>Your account and associated personal data are removed from our active systems promptly.</li>
+    </ol>
+    <div class="note">
+      <strong>Important:</strong> Deleting your TicketSaver account <em>does not</em> cancel an Apple subscription. Manage or cancel it in your Apple ID settings: <kbd>App&nbsp;Store → Account → Subscriptions</kbd>.
+    </div>
+  </section>
+
+  <section id="request-email">
+    <h2>Alternative: request deletion by email</h2>
+    <p>If you cannot access the app, email us at
+      <a href="mailto:maxbrouwermd@gmail.com?subject=Facebook%20Data%20Deletion%20Request">maxbrouwermd@gmail.com</a>
+      with the subject <em>“Facebook Data Deletion Request”</em>. To verify identity, please include one of the following:</p>
+    <ul>
+      <li>The email address linked to your Facebook account; or</li>
+      <li>Your TicketSaver account UID (if known); or</li>
+      <li>A screenshot of your Facebook <em>Apps and Websites</em> page showing TicketSaver.</li>
+    </ul>
+    <p>We will acknowledge your request and complete deletion from active systems without undue delay and no later than 30 days, subject to verification.</p>
+  </section>
+
+  <section id="what-we-delete">
+    <h2>What we delete</h2>
+    <table>
+      <thead><tr><th>Category</th><th>Examples</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Account profile</td>
+          <td>Account identifier, login email (if available), authentication bindings (including Facebook login association), session/device bindings.</td>
+        </tr>
+        <tr>
+          <td>Content you provided</td>
+          <td>Tickets and related metadata stored in our cloud (if any). Tickets stored only on your device are removed when you delete the app or files locally.</td>
+        </tr>
+        <tr>
+          <td>Notification &amp; app signals</td>
+          <td>Push tokens, in-app settings related to your account.</td>
+        </tr>
+        <tr>
+          <td>Facebook Login data</td>
+          <td>Facebook auth association and tokens held by our auth provider (Firebase) for your account.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="what-may-remain">
+    <h2>What may remain temporarily</h2>
+    <ul>
+      <li><strong>Backups &amp; logs:</strong> Routine system backups and server logs that are purged on rolling schedules.</li>
+      <li><strong>Crash reports / diagnostics:</strong> Crash data (via Firebase Crashlytics) that typically expire after ~90 days and do not contain your ticket content.</li>
+      <li><strong>Minimal anti-abuse records:</strong> Limited technical indicators (e.g., hashed device identifiers or receipt validation records) retained for a time to prevent fraud or repeated trial abuse, as described in our Privacy Policy and Terms.</li>
+      <li><strong>Legal obligations:</strong> Data we must retain to comply with law or to resolve disputes.</li>
+    </ul>
+  </section>
+
+  <section id="third-parties">
+    <h2>Third-party services involved</h2>
+    <ul>
+      <li><strong>Firebase (Google):</strong> Authentication, database, storage, crash reporting, analytics (only with consent). Deletion removes your account and related records from active Firebase services.</li>
+      <li><strong>Mailgun:</strong> If you used email forwarding, associated routing to your account is disabled when your account is deleted.</li>
+      <li><strong>Apple App Store:</strong> Subscriptions are controlled by Apple on your Apple ID. Account deletion on TicketSaver does not cancel billing. Manage subscriptions in your Apple settings.</li>
+    </ul>
+  </section>
+
+  <section id="revoke-facebook">
+    <h2>Revoke TicketSaver’s access on Facebook (optional)</h2>
+    <p>In addition to deleting your TicketSaver account, you can revoke TicketSaver’s access in your Facebook settings:
+      <em>Facebook → Settings → Apps and Websites</em>. This removes TicketSaver’s authorization from your Facebook account.</p>
+  </section>
+
+  <section id="questions">
+    <h2>Questions</h2>
+    <p>See our <a href="https://maxbrouwermd.github.io/TicketSaver/privacy.html">Privacy Policy</a> for details on collection, use, and retention. If you have questions or need help with deletion, contact: <a href="mailto:maxbrouwermd@gmail.com">maxbrouwermd@gmail.com</a>.</p>
+  </section>
+
+  <footer>
+    <p class="muted">© TicketSaver — This page is intended to meet Facebook Platform requirements for user data deletion instructions.</p>
+  </footer>
+</main>
 </body>
 </html>
