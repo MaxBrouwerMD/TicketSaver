@@ -4,24 +4,455 @@
   <meta charset="utf-8">
   <title>TicketSaver</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="TicketSaver is a personal iOS app that helps you store and organize all your event and travel tickets in one secure place.">
   <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 16px;
+    :root {
+      --bg-top: #071c3b;
+      --bg-mid: #15152b;
+      --bg-bottom: #012c3a;
+      --card-bg: rgba(10, 14, 30, 0.96);
+      --accent: #1fa5ff;
+      --accent-soft: rgba(31, 165, 255, 0.16);
+      --danger: #ff4b5c;
+      --text-main: #ffffff;
+      --text-muted: #b0b7d3;
+      --pill-bg: rgba(0, 0, 0, 0.35);
+      --border-subtle: rgba(255, 255, 255, 0.06);
+      --radius-xl: 24px;
     }
-    h1 { font-size: 2.4rem; margin-bottom: 0.5rem; color: #1f4fd8; }
-    ul { margin-top: 1.5rem; }
-    li { margin-bottom: 0.5rem; }
+
+    * {
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      color: var(--text-main);
+      background:
+        radial-gradient(circle at 0% 0%, #1c458a 0, transparent 55%),
+        radial-gradient(circle at 100% 100%, #0ab0a2 0, transparent 55%),
+        linear-gradient(180deg, var(--bg-top), var(--bg-mid) 45%, var(--bg-bottom));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+    }
+
+    .shell {
+      width: 100%;
+      max-width: 430px;
+      border-radius: 32px;
+      background: linear-gradient(180deg, #06142c 0%, #020716 100%);
+      box-shadow:
+        0 32px 80px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(255, 255, 255, 0.03);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top bar */
+    .status-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 18px 4px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .app-header {
+      padding: 6px 20px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      background: linear-gradient(180deg, #062852 0%, #021738 100%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .app-title-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-pill {
+      width: 32px;
+      height: 32px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 25% 0%, #8fd7ff 0, #2c82ff 45%, #0f3e9c 85%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-pill::before,
+    .logo-pill::after {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 12px;
+      border-radius: 6px;
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
+    }
+    .logo-pill::before {
+      transform: translateX(-4px) rotate(-10deg);
+      background: rgba(6, 44, 116, 0.9);
+    }
+    .logo-pill::after {
+      transform: translateX(6px) rotate(6deg);
+      background: rgba(27, 102, 224, 0.95);
+    }
+
+    .app-title {
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      font-size: 17px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 24px;
+      padding-left: 42px;
+      font-size: 14px;
+    }
+
+    .tab {
+      position: relative;
+      padding-bottom: 6px;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tab.active {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .tab.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 3px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(31, 165, 255, 0.7);
+    }
+
+    /* Main content */
+    .content {
+      padding: 18px 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      background:
+        radial-gradient(circle at 90% 0%, rgba(35, 194, 196, 0.35) 0, transparent 50%),
+        radial-gradient(circle at 0% 100%, rgba(148, 60, 255, 0.5) 0, transparent 55%),
+        linear-gradient(180deg, #05051a 0%, #020513 100%);
+      flex: 1;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-xl);
+      padding: 18px 18px 16px;
+      box-shadow:
+        0 18px 36px rgba(0, 0, 0, 0.6),
+        0 0 0 1px rgba(255, 255, 255, 0.03);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 15px;
+    }
+
+    .card-title {
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .card-edit {
+      width: 26px;
+      height: 26px;
+      border-radius: 10px;
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .pill-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-top: 2px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      background: var(--pill-bg);
+      color: var(--text-muted);
+    }
+
+    .pill-icon {
+      width: 14px;
+      height: 14px;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      background: var(--danger);
+    }
+
+    .pill-icon::before {
+      content: "🎟";
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 6px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .chevron {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      font-size: 11px;
+    }
+
+    .meta {
+      margin-top: 6px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Links section */
+    .links-block {
+      margin-top: 6px;
+      padding: 12px 14px;
+      border-radius: 18px;
+      background: rgba(3, 10, 30, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .links-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #e4ebff;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .link-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: rgba(13, 76, 160, 0.55);
+      color: #f3f5ff;
+      text-decoration: none;
+      font-size: 12px;
+      border: 1px solid rgba(156, 199, 255, 0.4);
+      transition: background 0.15s ease-out, transform 0.1s ease-out, box-shadow 0.15s ease-out;
+    }
+
+    .link-chip span {
+      opacity: 0.9;
+    }
+
+    .link-chip:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.6);
+      background: rgba(25, 115, 220, 0.9);
+    }
+
+    .link-chip-icon {
+      font-size: 13px;
+      opacity: 0.95;
+    }
+
+    /* Bottom nav */
+    .bottom-nav {
+      padding: 8px 24px 18px;
+      background: rgba(2, 5, 15, 0.98);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .nav-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      opacity: 0.85;
+    }
+
+    .nav-item.active {
+      color: #ffffff;
+      opacity: 1;
+      font-weight: 600;
+    }
+
+    .nav-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      margin-bottom: 2px;
+    }
+
+    .fab {
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 20% 0%, #59c6ff 0, #1a6dff 35%, #051745 100%);
+      border: 1px solid rgba(120, 188, 255, 0.8);
+      box-shadow:
+        0 14px 30px rgba(0, 0, 0, 0.7),
+        0 0 0 4px rgba(10, 40, 85, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      transform: translateY(-16px);
+    }
+
+    /* Small screens tweak */
+    @media (max-width: 480px) {
+      body {
+        padding: 16px 10px;
+      }
+      .shell {
+        border-radius: 24px;
+      }
+    }
   </style>
 </head>
 <body>
-  <h1>TicketSaver</h1>
-  <p>Welcome! Choose a document:</p>
-  <ul>
-    <li><a href="https://maxbrouwermd.github.io/TicketSaver/privacy.html">Privacy Policy</a></li>
-    <li><a href="https://maxbrouwermd.github.io/TicketSaver/terms.html">Terms of Service</a></li>
-  </ul>
+  <main class="shell" aria-label="TicketSaver preview">
+    <div class="status-bar">
+      <span>20:22</span>
+      <span>LTE ▴ 64%</span>
+    </div>
+
+    <header class="app-header">
+      <div class="app-title-row">
+        <div class="logo-pill" aria-hidden="true"></div>
+        <div class="app-title">TICKETSAVER</div>
+      </div>
+      <nav class="tabs" aria-label="Sections">
+        <div class="tab active">Event</div>
+        <div class="tab">Travel</div>
+      </nav>
+    </header>
+
+    <section class="content">
+      <article class="card" aria-label="Example ticket card">
+        <div class="card-header">
+          <div class="card-title">ADE</div>
+          <div class="card-edit" aria-hidden="true">✎</div>
+        </div>
+
+        <div class="pill-row">
+          <div class="pill">
+            <span class="pill-icon" aria-hidden="true"></span>
+            <span>21 Oct 2024</span>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <div>1 Ticket</div>
+          <div class="chevron" aria-hidden="true">›</div>
+        </div>
+
+        <p class="meta">
+          TicketSaver keeps all of your event and travel tickets in one secure place,
+          automatically organized and easy to find when you need them.
+        </p>
+      </article>
+
+      <section class="links-block" aria-label="Legal documents">
+        <div class="links-title">Documents</div>
+        <p class="meta">
+          For details on how TicketSaver handles your data and the Gmail integration,
+          you can review the documents below.
+        </p>
+        <div class="links">
+          <a class="link-chip" href="privacy.html">
+            <span class="link-chip-icon">🔒</span>
+            <span>Privacy Policy</span>
+          </a>
+          <a class="link-chip" href="terms.html">
+            <span class="link-chip-icon">📄</span>
+            <span>Terms of Service</span>
+          </a>
+        </div>
+      </section>
+    </section>
+
+    <nav class="bottom-nav" aria-label="App navigation (preview only)">
+      <div class="nav-item active">
+        <div class="nav-icon" aria-hidden="true">⌂</div>
+        <span>Home</span>
+      </div>
+
+      <div class="fab" aria-hidden="true">+</div>
+
+      <div class="nav-item">
+        <div class="nav-icon" aria-hidden="true">✓</div>
+        <span>Account</span>
+      </div>
+    </nav>
+  </main>
 </body>
 </html>
