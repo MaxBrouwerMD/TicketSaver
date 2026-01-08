@@ -1,26 +1,24 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>TicketSaver – All your tickets, in one safe place</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="TicketSaver is a personal iOS app that helps you store and organize your event and travel tickets, with optional Gmail integration.">
+  <meta charset="utf-8" />
+  <title>TicketSaver</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta
+    name="description"
+    content="TicketSaver is a personal iOS app that keeps all your event and travel tickets in one secure place."
+  />
   <style>
     :root {
       --bg-1: #050b18;
-      --bg-2: #071b3d;
-      --bg-3: #021f33;
+      --bg-2: #071c3f;
       --accent: #33c3ff;
       --accent-soft: rgba(51, 195, 255, 0.16);
-      --accent-strong: #24f0c5;
       --text-main: #f7fbff;
       --text-muted: #a5b3d4;
-      --card-bg: rgba(7, 14, 40, 0.92);
-      --card-border: rgba(255, 255, 255, 0.06);
-      --radius-lg: 24px;
-      --radius-xl: 30px;
-      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.6);
-      --shadow-subtle: 0 0 0 1px rgba(255, 255, 255, 0.04);
+      --card-bg: rgba(7, 15, 40, 0.94);
+      --border: rgba(255, 255, 255, 0.08);
+      --radius-lg: 20px;
     }
 
     * {
@@ -35,30 +33,35 @@
         "Segoe UI", sans-serif;
       color: var(--text-main);
       background:
-        radial-gradient(circle at 0% 0%, #1a4edb 0, transparent 52%),
-        radial-gradient(circle at 100% 100%, #1be3bf 0, transparent 55%),
-        linear-gradient(135deg, var(--bg-1), var(--bg-2) 40%, var(--bg-3) 100%);
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .page {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 24px 20px 40px;
+        radial-gradient(circle at 0 0, #2768ff 0, transparent 55%),
+        radial-gradient(circle at 100% 100%, #21dfc3 0, transparent 55%),
+        linear-gradient(135deg, var(--bg-1), var(--bg-2));
       display: flex;
-      flex-direction: column;
-      gap: 32px;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .shell {
+      width: 100%;
+      max-width: 780px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 26px;
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+      padding: 24px 22px 20px;
+      backdrop-filter: blur(18px);
     }
 
     header {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       gap: 16px;
+      margin-bottom: 18px;
     }
 
     .brand {
@@ -67,700 +70,273 @@
       gap: 10px;
     }
 
-    .brand-mark {
-      width: 32px;
-      height: 32px;
-      border-radius: 14px;
-      background: radial-gradient(circle at 20% 0%, #8ce3ff 0, #368bff 40%, #0b2f7a 100%);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.55);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .brand-mark::before,
-    .brand-mark::after {
-      content: "";
-      position: absolute;
-      width: 15px;
-      height: 11px;
-      border-radius: 6px;
-      border: 2px solid rgba(255, 255, 255, 0.9);
-      background: rgba(9, 37, 102, 0.9);
-      top: 8px;
-    }
-
-    .brand-mark::before {
-      left: 5px;
-      transform: rotate(-10deg);
-    }
-
-    .brand-mark::after {
-      right: 5px;
-      transform: rotate(8deg);
+    .logo-dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 20% 0, #9fe8ff 0, #2f82ff 45%, #05163b 100%);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.6);
     }
 
     .brand-name {
       font-weight: 800;
       letter-spacing: 0.16em;
-      font-size: 15px;
+      font-size: 14px;
       text-transform: uppercase;
     }
 
-    nav {
-      display: flex;
-      gap: 16px;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .nav-link {
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .nav-link span {
-      font-size: 12px;
-    }
-
-    .nav-link:hover {
-      border-color: rgba(255, 255, 255, 0.12);
-      background-color: rgba(3, 10, 32, 0.7);
-    }
-
-    .nav-pill {
-      background-color: rgba(3, 13, 40, 0.7);
-      border-radius: 999px;
+    .tag {
+      font-size: 11px;
       padding: 4px 10px;
-      font-size: 11px;
-      border: 1px solid rgba(255, 255, 255, 0.07);
-    }
-
-    /* HERO */
-
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-      gap: 32px;
-      align-items: center;
-    }
-
-    .hero-copy {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 3px 10px 4px;
       border-radius: 999px;
-      background-color: rgba(3, 14, 40, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      font-size: 11px;
+      background: rgba(2, 7, 26, 0.9);
+      border: 1px solid var(--border);
       color: var(--text-muted);
-      max-width: fit-content;
-    }
-
-    .eyebrow-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: var(--accent-strong);
-      box-shadow: 0 0 0 6px rgba(36, 240, 197, 0.18);
     }
 
     h1 {
-      font-size: clamp(2.1rem, 3vw + 1rem, 3.1rem);
-      margin: 0;
-      line-height: 1.1;
+      margin: 0 0 8px;
+      font-size: clamp(1.9rem, 2.8vw + 1rem, 2.5rem);
     }
 
     h1 span {
-      background: linear-gradient(120deg, #33c3ff, #24f0c5);
+      background: linear-gradient(120deg, #33c3ff, #2cf0c6);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
 
-    .hero-lede {
-      font-size: 15px;
+    p {
+      margin: 0;
+    }
+
+    .lede {
+      font-size: 14px;
       line-height: 1.6;
       color: var(--text-muted);
       max-width: 34rem;
     }
 
-    .hero-meta {
-      font-size: 12px;
-      color: var(--text-muted);
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.6fr);
+      gap: 20px;
+      align-items: start;
+      margin-top: 14px;
     }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 4px;
-    }
-
-    .btn {
-      border: none;
-      padding: 10px 18px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: transform 0.12s ease-out, box-shadow 0.15s ease-out,
-        background 0.15s ease-out, color 0.15s ease-out, border-color 0.15s ease-out;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    .btn-primary {
-      background: radial-gradient(circle at 0 0, #a6efff 0, #2f9bff 35%, #1743cf 100%);
-      color: #020513;
-      box-shadow:
-        0 14px 30px rgba(0, 0, 0, 0.65),
-        0 0 0 1px rgba(194, 238, 255, 0.7);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow:
-        0 18px 36px rgba(0, 0, 0, 0.75),
-        0 0 0 1px rgba(255, 255, 255, 0.9);
-    }
-
-    .btn-ghost {
-      background-color: rgba(2, 9, 30, 0.9);
-      color: var(--text-main);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-    }
-
-    .btn-ghost:hover {
-      background-color: rgba(7, 23, 70, 0.98);
-      transform: translateY(-1px);
-      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.6);
-    }
-
-    .btn-icon {
-      font-size: 15px;
-    }
-
-    .hero-note {
-      margin-top: 6px;
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    /* PREVIEW CARD */
-
-    .hero-preview {
-      position: relative;
-      padding: 10px;
-    }
-
-    .glass-card {
-      border-radius: var(--radius-xl);
-      padding: 18px 18px 16px;
-      background: radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.08) 0, transparent 48%),
-        radial-gradient(circle at 100% 100%, rgba(36, 240, 197, 0.08) 0, transparent 55%),
-        rgba(4, 10, 32, 0.8);
-      backdrop-filter: blur(22px);
-      -webkit-backdrop-filter: blur(22px);
-      box-shadow: var(--shadow-soft), var(--shadow-subtle);
-      border: 1px solid var(--card-border);
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .card-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .ticket-title {
-      font-size: 16px;
-      font-weight: 600;
-    }
-
-    .tag {
-      font-size: 11px;
-      padding: 4px 8px;
-      border-radius: 999px;
-      background-color: rgba(0, 0, 0, 0.45);
-      color: var(--text-muted);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    .ticket-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .meta-pill {
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: #e4f6ff;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 11px;
-    }
-
-    .dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: var(--accent);
-    }
-
-    .tiny {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
-
-    .preview-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
-
-    .preview-count {
-      font-weight: 500;
-      color: #eff5ff;
-    }
-
-    .preview-chevron {
-      width: 24px;
-      height: 24px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-    }
-
-    .preview-badge {
-      position: absolute;
-      right: 22px;
-      bottom: -8px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background-color: rgba(3, 9, 28, 0.96);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      font-size: 11px;
-      color: var(--text-muted);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.7);
-    }
-
-    .preview-badge strong {
-      color: #f3f7ff;
-      font-weight: 500;
-    }
-
-    /* FEATURES */
 
     .features {
-      margin-top: 8px;
+      list-style: none;
+      padding: 0;
+      margin: 10px 0 0;
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+      gap: 8px;
     }
 
-    .feature {
-      background-color: var(--card-bg);
-      border-radius: var(--radius-lg);
-      padding: 14px 14px 13px;
-      border: 1px solid var(--card-border);
-      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.55);
+    .features li {
       font-size: 13px;
       color: var(--text-muted);
-    }
-
-    .feature-title {
       display: flex;
       align-items: center;
       gap: 8px;
-      margin-bottom: 6px;
-      font-size: 13px;
-      color: #f6f8ff;
-      font-weight: 600;
     }
 
-    .feature-icon {
-      width: 18px;
-      height: 18px;
+    .features li::before {
+      content: "";
+      width: 7px;
+      height: 7px;
       border-radius: 999px;
-      background-color: rgba(36, 240, 197, 0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px var(--accent-soft);
+      flex-shrink: 0;
     }
 
-    /* DOCS SECTION */
-
-    .docs {
-      margin-top: 8px;
-      display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.1fr);
-      gap: 24px;
-      align-items: flex-start;
-    }
-
-    .docs-copy {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-
-    .docs-copy h2 {
-      margin: 0 0 8px;
-      font-size: 18px;
-    }
-
-    .docs-copy p {
-      margin: 0 0 10px;
-    }
-
-    .docs-copy ul {
-      margin: 0;
-      padding-left: 18px;
-    }
-
-    .docs-copy li {
-      margin-bottom: 4px;
-    }
-
-    .docs-links {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .doc-card {
-      background-color: rgba(4, 12, 35, 0.94);
+    .preview {
       border-radius: 18px;
-      padding: 12px 14px 11px;
-      border: 1px solid var(--card-border);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.6);
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      font-size: 13px;
-      cursor: pointer;
-      transition: transform 0.12s ease-out, box-shadow 0.15s ease-out,
-        border-color 0.15s ease-out, background 0.15s ease-out;
-    }
-
-    .doc-card:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.75);
-      border-color: rgba(104, 197, 255, 0.9);
-      background-color: rgba(4, 18, 55, 0.98);
-    }
-
-    .doc-title {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      color: #f3f6ff;
-      font-weight: 600;
-    }
-
-    .doc-pill {
-      font-size: 11px;
-      padding: 3px 8px;
-      border-radius: 999px;
-      background-color: rgba(26, 132, 255, 0.18);
-      color: #c4ddff;
-    }
-
-    .doc-meta {
+      border: 1px solid var(--border);
+      background: radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.08) 0, transparent 40%),
+        rgba(4, 9, 30, 0.96);
+      padding: 14px 14px 12px;
       font-size: 12px;
       color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
 
-    .doc-footer {
-      font-size: 11px;
-      color: #c2e8ff;
+    .preview-title {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .preview-chip {
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 11px;
+    }
+
+    .preview-rows {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .preview-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: var(--text-muted);
+    }
+
+    .preview-value {
+      font-size: 13px;
+    }
+
+    .links {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
       gap: 10px;
     }
 
-    .doc-footer span {
+    a.button {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid transparent;
+      cursor: pointer;
+      color: var(--text-main);
+      transition: background 0.15s ease-out, border-color 0.15s ease-out,
+        transform 0.1s ease-out, box-shadow 0.15s ease-out;
     }
 
-    /* FOOTER */
+    a.button-primary {
+      background: linear-gradient(135deg, #33c3ff, #2cf0c6);
+      color: #021024;
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.65);
+    }
+
+    a.button-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.75);
+    }
+
+    a.button-ghost {
+      background: rgba(4, 11, 35, 0.98);
+      border-color: var(--border);
+    }
+
+    a.button-ghost:hover {
+      background: rgba(10, 23, 60, 0.98);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.6);
+    }
 
     footer {
-      margin-top: 12px;
+      margin-top: 14px;
       font-size: 11px;
       color: var(--text-muted);
       display: flex;
       justify-content: space-between;
-      gap: 10px;
       flex-wrap: wrap;
-      border-top: 1px solid rgba(255, 255, 255, 0.07);
-      padding-top: 12px;
+      gap: 8px;
     }
 
-    footer a {
-      text-decoration: underline;
-      text-decoration-color: rgba(255, 255, 255, 0.3);
-      text-underline-offset: 3px;
+    footer span {
+      opacity: 0.9;
     }
 
-    /* RESPONSIVE */
-
-    @media (max-width: 900px) {
-      .hero {
+    @media (max-width: 720px) {
+      .card {
+        padding: 20px 18px 18px;
+      }
+      .grid {
         grid-template-columns: minmax(0, 1fr);
       }
-      .hero-preview {
+      .preview {
         order: -1;
-      }
-      .docs {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .docs-links {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    @media (max-width: 640px) {
-      .page {
-        padding: 18px 14px 26px;
-      }
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .features {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .hero-actions {
-        flex-direction: column;
-        align-items: flex-start;
       }
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <header>
-      <div class="brand">
-        <div class="brand-mark" aria-hidden="true"></div>
-        <div class="brand-name">TICKETSAVER</div>
-      </div>
-      <nav aria-label="Page navigation">
-        <a class="nav-link" href="#product">
-          <span>Product</span>
-        </a>
-        <a class="nav-link" href="#docs">
-          <span>Docs &amp; Policies</span>
-        </a>
-        <div class="nav-pill">Personal iOS app</div>
-      </nav>
-    </header>
-
-    <main>
-      <section class="hero" id="product">
-        <div class="hero-copy">
-          <div class="eyebrow">
-            <span class="eyebrow-dot" aria-hidden="true"></span>
-            <span>Keep every ticket within reach</span>
-          </div>
-
-          <h1>
-            All your tickets, in one <span>secure place.</span>
-          </h1>
-
-          <p class="hero-lede">
-            TicketSaver is a personal iOS app that helps you store and organize your
-            event and travel tickets. You can add tickets yourself, or let TicketSaver
-            forward specific confirmation emails from Gmail automatically.
-          </p>
-
-          <p class="hero-meta">
-            TicketSaver uses the Gmail API only to manage forwarding and filter
-            settings in your account – not to read inbox contents.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#docs">
-              <span class="btn-icon">📄</span>
-              <span>View privacy &amp; terms</span>
-            </a>
-            <a class="btn btn-ghost" href="mailto:support@ticketsaver.nl">
-              <span class="btn-icon">✉️</span>
-              <span>Contact support</span>
-            </a>
-          </div>
-
-          <p class="hero-note">
-            TicketSaver is designed for personal use. Your data stays linked to your
-            own account and can be deleted at any time.
-          </p>
+  <div class="shell">
+    <div class="card">
+      <header>
+        <div class="brand">
+          <div class="logo-dot" aria-hidden="true"></div>
+          <div class="brand-name">TICKETSAVER</div>
         </div>
+        <div class="tag">Personal iOS app</div>
+      </header>
 
-        <aside class="hero-preview" aria-label="TicketSaver preview card">
-          <div class="glass-card">
-            <div class="card-row">
-              <div>
-                <div class="ticket-title">ADE</div>
-                <div class="ticket-meta">
-                  <div class="meta-pill">
-                    <span class="dot"></span>
-                    <span>21 Oct 2024 · Event</span>
-                  </div>
-                </div>
-              </div>
-              <div class="tag">1 upcoming ticket</div>
-            </div>
-
-            <div class="tiny">
-              Sample data shown for illustration only. Actual tickets are stored
-              securely per user.
-            </div>
-
-            <div class="preview-footer">
-              <div class="preview-count">Organised automatically from Gmail</div>
-              <div class="preview-chevron" aria-hidden="true">›</div>
-            </div>
-          </div>
-
-          <div class="preview-badge">
-            <strong>Gmail Connect</strong> · Optional 4-step setup
-          </div>
-        </aside>
-      </section>
-
-      <section class="features" aria-label="Highlights">
-        <article class="feature">
-          <div class="feature-title">
-            <div class="feature-icon" aria-hidden="true">🎟</div>
-            <span>Never lose another ticket</span>
-          </div>
-          TicketSaver stores tickets from your inbox alongside manually added
-          tickets, so everything is ready when you need it at the entrance gate.
-        </article>
-
-        <article class="feature">
-          <div class="feature-title">
-            <div class="feature-icon" aria-hidden="true">📥</div>
-            <span>Forwarding, not inbox access</span>
-          </div>
-          Gmail integration is limited to creating and managing a forwarding
-          address and filter. Only messages that are forwarded to TicketSaver are
-          processed.
-        </article>
-
-        <article class="feature">
-          <div class="feature-title">
-            <div class="feature-icon" aria-hidden="true">🔐</div>
-            <span>Built with privacy in mind</span>
-          </div>
-          TicketSaver follows the Google API Services User Data Policy, including
-          Limited Use. You can disconnect Gmail and delete your TicketSaver account
-          at any time.
-        </article>
-      </section>
-
-      <section class="docs" id="docs" aria-label="Documentation & policies">
-        <div class="docs-copy">
-          <h2>Gmail integration &amp; data handling</h2>
-          <p>
-            TicketSaver uses restricted Gmail settings scopes only to configure:
+      <div class="grid">
+        <section>
+          <h1>All your tickets in one <span>secure place</span>.</h1>
+          <p class="lede">
+            TicketSaver keeps your event and travel tickets together in a private iOS app.
+            You can add tickets manually, or let Gmail auto-forward selected confirmation emails into TicketSaver.
           </p>
-          <ul>
-            <li>a forwarding address pointing to your personal TicketSaver inbox,</li>
-            <li>a single Gmail filter that forwards matching confirmation emails, and</li>
-            <li>optional cleanup of these settings when you disconnect.</li>
+
+          <ul class="features">
+            <li>Store and organize tickets for events and trips.</li>
+            <li>Optional Gmail connect to forward specific confirmation emails.</li>
+            <li>Designed with privacy in mind – you stay in control of your data.</li>
           </ul>
+
+          <div class="links">
+            <a class="button button-primary" href="privacy.html">
+              Privacy Policy
+            </a>
+            <a class="button button-ghost" href="terms.html">
+              Terms of Service
+            </a>
+          </div>
+        </section>
+
+        <aside class="preview" aria-label="TicketSaver overview">
+          <div class="preview-title">
+            <span>Gmail integration</span>
+            <span class="preview-chip">Optional · 4 steps</span>
+          </div>
+          <div class="preview-rows">
+            <div>
+              <div class="preview-label">What we do</div>
+              <div class="preview-value">Create a forwarding address + filter</div>
+            </div>
+          </div>
+          <div class="preview-rows">
+            <div>
+              <div class="preview-label">What we don’t do</div>
+              <div class="preview-value">Read or search your inbox</div>
+            </div>
+          </div>
           <p>
-            TicketSaver does <strong>not</strong> use the Gmail API to read or
-            search your inbox. Email content is only processed for messages that you
-            or your filters forward to TicketSaver, and it is stored per user in our
-            backend so your tickets can be displayed in the app.
+            Only emails that you or your filter forward to TicketSaver are processed.
+            You can disconnect Gmail and delete your account at any time.
           </p>
-          <p>
-            For full details, please review the documents on the right. They
-            describe how TicketSaver works, which data is stored, and how you can
-            revoke access or request deletion.
-          </p>
-        </div>
+        </aside>
+      </div>
 
-        <div class="docs-links">
-          <a class="doc-card" href="privacy.html">
-            <div class="doc-title">
-              <span>Privacy Policy</span>
-              <span class="doc-pill">Data &amp; Gmail usage</span>
-            </div>
-            <div class="doc-meta">
-              Learn how TicketSaver collects, stores, and protects personal data,
-              including forwarded emails and ticket information.
-            </div>
-            <div class="doc-footer">
-              <span>Open document</span>
-              <span>🔗</span>
-            </div>
-          </a>
-
-          <a class="doc-card" href="terms.html">
-            <div class="doc-title">
-              <span>Terms of Service</span>
-              <span class="doc-pill">Your rights</span>
-            </div>
-            <div class="doc-meta">
-              Read the terms that apply when you use TicketSaver, including your
-              responsibilities and limitations of use.
-            </div>
-            <div class="doc-footer">
-              <span>Open document</span>
-              <span>🔗</span>
-            </div>
-          </a>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <span>© <span id="year"></span> TicketSaver. All rights reserved.</span>
-      <span>
-        Hosted on GitHub Pages · Domain: <a href="https://ticketsaver.nl">ticketsaver.nl</a>
-      </span>
-    </footer>
+      <footer>
+        <span>© <span id="year"></span> TicketSaver</span>
+        <span>Domain: ticketsaver.nl</span>
+      </footer>
+    </div>
   </div>
 
   <script>
-    // Set current year in footer
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
