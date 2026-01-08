@@ -1,330 +1,697 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Terms of Service – TicketSaver</title>
+  <title>TICKETSAVER – Terms of Service</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="index,follow">
   <meta name="description" content="Terms of Service for the TicketSaver mobile application, including Gmail Connect and automatic email forwarding.">
+
   <style>
-    :root { color-scheme: light dark; }
-    body{max-width:800px;margin:40px auto;font:16px/1.6 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;padding:0 16px}
-    h1{font-size:2rem;margin:0 0 0.5rem}
-    h2{font-size:1.25rem;margin:2rem 0 0.5rem}
-    p,ul,ol{margin:0 0 1rem}
-    ul,ol{padding-left:1.25rem}
-    hr{border:0;border-top:1px solid #ddd;margin:1.5rem 0}
-    a{color:inherit}
-    code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;background:#0001;padding:.1em .3em;border-radius:.2em}
-    small, .muted{color:#666}
+    * { box-sizing:border-box; margin:0; padding:0; }
+
+    body {
+      font-family:-apple-system,BlinkMacSystemFont,system-ui,-system-ui,"Segoe UI",sans-serif;
+      background-color:#f5f5f7;
+      color:#1d1d1f;
+      line-height:1.6;
+      transition:background-color .25s ease,color .25s ease;
+    }
+
+    a { color:#0071e3; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+
+    .page {
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+
+    /* NAV */
+    .nav {
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter:blur(20px);
+      background-color:rgba(245,245,247,.9);
+      border-bottom:1px solid rgba(0,0,0,.06);
+      transition:background-color .25s ease,border-color .25s ease;
+    }
+    .nav-inner {
+      max-width:980px;
+      margin:0 auto;
+      padding:.75rem 1.5rem;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      font-size:.85rem;
+    }
+    .nav-logo {
+      font-weight:600;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:#1d1d1f;
+    }
+    .nav-links {
+      display:flex;
+      gap:1.5rem;
+    }
+    .nav-links a {
+      color:#1d1d1f;
+      opacity:.8;
+      transition:opacity .15s ease;
+    }
+    .nav-links a:hover { opacity:1; }
+
+    /* MAIN */
+    .main {
+      flex:1;
+      display:flex;
+      justify-content:center;
+      padding:3rem 1.5rem 2rem;
+    }
+    .legal-wrapper {
+      max-width:860px;
+      width:100%;
+    }
+    .hero {
+      text-align:left;
+      margin-bottom:1.75rem;
+    }
+    .hero-eyebrow {
+      font-size:.85rem;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:#6e6e73;
+      margin-bottom:.5rem;
+    }
+    .hero-title {
+      font-size:clamp(1.9rem,4vw,2.4rem);
+      font-weight:600;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      margin-bottom:.25rem;
+    }
+    .hero-meta {
+      font-size:.9rem;
+      color:#6e6e73;
+      margin-bottom:.75rem;
+    }
+    .hero-lead {
+      font-size:.98rem;
+      color:#515154;
+      margin-bottom:1rem;
+    }
+
+    .content h2 {
+      font-size:clamp(1.1rem,3vw,1.3rem);
+      margin:1.75rem 0 .5rem;
+    }
+    .content h3 {
+      font-size:1rem;
+      margin:1.25rem 0 .5rem;
+    }
+    .content p {
+      margin:.5rem 0;
+      color:#1d1d1f;
+      font-size:.96rem;
+    }
+    .content ul,
+    .content ol {
+      margin:.35rem 0 1rem 1.25rem;
+      padding-left:0;
+      font-size:.96rem;
+      color:#1d1d1f;
+    }
+    .content li + li {
+      margin-top:.3rem;
+    }
+    .content hr {
+      border:0;
+      border-top:1px solid #e5e7eb;
+      margin:1.75rem 0;
+    }
+    .content small,
+    .content .muted { color:#666; }
+    code {
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+      background:#0001;
+      padding:.1em .3em;
+      border-radius:.2em;
+      font-size:.9em;
+    }
+
+    /* FOOTER */
+    .footer {
+      border-top:1px solid rgba(0,0,0,.08);
+      padding:1.5rem 1.5rem 2rem;
+      font-size:.75rem;
+      color:#6e6e73;
+      transition:border-color .25s ease;
+    }
+    .footer-inner {
+      max-width:980px;
+      margin:0 auto;
+      display:flex;
+      flex-wrap:wrap;
+      gap:.75rem;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .footer-links {
+      display:flex;
+      flex-wrap:wrap;
+      gap:1.25rem;
+    }
+    .footer-links a { color:#424245; }
+    .footer-links a:hover { text-decoration:underline; }
+    .footer-controls {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.5rem;
+      margin-top:.25rem;
+    }
+    .footer-toggle-btn {
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,.12);
+      padding:.25rem .75rem;
+      font-size:.7rem;
+      background:rgba(255,255,255,.7);
+      color:#424245;
+      cursor:pointer;
+      backdrop-filter:blur(10px);
+      transition:background-color .2s ease,border-color .2s ease,color .2s ease,transform .1s ease;
+    }
+    .footer-toggle-btn:hover {
+      background-color:#e5e5ea;
+      transform:translateY(-.5px);
+    }
+
+    @media (max-width:640px){
+      .nav-inner{padding-inline:1rem;}
+      .nav-links{gap:1rem;font-size:.8rem;}
+      .footer-inner{flex-direction:column;align-items:flex-start;}
+    }
+
+    /* DARK MODE */
+    body.dark {
+      background-color:#020b1a;
+      color:#e5e7eb;
+    }
+    body.dark .nav {
+      background-color:rgba(15,23,42,.9);
+      border-bottom-color:rgba(148,163,184,.4);
+    }
+    body.dark .nav-logo,
+    body.dark .nav-links a {
+      color:#e5e7eb;
+      opacity:.85;
+    }
+    body.dark .hero-lead { color:#cbd5f5; }
+    body.dark .hero-meta { color:#9ca3af; }
+    body.dark .content p,
+    body.dark .content ul,
+    body.dark .content ol { color:#e5e7eb; }
+    body.dark .content hr {
+      border-top-color:rgba(148,163,184,.4);
+    }
+    body.dark .footer {
+      border-top-color:rgba(148,163,184,.4);
+      color:#9ca3af;
+    }
+    body.dark .footer-links a { color:#e5e7eb; }
+    body.dark .footer-toggle-btn {
+      background:rgba(15,23,42,.85);
+      border-color:rgba(148,163,184,.6);
+      color:#e5e7eb;
+    }
+    body.dark .footer-toggle-btn:hover {
+      background-color:#0f172a;
+    }
   </style>
 </head>
 <body>
-  <h1>Terms of Service</h1>
-  <p><strong>Last updated:</strong> December 26, 2025</p>
+  <div class="page">
+    <!-- NAV -->
+    <header class="nav">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo" id="nav-logo">TICKETSAVER</a>
+        <nav class="nav-links">
+          <a href="product.html" id="nav-product">Product</a>
+          <a href="features.html" id="nav-features">Features</a>
+          <a href="pricing.html" id="nav-pricing">Prijzen</a>
+        </nav>
+      </div>
+    </header>
 
-  <p>These Terms of Service (“Terms”) govern your use of the TicketSaver mobile application (“App”) and related services. By downloading, installing, or using the App, you agree to be bound by these Terms. If you do not agree, you may not use the App.</p>
+    <!-- MAIN -->
+    <main class="main">
+      <div class="legal-wrapper">
+        <section class="hero">
+          <div class="hero-eyebrow" id="hero-eyebrow">Legal</div>
+          <h1 class="hero-title" id="hero-title">Terms of Service</h1>
+          <p class="hero-meta">
+            <span id="hero-updated-label">Last updated:</span> December 26, 2025
+          </p>
+          <p class="hero-lead" id="hero-lead">
+            These Terms govern your use of TicketSaver, including Gmail Connect and automatic email forwarding.
+          </p>
+        </section>
 
-  <hr>
+        <section class="content">
+          <p>These Terms of Service (“Terms”) govern your use of the TicketSaver mobile application (“App”) and related services. By downloading, installing, or using the App, you agree to be bound by these Terms. If you do not agree, you may not use the App.</p>
 
-  <h2>Service Description</h2>
-  <p>TicketSaver is a personal tool that allows users to:</p>
-  <ul>
-    <li>Store event tickets and related files locally on their device.</li>
-    <li>Forward confirmation emails and attachments (via Mailgun) to be processed and displayed in the App.</li>
-    <li>Connect a Google Account and configure automatic email forwarding from Gmail to TicketSaver via Gmail Connect.</li>
-    <li>Manage events with limitations depending on subscription status (Free tier vs. Premium).</li>
-  </ul>
-  <p>TicketSaver is not an event organizer, ticket issuer, or reseller. We only provide a digital storage and management tool.</p>
+          <hr>
 
-  <hr>
+          <h2>Service Description</h2>
+          <p>TicketSaver is a personal tool that allows users to:</p>
+          <ul>
+            <li>Store event tickets and related files locally on their device.</li>
+            <li>Forward confirmation emails and attachments (via Mailgun) to be processed and displayed in the App.</li>
+            <li>Connect a Google Account and configure automatic email forwarding from Gmail to TicketSaver via Gmail Connect.</li>
+            <li>Manage events with limitations depending on subscription status (Free tier vs. Premium).</li>
+          </ul>
+          <p>TicketSaver is not an event organizer, ticket issuer, or reseller. We only provide a digital storage and management tool.</p>
 
-  <h2>Eligibility and Accounts</h2>
-  <p>You must be at least 13 years old (or the minimum age required by your jurisdiction) to use the App. If you create an Account, you agree to provide accurate information and to keep your credentials confidential. You are responsible for all activity that occurs under your Account.</p>
+          <hr>
 
-  <hr>
+          <h2>Eligibility and Accounts</h2>
+          <p>You must be at least 13 years old (or the minimum age required by your jurisdiction) to use the App. If you create an Account, you agree to provide accurate information and to keep your credentials confidential. You are responsible for all activity that occurs under your Account.</p>
 
-  <h2>License and Intellectual Property</h2>
-  <p>Subject to these Terms, the Company grants you a limited, non-exclusive, non-transferable, revocable license to download and use the App for your personal, non-commercial use.</p>
-  <p>The App and all related content are owned by the Company or its licensors and are protected by intellectual property laws. You may not copy, modify, distribute, reverse engineer, or create derivative works from the App except as permitted by law.</p>
+          <hr>
 
-  <hr>
+          <h2>License and Intellectual Property</h2>
+          <p>Subject to these Terms, the Company grants you a limited, non-exclusive, non-transferable, revocable license to download and use the App for your personal, non-commercial use.</p>
+          <p>The App and all related content are owned by the Company or its licensors and are protected by intellectual property laws. You may not copy, modify, distribute, reverse engineer, or create derivative works from the App except as permitted by law.</p>
 
-  <h2>User Content</h2>
-  <p>You retain ownership of tickets and other materials you import (“User Content”). You grant the Company a limited, non-exclusive, worldwide license to host, process, display, and transmit User Content solely as necessary to provide and improve the Service.</p>
-  <p>You represent and warrant that:</p>
-  <ul>
-    <li>You have all rights necessary to upload and store User Content in the App.</li>
-    <li>User Content and its use in TicketSaver do not violate applicable law or third-party rights, including copyright, privacy, and contractual obligations.</li>
-    <li>You are authorized to forward or otherwise provide any email or attachment you send to your TicketSaver upload address.</li>
-  </ul>
+          <hr>
 
-  <hr>
+          <h2>User Content</h2>
+          <p>You retain ownership of tickets and other materials you import (“User Content”). You grant the Company a limited, non-exclusive, worldwide license to host, process, display, and transmit User Content solely as necessary to provide and improve the Service.</p>
+          <p>You represent and warrant that:</p>
+          <ul>
+            <li>You have all rights necessary to upload and store User Content in the App.</li>
+            <li>User Content and its use in TicketSaver do not violate applicable law or third-party rights, including copyright, privacy, and contractual obligations.</li>
+            <li>You are authorized to forward or otherwise provide any email or attachment you send to your TicketSaver upload address.</li>
+          </ul>
 
-  <h2>Gmail Connect &amp; Automatic Email Forwarding</h2>
+          <hr>
 
-  <h3>Description of the Feature</h3>
-  <p>TicketSaver offers an optional feature (“Gmail Connect”) that allows you to connect your Google Account and configure automatic forwarding of Gmail messages to your personal TicketSaver upload address (for example: <code>upload+@upload.ticketsaver.nl</code>).</p>
-  <p>To enable Gmail Connect, you must explicitly grant the App certain permissions via the Google consent screen. These permissions may allow the App to:</p>
-  <ul>
-    <li>View and manage Gmail forwarding and forwarding addresses.</li>
-    <li>View, create, update, and delete Gmail filters that can move, label, or forward email.</li>
-    <li>View who else has delegated access to your Gmail and revoke such access.</li>
-    <li>View, create, update, and delete send-as aliases in Gmail.</li>
-    <li>View and update certain Gmail settings such as reply-to address, display name, signature, and automatic reply (vacation responder).</li>
-    <li>View and update IMAP/POP settings.</li>
-    <li>View your Google profile information and primary email address.</li>
-  </ul>
-  <p>TicketSaver uses these permissions only as needed to configure and maintain automatic forwarding and to display your connection status, as further described in the Privacy Policy.</p>
+          <h2>Gmail Connect &amp; Automatic Email Forwarding</h2>
 
-  <h3>No Access to Email Content via Gmail API</h3>
-  <p>TicketSaver does not use the Gmail API to read the content of your emails in your Gmail inbox. TicketSaver processes ticket information from:</p>
-  <ul>
-    <li>Emails that are forwarded to your TicketSaver upload address (whether automatically through filters/forwarding or manually by you), and</li>
-    <li>Files you import directly (e.g., PDFs or images).</li>
-  </ul>
-  <p>The fact that the Gmail API technically allows certain actions does not mean TicketSaver will use those capabilities beyond what is necessary to provide Gmail Connect, as contractually limited in the Privacy Policy and this section.</p>
+          <h3>Description of the Feature</h3>
+          <p>TicketSaver offers an optional feature (“Gmail Connect”) that allows you to connect your Google Account and configure automatic forwarding of Gmail messages to your personal TicketSaver upload address (for example: <code>upload+@upload.ticketsaver.nl</code>).</p>
+          <p>To enable Gmail Connect, you must explicitly grant the App certain permissions via the Google consent screen. These permissions may allow the App to:</p>
+          <ul>
+            <li>View and manage Gmail forwarding and forwarding addresses.</li>
+            <li>View, create, update, and delete Gmail filters that can move, label, or forward email.</li>
+            <li>View who else has delegated access to your Gmail and revoke such access.</li>
+            <li>View, create, update, and delete send-as aliases in Gmail.</li>
+            <li>View and update certain Gmail settings such as reply-to address, display name, signature, and automatic reply (vacation responder).</li>
+            <li>View and update IMAP/POP settings.</li>
+            <li>View your Google profile information and primary email address.</li>
+          </ul>
+          <p>TicketSaver uses these permissions only as needed to configure and maintain automatic forwarding and to display your connection status, as further described in the Privacy Policy.</p>
 
-  <h3>Your Responsibilities When Using Gmail Connect</h3>
-  <p>By enabling Gmail Connect, you:</p>
-  <ul>
-    <li>Authorize TicketSaver to access and modify your Gmail settings and related configuration as required to set up and manage forwarding, forwarding addresses, filters, send-as aliases, and related features.</li>
-    <li>Confirm that you are the account holder or otherwise have full authority to grant TicketSaver such access for the relevant Gmail account.</li>
-    <li>Accept that you are solely responsible for:
-      <ul>
-        <li>Which messages are forwarded from Gmail to TicketSaver.</li>
-        <li>The filter conditions, labels, and rules applied to your messages.</li>
-        <li>Ensuring your use of forwarding and filters complies with Google’s terms, your employer’s or organization’s policies, and any confidentiality obligations you may have.</li>
-        <li>Regularly reviewing your Gmail settings (including filters and forwarding) to ensure they continue to match your expectations.</li>
-      </ul>
-    </li>
-  </ul>
-  <p>TicketSaver is not responsible for:</p>
-  <ul>
-    <li>Emails forwarded unintentionally due to misconfigured filters or settings.</li>
-    <li>Emails that are not forwarded due to Gmail issues, filter conflicts, provider downtime, or changes made by you or third parties to your Gmail account.</li>
-    <li>Any loss, disclosure, or misuse of information contained in messages that you choose to have forwarded to TicketSaver.</li>
-  </ul>
+          <h3>No Access to Email Content via Gmail API</h3>
+          <p>TicketSaver does not use the Gmail API to read the content of your emails in your Gmail inbox. TicketSaver processes ticket information from:</p>
+          <ul>
+            <li>Emails that are forwarded to your TicketSaver upload address (whether automatically through filters/forwarding or manually by you), and</li>
+            <li>Files you import directly (e.g., PDFs or images).</li>
+          </ul>
+          <p>The fact that the Gmail API technically allows certain actions does not mean TicketSaver will use those capabilities beyond what is necessary to provide Gmail Connect, as contractually limited in the Privacy Policy and this section.</p>
 
-  <h3>Limitation of the Feature</h3>
-  <p>Gmail Connect is provided as a convenience feature only. Without limitation to other disclaimers and limitations in these Terms:</p>
-  <ul>
-    <li>We do not guarantee that Gmail Connect will work with all types of Gmail accounts (for example, certain Google Workspace or restricted accounts may block or limit forwarding).</li>
-    <li>We do not guarantee that forwarding will continue to work if Google changes its APIs, policies, or technical requirements.</li>
-    <li>We do not guarantee that filters or forwarding rules created through TicketSaver will always behave as expected in every scenario.</li>
-  </ul>
+          <h3>Your Responsibilities When Using Gmail Connect</h3>
+          <p>By enabling Gmail Connect, you:</p>
+          <ul>
+            <li>Authorize TicketSaver to access and modify your Gmail settings and related configuration as required to set up and manage forwarding, forwarding addresses, filters, send-as aliases, and related features.</li>
+            <li>Confirm that you are the account holder or otherwise have full authority to grant TicketSaver such access for the relevant Gmail account.</li>
+            <li>Accept that you are solely responsible for:
+              <ul>
+                <li>Which messages are forwarded from Gmail to TicketSaver.</li>
+                <li>The filter conditions, labels, and rules applied to your messages.</li>
+                <li>Ensuring your use of forwarding and filters complies with Google’s terms, your employer’s or organization’s policies, and any confidentiality obligations you may have.</li>
+                <li>Regularly reviewing your Gmail settings (including filters and forwarding) to ensure they continue to match your expectations.</li>
+              </ul>
+            </li>
+          </ul>
+          <p>TicketSaver is not responsible for:</p>
+          <ul>
+            <li>Emails forwarded unintentionally due to misconfigured filters or settings.</li>
+            <li>Emails that are not forwarded due to Gmail issues, filter conflicts, provider downtime, or changes made by you or third parties to your Gmail account.</li>
+            <li>Any loss, disclosure, or misuse of information contained in messages that you choose to have forwarded to TicketSaver.</li>
+          </ul>
 
-  <h3>Revocation and Disconnection</h3>
-  <p>You may disable Gmail Connect at any time by:</p>
-  <ul>
-    <li>Using the option in the App (where available), and/or</li>
-    <li>Revoking TicketSaver’s access in your Google Account settings.</li>
-  </ul>
-  <p>After revocation:</p>
-  <ul>
-    <li>TicketSaver will no longer be able to call the Gmail API on your behalf.</li>
-    <li>We will delete or invalidate relevant tokens within a reasonable time, consistent with our Privacy Policy.</li>
-    <li>We may attempt to remove or disable filters or forwarding settings that TicketSaver created, but you remain responsible for verifying and, if necessary, manually adjusting or removing any forwarding or filter configuration in your Gmail account.</li>
-  </ul>
-  <p>TicketSaver is not responsible for any continued forwarding or filter behavior if you fail to remove or verify such settings after disconnecting.</p>
+          <h3>Limitation of the Feature</h3>
+          <p>Gmail Connect is provided as a convenience feature only. Without limitation to other disclaimers and limitations in these Terms:</p>
+          <ul>
+            <li>We do not guarantee that Gmail Connect will work with all types of Gmail accounts (for example, certain Google Workspace or restricted accounts may block or limit forwarding).</li>
+            <li>We do not guarantee that forwarding will continue to work if Google changes its APIs, policies, or technical requirements.</li>
+            <li>We do not guarantee that filters or forwarding rules created through TicketSaver will always behave as expected in every scenario.</li>
+          </ul>
 
-  <h3>Compliance with Google Policies</h3>
-  <p>TicketSaver uses Google and Gmail APIs in accordance with:</p>
-  <ul>
-    <li>The Google API Services User Data Policy (including Limited Use requirements), and</li>
-    <li>Applicable Gmail and Google Workspace policies.</li>
-  </ul>
-  <p>You agree not to use Gmail Connect in a way that would cause TicketSaver to violate these policies.</p>
+          <h3>Revocation and Disconnection</h3>
+          <p>You may disable Gmail Connect at any time by:</p>
+          <ul>
+            <li>Using the option in the App (where available), and/or</li>
+            <li>Revoking TicketSaver’s access in your Google Account settings.</li>
+          </ul>
+          <p>After revocation:</p>
+          <ul>
+            <li>TicketSaver will no longer be able to call the Gmail API on your behalf.</li>
+            <li>We will delete or invalidate relevant tokens within a reasonable time, consistent with our Privacy Policy.</li>
+            <li>We may attempt to remove or disable filters or forwarding settings that TicketSaver created, but you remain responsible for verifying and, if necessary, manually adjusting or removing any forwarding or filter configuration in your Gmail account.</li>
+          </ul>
+          <p>TicketSaver is not responsible for any continued forwarding or filter behavior if you fail to remove or verify such settings after disconnecting.</p>
 
-  <hr>
+          <h3>Compliance with Google Policies</h3>
+          <p>TicketSaver uses Google and Gmail APIs in accordance with:</p>
+          <ul>
+            <li>The Google API Services User Data Policy (including Limited Use requirements), and</li>
+            <li>Applicable Gmail and Google Workspace policies.</li>
+          </ul>
+          <p>You agree not to use Gmail Connect in a way that would cause TicketSaver to violate these policies.</p>
 
-  <h2>No Guarantee of Ticket Validity</h2>
-  <ul>
-    <li>TicketSaver does not verify, validate, or guarantee that any ticket stored in the App will be accepted by an event organizer, venue, or third party.</li>
-    <li>Event organizers and venues remain solely responsible for ticket verification, admission, and enforcement of their own terms.</li>
-    <li>TicketSaver is not liable if a ticket is rejected, invalid, duplicated, expired, misused, or otherwise not honored.</li>
-  </ul>
+          <hr>
 
-  <hr>
+          <h2>No Guarantee of Ticket Validity</h2>
+          <ul>
+            <li>TicketSaver does not verify, validate, or guarantee that any ticket stored in the App will be accepted by an event organizer, venue, or third party.</li>
+            <li>Event organizers and venues remain solely responsible for ticket verification, admission, and enforcement of their own terms.</li>
+            <li>TicketSaver is not liable if a ticket is rejected, invalid, duplicated, expired, misused, or otherwise not honored.</li>
+          </ul>
 
-  <h2>No Liability for Loss of Tickets or Accounts</h2>
-  <ul>
-    <li>Tickets are primarily stored locally on your device. You are solely responsible for backing up your tickets (e.g., in the Files app or cloud storage).</li>
-    <li>If you delete the App, delete your account, or lose access to your device, your tickets may be permanently lost.</li>
-    <li>TicketSaver is not responsible for:
-      <ul>
-        <li>loss, corruption, or deletion of tickets,</li>
-        <li>failed or incomplete imports,</li>
-        <li>errors caused by device failure, app crashes, or user error.</li>
-      </ul>
-    </li>
-  </ul>
+          <hr>
 
-  <hr>
+          <h2>No Liability for Loss of Tickets or Accounts</h2>
+          <ul>
+            <li>Tickets are primarily stored locally on your device. You are solely responsible for backing up your tickets (e.g., in the Files app or cloud storage).</li>
+            <li>If you delete the App, delete your account, or lose access to your device, your tickets may be permanently lost.</li>
+            <li>TicketSaver is not responsible for:
+              <ul>
+                <li>loss, corruption, or deletion of tickets,</li>
+                <li>failed or incomplete imports,</li>
+                <li>errors caused by device failure, app crashes, or user error.</li>
+              </ul>
+            </li>
+          </ul>
 
-  <h2>Premium &amp; Subscriptions</h2>
-  <ul>
-    <li>Premium features (e.g., unlimited events) require an active paid subscription.</li>
-    <li>Subscriptions are managed through the Apple App Store. TicketSaver has no control over billing, renewals, or refunds. Refund requests must be directed to Apple.</li>
-    <li>Free trials are offered once per user and may be restricted to prevent abuse.</li>
-    <li>When a subscription ends (including after a free trial):
-      <ul>
-        <li>You will retain access only to the first 5 events you created.</li>
-        <li>Other events remain stored but inaccessible until Premium is reactivated.</li>
-      </ul>
-    </li>
-  </ul>
+          <hr>
 
-  <hr>
+          <h2>Premium &amp; Subscriptions</h2>
+          <ul>
+            <li>Premium features (e.g., unlimited events) require an active paid subscription.</li>
+            <li>Subscriptions are managed through the Apple App Store. TicketSaver has no control over billing, renewals, or refunds. Refund requests must be directed to Apple.</li>
+            <li>Free trials are offered once per user and may be restricted to prevent abuse.</li>
+            <li>When a subscription ends (including after a free trial):
+              <ul>
+                <li>You will retain access only to the first 5 events you created.</li>
+                <li>Other events remain stored but inaccessible until Premium is reactivated.</li>
+              </ul>
+            </li>
+          </ul>
 
-  <h2>Subscription Management; Account Deletion</h2>
-  <ul>
-    <li><strong>Auto-Renewal and Cancellation.</strong> Subscriptions auto-renew unless cancelled at least 24 hours before the end of the current period. You must manage or cancel your Subscription in your Apple settings (App Store → Account → Subscriptions). We cannot cancel a Subscription for you.</li>
-    <li><strong>Account Deletion.</strong> Deleting your Account within the App does not cancel your Apple Subscription. If you want to stop being charged, you must cancel the Subscription in your Apple settings. We are not responsible for continued charges due to your failure to cancel with Apple.</li>
-    <li><strong>Access After Cancellation.</strong> You will retain Premium access until the end of the paid period; thereafter, your Account reverts to the Free tier limits.</li>
-  </ul>
+          <hr>
 
-  <hr>
+          <h2>Subscription Management; Account Deletion</h2>
+          <ul>
+            <li><strong>Auto-Renewal and Cancellation.</strong> Subscriptions auto-renew unless cancelled at least 24 hours before the end of the current period. You must manage or cancel your Subscription in your Apple settings (App Store → Account → Subscriptions). We cannot cancel a Subscription for you.</li>
+            <li><strong>Account Deletion.</strong> Deleting your Account within the App does not cancel your Apple Subscription. If you want to stop being charged, you must cancel the Subscription in your Apple settings. We are not responsible for continued charges due to your failure to cancel with Apple.</li>
+            <li><strong>Access After Cancellation.</strong> You will retain Premium access until the end of the paid period; thereafter, your Account reverts to the Free tier limits.</li>
+          </ul>
 
-  <h2>Refunds and Chargebacks</h2>
-  <p>All billing, renewals, and refunds are handled by Apple under the Apple Media Services Terms and App Store policies. The Company cannot issue refunds, credits, or adjustments. If you initiate a chargeback or payment dispute, we may suspend or terminate access pending resolution.</p>
+          <hr>
 
-  <hr>
+          <h2>Refunds and Chargebacks</h2>
+          <p>All billing, renewals, and refunds are handled by Apple under the Apple Media Services Terms and App Store policies. The Company cannot issue refunds, credits, or adjustments. If you initiate a chargeback or payment dispute, we may suspend or terminate access pending resolution.</p>
 
-  <h2>Anti-Abuse &amp; Fraud Prevention</h2>
-  <p>To protect the Service:</p>
-  <ul>
-    <li>We validate purchases using server-side receipt validation.</li>
-    <li>We enforce device/session binding: only one active device may use your account at a time.</li>
-    <li>We may retain device identifiers or transaction records even after account deletion to detect and prevent:
-      <ul>
-        <li>repeated free-trial abuse,</li>
-        <li>account sharing,</li>
-        <li>fraudulent purchases.</li>
-      </ul>
-    </li>
-    <li>We may also monitor the use of Gmail Connect and email ingestion to detect obvious abuse (e.g., mass forwarding of unrelated email, attempts to use TicketSaver as a general email archive).</li>
-  </ul>
+          <hr>
 
-  <hr>
+          <h2>Anti-Abuse &amp; Fraud Prevention</h2>
+          <p>To protect the Service:</p>
+          <ul>
+            <li>We validate purchases using server-side receipt validation.</li>
+            <li>We enforce device/session binding: only one active device may use your account at a time.</li>
+            <li>We may retain device identifiers or transaction records even after account deletion to detect and prevent:
+              <ul>
+                <li>repeated free-trial abuse,</li>
+                <li>account sharing,</li>
+                <li>fraudulent purchases.</li>
+              </ul>
+            </li>
+            <li>We may also monitor the use of Gmail Connect and email ingestion to detect obvious abuse (e.g., mass forwarding of unrelated email, attempts to use TicketSaver as a general email archive).</li>
+          </ul>
 
-  <h2>Acceptable Use</h2>
-  <p>You agree not to use the App to:</p>
-  <ul>
-    <li>Violate applicable laws or third-party rights.</li>
-    <li>Import, store, or share tickets unlawfully (e.g., forged, duplicated, or resold tickets).</li>
-    <li>Circumvent or attempt to circumvent our fraud-prevention systems.</li>
-    <li>Upload malicious code, spam, or other harmful content.</li>
-    <li>Misuse Gmail Connect or forwarding features, including by:
-      <ul>
-        <li>Forwarding email you are not authorized to disclose (e.g., confidential business information without permission).</li>
-        <li>Using TicketSaver to bypass your employer’s or organization’s security or compliance policies.</li>
-        <li>Using the Gmail integration in ways that violate Gmail’s or Google Workspace’s terms.</li>
-      </ul>
-    </li>
-  </ul>
-  <p>Violation of these rules may result in suspension or termination of your account.</p>
+          <hr>
 
-  <hr>
+          <h2>Acceptable Use</h2>
+          <p>You agree not to use the App to:</p>
+          <ul>
+            <li>Violate applicable laws or third-party rights.</li>
+            <li>Import, store, or share tickets unlawfully (e.g., forged, duplicated, or resold tickets).</li>
+            <li>Circumvent or attempt to circumvent our fraud-prevention systems.</li>
+            <li>Upload malicious code, spam, or other harmful content.</li>
+            <li>Misuse Gmail Connect or forwarding features, including by:
+              <ul>
+                <li>Forwarding email you are not authorized to disclose (e.g., confidential business information without permission).</li>
+                <li>Using TicketSaver to bypass your employer’s or organization’s security or compliance policies.</li>
+                <li>Using the Gmail integration in ways that violate Gmail’s or Google Workspace’s terms.</li>
+              </ul>
+            </li>
+          </ul>
+          <p>Violation of these rules may result in suspension or termination of your account.</p>
 
-  <h2>Third-Party Services</h2>
-  <p>The App relies on third-party services, including but not limited to:</p>
-  <ul>
-    <li>Firebase (authentication, database, crash reporting, analytics, cloud functions),</li>
-    <li>Mailgun (email forwarding and delivery),</li>
-    <li>Apple App Store (subscriptions, billing),</li>
-    <li>Social logins (Apple, Facebook),</li>
-    <li>Google/Gmail API services (for Gmail Connect and related settings management).</li>
-  </ul>
-  <p>TicketSaver is not responsible for the downtime, errors, or data handling practices of these third parties. Their use is governed by their own terms and privacy policies. We do not control changes they may make to their services, APIs, or terms.</p>
+          <hr>
 
-  <hr>
+          <h2>Third-Party Services</h2>
+          <p>The App relies on third-party services, including but not limited to:</p>
+          <ul>
+            <li>Firebase (authentication, database, crash reporting, analytics, cloud functions),</li>
+            <li>Mailgun (email forwarding and delivery),</li>
+            <li>Apple App Store (subscriptions, billing),</li>
+            <li>Social logins (Apple, Facebook),</li>
+            <li>Google/Gmail API services (for Gmail Connect and related settings management).</li>
+          </ul>
+          <p>TicketSaver is not responsible for the downtime, errors, or data handling practices of these third parties. Their use is governed by their own terms and privacy policies. We do not control changes they may make to their services, APIs, or terms.</p>
 
-  <h2>Changes to the Service: Availability</h2>
-  <p>We may modify, suspend, or discontinue the App (in whole or in part) at any time, with or without notice, including for maintenance, security, legal, or business reasons. We are not liable for any modification, suspension, or discontinuation, including the discontinuation of Gmail Connect or any other integration following changes to third-party APIs or policies.</p>
+          <hr>
 
-  <hr>
+          <h2>Changes to the Service: Availability</h2>
+          <p>We may modify, suspend, or discontinue the App (in whole or in part) at any time, with or without notice, including for maintenance, security, legal, or business reasons. We are not liable for any modification, suspension, or discontinuation, including the discontinuation of Gmail Connect or any other integration following changes to third-party APIs or policies.</p>
 
-  <h2>Beta Features</h2>
-  <p>We may offer experimental or beta features. Such features are provided “AS IS,” may be discontinued at any time, and may contain errors.</p>
+          <hr>
 
-  <hr>
+          <h2>Beta Features</h2>
+          <p>We may offer experimental or beta features. Such features are provided “AS IS,” may be discontinued at any time, and may contain errors.</p>
 
-  <h2>Disclaimer of Warranties</h2>
-  <p>The App is provided on an “AS IS” and “AS AVAILABLE” basis. TicketSaver makes no representations or warranties of any kind, express or implied, including but not limited to:</p>
-  <ul>
-    <li>That the App will function uninterrupted, error-free, or without security issues.</li>
-    <li>That tickets stored in the App will be valid, recognized, or accepted by third parties.</li>
-    <li>That data stored locally or in Firebase will never be lost, corrupted, or deleted.</li>
-    <li>That Gmail Connect or any email forwarding configuration will always work as intended, or that Google/Gmail will not change or restrict the required APIs or settings.</li>
-  </ul>
+          <hr>
 
-  <hr>
+          <h2>Disclaimer of Warranties</h2>
+          <p>The App is provided on an “AS IS” and “AS AVAILABLE” basis. TicketSaver makes no representations or warranties of any kind, express or implied, including but not limited to:</p>
+          <ul>
+            <li>That the App will function uninterrupted, error-free, or without security issues.</li>
+            <li>That tickets stored in the App will be valid, recognized, or accepted by third parties.</li>
+            <li>That data stored locally or in Firebase will never be lost, corrupted, or deleted.</li>
+            <li>That Gmail Connect or any email forwarding configuration will always work as intended, or that Google/Gmail will not change or restrict the required APIs or settings.</li>
+          </ul>
 
-  <h2>Limitation of Liability</h2>
-  <p>To the maximum extent permitted by applicable law:</p>
-  <ul>
-    <li><strong>Exclusion of damages.</strong> TicketSaver shall not be liable for any indirect, incidental, special, consequential, exemplary, or punitive damages, including but not limited to loss of data, revenue, profits, goodwill, or event access, arising out of or in connection with the use of the App (including Gmail Connect and automatic email forwarding).</li>
-    <li><strong>Free users.</strong> If you use the Service without a paid subscription, you agree that TicketSaver shall have no liability whatsoever for any claim, damage, or loss of any kind.</li>
-    <li><strong>Premium users.</strong> If you have a paid subscription, TicketSaver’s total aggregate liability for direct damages shall not exceed the amount you actually paid for Premium during the twelve (12) months immediately preceding the event giving rise to the claim.</li>
-    <li><strong>Scope.</strong> These limitations apply to all claims, whether based on contract, tort (including negligence), strict liability, or otherwise, even if TicketSaver has been advised of the possibility of such damages.</li>
-    <li><strong>Mandatory law carve-out.</strong> Nothing in these Terms excludes or limits liability that cannot be excluded or limited under applicable law, such as liability for fraud, intentional misconduct, or gross negligence.</li>
-  </ul>
-  <p>You acknowledge and agree that use of the App (including Gmail Connect) is entirely at your own risk, and that these limitations are an essential basis of the bargain between you and TicketSaver.</p>
+          <hr>
 
-  <hr>
+          <h2>Limitation of Liability</h2>
+          <p>To the maximum extent permitted by applicable law:</p>
+          <ul>
+            <li><strong>Exclusion of damages.</strong> TicketSaver shall not be liable for any indirect, incidental, special, consequential, exemplary, or punitive damages, including but not limited to loss of data, revenue, profits, goodwill, or event access, arising out of or in connection with the use of the App (including Gmail Connect and automatic email forwarding).</li>
+            <li><strong>Free users.</strong> If you use the Service without a paid subscription, you agree that TicketSaver shall have no liability whatsoever for any claim, damage, or loss of any kind.</li>
+            <li><strong>Premium users.</strong> If you have a paid subscription, TicketSaver’s total aggregate liability for direct damages shall not exceed the amount you actually paid for Premium during the twelve (12) months immediately preceding the event giving rise to the claim.</li>
+            <li><strong>Scope.</strong> These limitations apply to all claims, whether based on contract, tort (including negligence), strict liability, or otherwise, even if TicketSaver has been advised of the possibility of such damages.</li>
+            <li><strong>Mandatory law carve-out.</strong> Nothing in these Terms excludes or limits liability that cannot be excluded or limited under applicable law, such as liability for fraud, intentional misconduct, or gross negligence.</li>
+          </ul>
+          <p>You acknowledge and agree that use of the App (including Gmail Connect) is entirely at your own risk, and that these limitations are an essential basis of the bargain between you and TicketSaver.</p>
 
-  <h2>Indemnification</h2>
-  <p>You agree to indemnify, defend, and hold harmless the Company and its affiliates, officers, employees, and agents from and against any claims, liabilities, damages, losses, and expenses (including reasonable attorneys’ fees) arising out of or in any way connected with your:</p>
-  <ul>
-    <li>use of the App, including Gmail Connect and forwarding features,</li>
-    <li>violation of these Terms, or</li>
-    <li>infringement of any third-party right (including confidentiality, data protection, and intellectual property rights).</li>
-  </ul>
+          <hr>
 
-  <hr>
+          <h2>Indemnification</h2>
+          <p>You agree to indemnify, defend, and hold harmless the Company and its affiliates, officers, employees, and agents from and against any claims, liabilities, damages, losses, and expenses (including reasonable attorneys’ fees) arising out of or in any way connected with your:</p>
+          <ul>
+            <li>use of the App, including Gmail Connect and forwarding features,</li>
+            <li>violation of these Terms, or</li>
+            <li>infringement of any third-party right (including confidentiality, data protection, and intellectual property rights).</li>
+          </ul>
 
-  <h2>Termination</h2>
-  <p>We may suspend or terminate your account or access to the App if you:</p>
-  <ul>
-    <li>Violate these Terms,</li>
-    <li>Misuse the App,</li>
-    <li>Engage in fraud, abuse, or unlawful conduct.</li>
-  </ul>
-  <p>You may also terminate your account at any time by deleting it within the App. Termination does not relieve you of any obligation to pay outstanding fees and does not entitle you to a refund from TicketSaver (refunds, where applicable, are handled by Apple).</p>
+          <hr>
 
-  <hr>
+          <h2>Termination</h2>
+          <p>We may suspend or terminate your account or access to the App if you:</p>
+          <ul>
+            <li>Violate these Terms,</li>
+            <li>Misuse the App,</li>
+            <li>Engage in fraud, abuse, or unlawful conduct.</li>
+          </ul>
+          <p>You may also terminate your account at any time by deleting it within the App. Termination does not relieve you of any obligation to pay outstanding fees and does not entitle you to a refund from TicketSaver (refunds, where applicable, are handled by Apple).</p>
 
-  <h2>Acceptance of Terms and Privacy Policy</h2>
-  <p>Use of the App is only permitted if you have accepted both the Terms of Service and the Privacy Policy. Your acceptance is stored locally on your Device. When you create or sign in to an Account, your existing acceptance is automatically synchronized and recorded in our systems for that Account. The synchronization updates the account record with the version of the Terms and Privacy Policy you accepted, the original acceptance date, and the most recent confirmation at login. By signing in with multiple accounts on the same Device, you confirm that each account is bound by your acceptance of the Terms and Privacy Policy.</p>
-  <p>If you enable Gmail Connect or similar integrations, you also agree to the additional permissions and processing described in the Privacy Policy and in these Terms.</p>
+          <hr>
 
-  <hr>
+          <h2>Acceptance of Terms and Privacy Policy</h2>
+          <p>Use of the App is only permitted if you have accepted both the Terms of Service and the Privacy Policy. Your acceptance is stored locally on your Device. When you create or sign in to an Account, your existing acceptance is automatically synchronized and recorded in our systems for that Account. The synchronization updates the account record with the version of the Terms and Privacy Policy you accepted, the original acceptance date, and the most recent confirmation at login. By signing in with multiple accounts on the same Device, you confirm that each account is bound by your acceptance of the Terms and Privacy Policy.</p>
+          <p>If you enable Gmail Connect or similar integrations, you also agree to the additional permissions and processing described in the Privacy Policy and in these Terms.</p>
 
-  <h2>Severability; Waiver</h2>
-  <p>If any provision of these Terms is held to be invalid or unenforceable, the remaining provisions will continue in full force. Our failure to enforce any right or provision shall not be deemed a waiver of such right or provision.</p>
+          <hr>
 
-  <hr>
+          <h2>Severability; Waiver</h2>
+          <p>If any provision of these Terms is held to be invalid or unenforceable, the remaining provisions will continue in full force. Our failure to enforce any right or provision shall not be deemed a waiver of such right or provision.</p>
 
-  <h2>Assignment</h2>
-  <p>You may not assign or transfer these Terms, by operation of law or otherwise, without our prior written consent. We may assign these Terms without restriction.</p>
+          <hr>
 
-  <hr>
+          <h2>Assignment</h2>
+          <p>You may not assign or transfer these Terms, by operation of law or otherwise, without our prior written consent. We may assign these Terms without restriction.</p>
 
-  <h2>Governing Law &amp; Jurisdiction</h2>
-  <ul>
-    <li>These Terms are governed by the laws of the Netherlands.</li>
-    <li>Any dispute shall be submitted exclusively to the competent courts of Amsterdam, the Netherlands.</li>
-  </ul>
+          <hr>
 
-  <hr>
+          <h2>Governing Law &amp; Jurisdiction</h2>
+          <ul>
+            <li>These Terms are governed by the laws of the Netherlands.</li>
+            <li>Any dispute shall be submitted exclusively to the competent courts of Amsterdam, the Netherlands.</li>
+          </ul>
 
-  <h2>Notices</h2>
-  <p>We may provide notices to you by in-app messages, email, or other reasonable means. You agree that electronic communications satisfy any legal requirement that communications be in writing.</p>
+          <hr>
 
-  <hr>
+          <h2>Notices</h2>
+          <p>We may provide notices to you by in-app messages, email, or other reasonable means. You agree that electronic communications satisfy any legal requirement that communications be in writing.</p>
 
-  <h2>Contact</h2>
-  <p>For questions about these Terms, please contact: <a href="mailto:maxbrouwermd@gmail.com">📧 maxbrouwermd@gmail.com</a></p>
+          <hr>
+
+          <h2>Contact</h2>
+          <p>For questions about these Terms, please contact:
+            <a href="mailto:maxbrouwermd@gmail.com">maxbrouwermd@gmail.com</a>
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>
+          &copy; <span id="year"></span> TICKETSAVER.
+          <span id="footer-rights">Alle rechten voorbehouden.</span>
+          <div class="footer-controls">
+            <button class="footer-toggle-btn" id="lang-toggle" type="button">
+              English
+            </button>
+            <button class="footer-toggle-btn" id="theme-toggle" type="button">
+              Donkere modus
+            </button>
+          </div>
+        </div>
+        <div class="footer-links">
+          <a href="privacy.html" id="footer-privacy">Privacybeleid</a>
+          <a href="terms.html" id="footer-terms">Servicevoorwaarden</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const texts = {
+      nl: {
+        htmlLang: "nl",
+        navProduct: "Product",
+        navFeatures: "Features",
+        navPricing: "Prijzen",
+        heroEyebrow: "Juridisch",
+        heroTitle: "Servicevoorwaarden",
+        heroLead:
+          "Deze voorwaarden gelden voor het gebruik van TicketSaver, inclusief de Gmail-koppeling en automatisch doorsturen.",
+        heroUpdatedLabel: "Laatst bijgewerkt:",
+        footerRights: "Alle rechten voorbehouden.",
+        footerPrivacy: "Privacybeleid",
+        footerTerms: "Servicevoorwaarden",
+        langToggleLabel: "English",
+        themeToggleToDark: "Donkere modus",
+        themeToggleToLight: "Lichte modus"
+      },
+      en: {
+        htmlLang: "en",
+        navProduct: "Product",
+        navFeatures: "Features",
+        navPricing: "Pricing",
+        heroEyebrow: "Legal",
+        heroTitle: "Terms of Service",
+        heroLead:
+          "These Terms govern your use of TicketSaver, including Gmail Connect and automatic email forwarding.",
+        heroUpdatedLabel: "Last updated:",
+        footerRights: "All rights reserved.",
+        footerPrivacy: "Privacy Policy",
+        footerTerms: "Terms of Service",
+        langToggleLabel: "Nederlands",
+        themeToggleToDark: "Dark mode",
+        themeToggleToLight: "Light mode"
+      }
+    };
+
+    let currentLang = localStorage.getItem("ticketsaver-lang") || "en";
+    let currentTheme = localStorage.getItem("ticketsaver-theme") || "light";
+
+    const langToggleBtn = document.getElementById("lang-toggle");
+    const themeToggleBtn = document.getElementById("theme-toggle");
+
+    function applyTheme(theme) {
+      const body = document.body;
+      const t = texts[currentLang];
+      if (theme === "dark") {
+        body.classList.add("dark");
+        themeToggleBtn.textContent = t.themeToggleToLight;
+      } else {
+        body.classList.remove("dark");
+        themeToggleBtn.textContent = t.themeToggleToDark;
+      }
+      currentTheme = theme;
+      localStorage.setItem("ticketsaver-theme", theme);
+    }
+
+    function applyLanguage(lang) {
+      const t = texts[lang];
+      document.documentElement.lang = t.htmlLang;
+
+      document.getElementById("nav-product").textContent = t.navProduct;
+      document.getElementById("nav-features").textContent = t.navFeatures;
+      document.getElementById("nav-pricing").textContent = t.navPricing;
+
+      document.getElementById("hero-eyebrow").textContent = t.heroEyebrow;
+      document.getElementById("hero-title").textContent = t.heroTitle;
+      document.getElementById("hero-lead").textContent = t.heroLead;
+      document.getElementById("hero-updated-label").textContent = t.heroUpdatedLabel;
+
+      document.getElementById("footer-rights").textContent = t.footerRights;
+      document.getElementById("footer-privacy").textContent = t.footerPrivacy;
+      document.getElementById("footer-terms").textContent = t.footerTerms;
+
+      langToggleBtn.textContent = t.langToggleLabel;
+
+      if (currentTheme === "dark") {
+        themeToggleBtn.textContent = t.themeToggleToLight;
+      } else {
+        themeToggleBtn.textContent = t.themeToggleToDark;
+      }
+
+      currentLang = lang;
+      localStorage.setItem("ticketsaver-lang", lang);
+    }
+
+    applyLanguage(currentLang);
+    applyTheme(currentTheme);
+
+    langToggleBtn.addEventListener("click", () => {
+      const newLang = currentLang === "nl" ? "en" : "nl";
+      applyLanguage(newLang);
+    });
+
+    themeToggleBtn.addEventListener("click", () => {
+      const newTheme = currentTheme === "light" ? "dark" : "light";
+      applyTheme(newTheme);
+    });
+  </script>
 </body>
 </html>
