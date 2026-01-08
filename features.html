@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <title>TICKETSAVER – Features</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, system-ui, -system-ui,
+        "Segoe UI", sans-serif;
+      background-color: #f5f5f7;
+      color: #1d1d1f;
+      line-height: 1.5;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    a { text-decoration: none; color: #0071e3; }
+    a:hover { text-decoration: underline; }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(20px);
+      background-color: rgba(245, 245, 247, 0.8);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      transition: background-color 0.25s ease, border-color 0.25s ease;
+    }
+
+    .nav-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+
+    .nav-logo {
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1d1d1f;
+    }
+
+    .nav-links { display: flex; gap: 1.5rem; }
+
+    .nav-links a {
+      color: #1d1d1f;
+      opacity: 0.8;
+      transition: opacity 0.15s ease;
+    }
+
+    .nav-links a:hover { opacity: 1; }
+
+    .main {
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 3rem 1.5rem 2rem;
+    }
+
+    .hero {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #6e6e73;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 4vw, 2.8rem);
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      font-family: "Gill Sans", "Gill Sans MT", system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: #515154;
+      max-width: 520px;
+      margin: 0.5rem auto 1.75rem;
+    }
+
+    .content {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: left;
+      font-size: 0.95rem;
+      color: #515154;
+    }
+
+    .content h2 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #6e6e73;
+      margin: 1.75rem 0 0.5rem;
+    }
+
+    .content ul {
+      margin: 0.25rem 0 0.5rem 1.1rem;
+      padding-left: 0;
+    }
+
+    .content li {
+      margin-bottom: 0.4rem;
+    }
+
+    .footer {
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      padding: 1.5rem 1.5rem 2rem;
+      font-size: 0.75rem;
+      color: #6e6e73;
+      transition: border-color 0.25s ease;
+    }
+
+    .footer-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+    }
+
+    .footer-links a { color: #424245; }
+    .footer-links a:hover { text-decoration: underline; }
+
+    .footer-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.25rem;
+    }
+
+    .footer-toggle-btn {
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      padding: 0.25rem 0.75rem;
+      font-size: 0.7rem;
+      background: rgba(255, 255, 255, 0.7);
+      color: #424245;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      transition: background-color 0.2s ease, border-color 0.2s ease,
+        color 0.2s ease, transform 0.1s ease;
+    }
+
+    .footer-toggle-btn:hover {
+      background-color: #e5e5ea;
+      transform: translateY(-0.5px);
+    }
+
+    @media (max-width: 640px) {
+      .nav-inner { padding-inline: 1rem; }
+      .nav-links { gap: 1rem; font-size: 0.8rem; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+
+    body.dark {
+      background-color: #020b1a;
+      color: #e5e7eb;
+    }
+
+    body.dark .nav {
+      background-color: rgba(15, 23, 42, 0.9);
+      border-bottom-color: rgba(148, 163, 184, 0.4);
+    }
+
+    body.dark .nav-links a,
+    body.dark .nav-logo {
+      color: #e5e7eb;
+      opacity: 0.85;
+    }
+
+    body.dark .hero-subtitle { color: #cbd5f5; }
+    body.dark .hero-eyebrow { color: #9ca3af; }
+
+    body.dark .footer {
+      border-top-color: rgba(148, 163, 184, 0.4);
+      color: #9ca3af;
+    }
+
+    body.dark .footer-links a { color: #e5e7eb; }
+
+    body.dark .footer-toggle-btn {
+      background: rgba(15, 23, 42, 0.85);
+      border-color: rgba(148, 163, 184, 0.6);
+      color: #e5e7eb;
+    }
+
+    body.dark .footer-toggle-btn:hover {
+      background-color: #0f172a;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="nav">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo" id="nav-logo">TICKETSAVER</a>
+        <nav class="nav-links">
+          <a href="product.html" id="nav-product">Product</a>
+          <a href="features.html" id="nav-features">Features</a>
+          <a href="pricing.html" id="nav-pricing">Prijzen</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main">
+      <div>
+        <section class="hero">
+          <div class="hero-eyebrow" id="hero-eyebrow">Features</div>
+          <h1 class="hero-title" id="hero-title">Wat je met TicketSaver kunt</h1>
+          <p class="hero-subtitle" id="hero-subtitle">
+            Handige tools om je tickets automatisch te verzamelen, te ordenen en snel terug te vinden.
+          </p>
+        </section>
+
+        <section class="content">
+          <h2 id="section1-title">Opslaan zonder gedoe</h2>
+          <ul>
+            <li id="f1">Stuur ticket-e-mails door naar je persoonlijke TicketSaver-adres.</li>
+            <li id="f2">Voeg tickets toe vanaf screenshots of PDF-bestanden.</li>
+          </ul>
+
+          <h2 id="section2-title">Altijd overzicht</h2>
+          <ul>
+            <li id="f3">Zie in één lijst welke events er aankomen.</li>
+            <li id="f4">Open snel het juiste ticket als je bij de ingang staat.</li>
+          </ul>
+
+          <h2 id="section3-title">Slimme e-mailkoppeling</h2>
+          <ul>
+            <li id="f5">Optionele Gmail-koppeling om relevante tickets automatisch te laten doorsturen.</li>
+            <li id="f6">Alleen ticketgerelateerde e-mails worden opgehaald; gewone e-mail blijft in je inbox.</li>
+          </ul>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>
+          &copy; <span id="year"></span> TICKETSAVER.
+          <span id="footer-rights">Alle rechten voorbehouden.</span>
+          <div class="footer-controls">
+            <button class="footer-toggle-btn" id="lang-toggle" type="button">
+              English
+            </button>
+            <button class="footer-toggle-btn" id="theme-toggle" type="button">
+              Donkere modus
+            </button>
+          </div>
+        </div>
+        <div class="footer-links">
+          <a href="privacy.html" id="footer-privacy" target="_blank" rel="noopener">Privacybeleid</a>
+          <a href="terms.html" id="footer-terms" target="_blank" rel="noopener">Servicevoorwaarden</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const texts = {
+      nl: {
+        htmlLang: "nl",
+        navProduct: "Product",
+        navFeatures: "Features",
+        navPricing: "Prijzen",
+        heroEyebrow: "Features",
+        heroTitle: "Wat je met TicketSaver kunt",
+        heroSubtitle:
+          "Handige tools om je tickets automatisch te verzamelen, te ordenen en snel terug te vinden.",
+        section1Title: "Opslaan zonder gedoe",
+        f1: "Stuur ticket-e-mails door naar je persoonlijke TicketSaver-adres.",
+        f2: "Voeg tickets toe vanaf screenshots of PDF-bestanden.",
+        section2Title: "Altijd overzicht",
+        f3: "Zie in één lijst welke events er aankomen.",
+        f4: "Open snel het juiste ticket als je bij de ingang staat.",
+        section3Title: "Slimme e-mailkoppeling",
+        f5: "Optionele Gmail-koppeling om relevante tickets automatisch te laten doorsturen.",
+        f6: "Alleen ticketgerelateerde e-mails worden opgehaald; gewone e-mail blijft in je inbox.",
+        footerRights: "Alle rechten voorbehouden.",
+        footerPrivacy: "Privacybeleid",
+        footerTerms: "Servicevoorwaarden",
+        langToggleLabel: "English",
+        themeToggleToDark: "Donkere modus",
+        themeToggleToLight: "Lichte modus"
+      },
+      en: {
+        htmlLang: "en",
+        navProduct: "Product",
+        navFeatures: "Features",
+        navPricing: "Pricing",
+        heroEyebrow: "Features",
+        heroTitle: "What you can do with TicketSaver",
+        heroSubtitle:
+          "Smart tools to collect, organise and find your tickets in seconds.",
+        section1Title: "Save without friction",
+        f1: "Forward ticket emails to your personal TicketSaver address.",
+        f2: "Add tickets from screenshots or PDF files.",
+        section2Title: "Always in control",
+        f3: "See all upcoming events in a single list.",
+        f4: "Open the right ticket instantly when you reach the entrance.",
+        section3Title: "Smart email integration",
+        f5: "Optional Gmail connect to auto-forward relevant ticket emails.",
+        f6: "Only ticket-related messages are processed; normal email stays in your inbox.",
+        footerRights: "All rights reserved.",
+        footerPrivacy: "Privacy Policy",
+        footerTerms: "Terms of Service",
+        langToggleLabel: "Nederlands",
+        themeToggleToDark: "Dark mode",
+        themeToggleToLight: "Light mode"
+      }
+    };
+
+    let currentLang = localStorage.getItem("ticketsaver-lang") || "nl";
+    let currentTheme = localStorage.getItem("ticketsaver-theme") || "light";
+
+    const langToggleBtn = document.getElementById("lang-toggle");
+    const themeToggleBtn = document.getElementById("theme-toggle");
+
+    function applyTheme(theme) {
+      const body = document.body;
+      const t = texts[currentLang];
+
+      if (theme === "dark") {
+        body.classList.add("dark");
+        themeToggleBtn.textContent = t.themeToggleToLight;
+      } else {
+        body.classList.remove("dark");
+        themeToggleBtn.textContent = t.themeToggleToDark;
+      }
+      currentTheme = theme;
+      localStorage.setItem("ticketsaver-theme", theme);
+    }
+
+    function applyLanguage(lang) {
+      const t = texts[lang];
+      document.documentElement.lang = t.htmlLang;
+
+      document.getElementById("nav-product").textContent = t.navProduct;
+      document.getElementById("nav-features").textContent = t.navFeatures;
+      document.getElementById("nav-pricing").textContent = t.navPricing;
+
+      document.getElementById("hero-eyebrow").textContent = t.heroEyebrow;
+      document.getElementById("hero-title").textContent = t.heroTitle;
+      document.getElementById("hero-subtitle").textContent = t.heroSubtitle;
+
+      document.getElementById("section1-title").textContent = t.section1Title;
+      document.getElementById("f1").textContent = t.f1;
+      document.getElementById("f2").textContent = t.f2;
+
+      document.getElementById("section2-title").textContent = t.section2Title;
+      document.getElementById("f3").textContent = t.f3;
+      document.getElementById("f4").textContent = t.f4;
+
+      document.getElementById("section3-title").textContent = t.section3Title;
+      document.getElementById("f5").textContent = t.f5;
+      document.getElementById("f6").textContent = t.f6;
+
+      document.getElementById("footer-rights").textContent = t.footerRights;
+      document.getElementById("footer-privacy").textContent = t.footerPrivacy;
+      document.getElementById("footer-terms").textContent = t.footerTerms;
+
+      langToggleBtn.textContent = t.langToggleLabel;
+
+      if (currentTheme === "dark") {
+        themeToggleBtn.textContent = t.themeToggleToLight;
+      } else {
+        themeToggleBtn.textContent = t.themeToggleToDark;
+      }
+
+      currentLang = lang;
+      localStorage.setItem("ticketsaver-lang", lang);
+    }
+
+    applyLanguage(currentLang);
+    applyTheme(currentTheme);
+
+    langToggleBtn.addEventListener("click", () => {
+      const newLang = currentLang === "nl" ? "en" : "nl";
+      applyLanguage(newLang);
+    });
+
+    themeToggleBtn.addEventListener("click", () => {
+      const newTheme = currentTheme === "light" ? "dark" : "light";
+      applyTheme(newTheme);
+    });
+  </script>
+</body>
+</html>
