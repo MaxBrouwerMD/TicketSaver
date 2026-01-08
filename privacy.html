@@ -1,470 +1,831 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Privacy Policy – TicketSaver</title>
+  <title>TICKETSAVER – Privacy Policy</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="index,follow">
+
   <style>
-    :root { --fg:#111; --muted:#666; --line:#e5e7eb; --max:860px; }
-    * { box-sizing:border-box; }
-    body { margin:0; color:var(--fg); font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; }
-    main { max-width:var(--max); margin:40px auto; padding:0 16px 64px; }
-    h1 { font-size:clamp(28px,4vw,36px); margin:0 0 6px; }
-    h2 { font-size:clamp(20px,3vw,24px); margin:28px 0 8px; }
-    h3 { font-size:18px; margin:20px 0 8px; }
-    p { margin:10px 0; }
-    ul { margin:8px 0 16px 20px; }
-    li + li { margin-top:6px; }
-    small, time, .muted { color:var(--muted); }
-    hr { border:0; border-top:1px solid var(--line); margin:28px 0; }
-    .lead { margin-top:6px; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+
+    body {
+      font-family:-apple-system,BlinkMacSystemFont,system-ui,-system-ui,"Segoe UI",sans-serif;
+      background-color:#f5f5f7;
+      color:#1d1d1f;
+      line-height:1.6;
+      transition:background-color .25s ease,color .25s ease;
+    }
+
+    a { color:#0071e3; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+
+    .page {
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+
+    /* NAV */
+    .nav {
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter:blur(20px);
+      background-color:rgba(245,245,247,.9);
+      border-bottom:1px solid rgba(0,0,0,.06);
+      transition:background-color .25s ease,border-color .25s ease;
+    }
+    .nav-inner {
+      max-width:980px;
+      margin:0 auto;
+      padding:.75rem 1.5rem;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      font-size:.85rem;
+    }
+    .nav-logo {
+      font-weight:600;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:#1d1d1f;
+    }
+    .nav-links {
+      display:flex;
+      gap:1.5rem;
+    }
+    .nav-links a {
+      color:#1d1d1f;
+      opacity:.8;
+      transition:opacity .15s ease;
+    }
+    .nav-links a:hover { opacity:1; }
+
+    /* MAIN */
+    .main {
+      flex:1;
+      display:flex;
+      justify-content:center;
+      padding:3rem 1.5rem 2rem;
+    }
+    .legal-wrapper {
+      max-width:860px;
+      width:100%;
+    }
+    .hero {
+      text-align:left;
+      margin-bottom:1.75rem;
+    }
+    .hero-eyebrow {
+      font-size:.85rem;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:#6e6e73;
+      margin-bottom:.5rem;
+    }
+    .hero-title {
+      font-size:clamp(1.9rem,4vw,2.4rem);
+      font-weight:600;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      margin-bottom:.25rem;
+    }
+    .hero-meta {
+      font-size:.9rem;
+      color:#6e6e73;
+      margin-bottom:.75rem;
+    }
+    .hero-lead {
+      font-size:.98rem;
+      color:#515154;
+      margin-bottom:1rem;
+    }
+
+    .content h2 {
+      font-size:clamp(1.1rem,3vw,1.3rem);
+      margin:1.75rem 0 .5rem;
+    }
+    .content h3 {
+      font-size:1rem;
+      margin:1.25rem 0 .5rem;
+    }
+    .content p {
+      margin:.5rem 0;
+      color:#1d1d1f;
+      font-size:.96rem;
+    }
+    .content ul {
+      margin:.35rem 0 1rem 1.25rem;
+      padding-left:0;
+      font-size:.96rem;
+      color:#1d1d1f;
+    }
+    .content li + li {
+      margin-top:.3rem;
+    }
+    .content small,
+    .content time,
+    .content .muted {
+      color:#666;
+    }
+    .content hr {
+      border:0;
+      border-top:1px solid #e5e7eb;
+      margin:1.75rem 0;
+    }
+    code {
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+      background:#0001;
+      padding:.1em .3em;
+      border-radius:.2em;
+      font-size:.9em;
+    }
+
+    /* FOOTER */
+    .footer {
+      border-top:1px solid rgba(0,0,0,.08);
+      padding:1.5rem 1.5rem 2rem;
+      font-size:.75rem;
+      color:#6e6e73;
+      transition:border-color .25s ease;
+    }
+    .footer-inner {
+      max-width:980px;
+      margin:0 auto;
+      display:flex;
+      flex-wrap:wrap;
+      gap:.75rem;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .footer-links {
+      display:flex;
+      flex-wrap:wrap;
+      gap:1.25rem;
+    }
+    .footer-links a { color:#424245; }
+    .footer-links a:hover { text-decoration:underline; }
+    .footer-controls {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.5rem;
+      margin-top:.25rem;
+    }
+    .footer-toggle-btn {
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,.12);
+      padding:.25rem .75rem;
+      font-size:.7rem;
+      background:rgba(255,255,255,.7);
+      color:#424245;
+      cursor:pointer;
+      backdrop-filter:blur(10px);
+      transition:background-color .2s ease,border-color .2s ease,color .2s ease,transform .1s ease;
+    }
+    .footer-toggle-btn:hover {
+      background-color:#e5e5ea;
+      transform:translateY(-.5px);
+    }
+
+    @media (max-width:640px){
+      .nav-inner{padding-inline:1rem;}
+      .nav-links{gap:1rem;font-size:.8rem;}
+      .footer-inner{flex-direction:column;align-items:flex-start;}
+    }
+
+    /* DARK MODE */
+    body.dark {
+      background-color:#020b1a;
+      color:#e5e7eb;
+    }
+    body.dark .nav {
+      background-color:rgba(15,23,42,.9);
+      border-bottom-color:rgba(148,163,184,.4);
+    }
+    body.dark .nav-logo,
+    body.dark .nav-links a {
+      color:#e5e7eb;
+      opacity:.85;
+    }
+    body.dark .hero-lead { color:#cbd5f5; }
+    body.dark .hero-meta { color:#9ca3af; }
+    body.dark .content p,
+    body.dark .content ul { color:#e5e7eb; }
+    body.dark .content hr {
+      border-top-color:rgba(148,163,184,.4);
+    }
+    body.dark .footer {
+      border-top-color:rgba(148,163,184,.4);
+      color:#9ca3af;
+    }
+    body.dark .footer-links a { color:#e5e7eb; }
+    body.dark .footer-toggle-btn {
+      background:rgba(15,23,42,.85);
+      border-color:rgba(148,163,184,.6);
+      color:#e5e7eb;
+    }
+    body.dark .footer-toggle-btn:hover {
+      background-color:#0f172a;
+    }
   </style>
 </head>
 <body>
-<main>
-  <header>
-    <h1>Privacy Policy</h1>
-    <p class="muted"><strong>Last updated:</strong> <time datetime="2025-12-26">December 26, 2025</time></p>
-    <p class="lead">This Privacy Policy describes our policies and procedures on the collection, use, and disclosure of your information when you use the Service and explains your privacy rights and how the law protects you.</p>
-    <p>By using the Service, you agree to the collection and use of information in accordance with this Privacy Policy.</p>
-  </header>
-
-  <hr>
-
-  <section>
-    <h2>Interpretation and Definitions</h2>
-
-    <h3>Interpretation</h3>
-    <p>Words with an initial capital letter have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or plural.</p>
-
-    <h3>Definitions</h3>
-    <p>For this Privacy Policy:</p>
-    <ul>
-      <li><strong>Account</strong> means a unique account created for You to access our Service or parts of our Service.</li>
-      <li><strong>Application</strong> refers to TicketSaver, the software program provided by the Company.</li>
-      <li><strong>Company</strong> (referred to as “the Company”, “We”, “Us”, or “Our”) refers to TicketSaver.</li>
-      <li><strong>Country</strong> refers to: The Netherlands.</li>
-      <li><strong>Device</strong> means any device that can access the Service, such as a smartphone or tablet.</li>
-      <li><strong>Personal Data</strong> is any information that relates to an identified or identifiable individual.</li>
-      <li><strong>Service</strong> refers to the Application (TicketSaver).</li>
-      <li><strong>Service Providers</strong> means third-party companies or individuals employed by the Company to facilitate the Service (e.g., hosting, crash reporting, analytics, email delivery).</li>
-      <li><strong>Usage Data</strong> refers to data collected automatically, either generated by the use of the Service or from the Service infrastructure itself.</li>
-      <li><strong>You</strong> means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service.</li>
-      <li><strong>Subscription</strong> means a recurring in-app purchase managed by Apple’s App Store on your Apple ID. Subscription billing is controlled by Apple and not by the Company.</li>
-      <li><strong>Data Controller</strong> means the natural or legal person which, alone or jointly with others, determines the purposes and means of the processing of Personal Data. For this Service, the Company is the Data Controller.</li>
-      <li><strong>Google Account</strong> means the account you use with Google services, including Gmail.</li>
-      <li><strong>Gmail Connect</strong> means the optional integration where you grant the Application access to certain Gmail and Google Account settings and profile information via Google’s OAuth and API services, in order to configure and manage automatic email forwarding from Gmail to TicketSaver.</li>
-      <li><strong>Gmail Data</strong> means the settings and metadata we may access or manage from your Gmail account via the Gmail API (for example: forwarding settings, filters, send-as aliases, delegation status, IMAP/POP settings, and related configuration metadata), but not the content of your email messages themselves via the API.</li>
-    </ul>
-  </section>
-
-  <hr>
-
-  <section>
-    <h2>Data Controller and Contact Details</h2>
-    <p>The Data Controller is TicketSaver.</p>
-    <p>Contact email (also for privacy requests): <a href="mailto:maxbrouwermd@gmail.com">maxbrouwermd@gmail.com</a>. Registered Country: The Netherlands.</p>
-  </section>
-
-  <hr>
-
-  <section>
-    <h2>Collecting and Using Your Personal Data</h2>
-
-    <h3>Types of Data Collected</h3>
-
-    <h3>Personal Data</h3>
-    <p>While using Our Service, we may ask you to provide certain personally identifiable information, including but not limited to:</p>
-    <ul>
-      <li>Email address.</li>
-      <li>Authentication details (when using email/password, Apple, or Facebook login).</li>
-      <li>Purchase receipts (for premium validation).</li>
-      <li>Consent metadata (e.g., version/date of accepted Terms &amp; Privacy Policy, app version at acceptance, device identifier used for consent sync).</li>
-    </ul>
-
-    <h3>Usage Data</h3>
-    <p>Usage Data is collected automatically when using the Service. It may include:</p>
-    <ul>
-      <li>IP address, Device identifiers, operating system, app version, language, and region.</li>
-      <li>Diagnostic information and crash logs (via Firebase Crashlytics).</li>
-      <li>Interactions within the app (e.g., screens opened, certain actions) when analytics is enabled with your consent.</li>
-    </ul>
-    <p><em>Advertising IDs:</em> TicketSaver does not use IDFA/AdTracking. We do not use Google Signals or Advertising Features.</p>
-
-    <h3>Information from Third-Party Login Services</h3>
-    <p>If you log in via Apple or Facebook, we may receive your name, email address, and identifiers associated with those accounts, as permitted by you.</p>
-
-    <h3>Information from Device Access</h3>
-    <p>With your permission, the Service may access:</p>
-    <ul>
-      <li>Camera and photo library (to import tickets).</li>
-      <li>Files (to store tickets locally and export to the iOS Files app).</li>
-    </ul>
-    <p>You can enable or disable access via your Device settings at any time.</p>
-  </section>
-
-  <hr>
-
-  <section>
-    <h2>Information from Google / Gmail Integrations (“Gmail Connect”)</h2>
-
-    <p>You may optionally choose to connect your Google Account and enable Gmail Connect to configure automatic forwarding of (some of) your Gmail messages to your personal TicketSaver upload address (for example: <code>upload+@upload.ticketsaver.nl</code>).</p>
-
-    <p>When you explicitly grant permissions in the Google consent screen, the Google and Gmail APIs may allow the Application to:</p>
-    <ul>
-      <li>View and manage certain sensitive email-related settings in Gmail, including:
-        <ul>
-          <li>Starting and stopping forwarding of your email to another address.</li>
-          <li>Creating, updating, and deleting forwarding addresses.</li>
-          <li>Viewing who else has delegated access to your Gmail account and revoking such access.</li>
-          <li>Viewing, creating, updating, and deleting send-as aliases (for “Send mail as”).</li>
-          <li>Viewing, creating, updating, and deleting filters that move, label, forward, or delete messages.</li>
-          <li>Viewing and updating IMAP or POP settings.</li>
-          <li>Viewing and updating certain Gmail settings, such as reply-to address, display name, signature, and automatic reply (vacation responder).</li>
-        </ul>
-      </li>
-      <li>View basic Google Account profile information, including:
-        <ul>
-          <li>Your full name.</li>
-          <li>Your profile photo.</li>
-          <li>Your gender (where available).</li>
-          <li>Your preferred languages.</li>
-          <li>Other profile data you have made public in your Google Account.</li>
-          <li>The primary email address associated with your Google Account.</li>
-        </ul>
-      </li>
-    </ul>
-
-    <h3>What we actually use this access for</h3>
-    <p>Although the granted scopes technically allow broad actions, TicketSaver commits contractually and as a matter of internal policy to use Gmail and Google Account access only for the limited purposes described below:</p>
-    <ul>
-      <li><strong>Setting up and maintaining automatic forwarding from Gmail to TicketSaver</strong>, which may include:
-        <ul>
-          <li>Creating a forwarding address pointing to your TicketSaver upload address.</li>
-          <li>Confirming and enabling that forwarding address (where the Gmail API allows).</li>
-          <li>Creating or updating one or more filters in Gmail so that emails (for example, those matching certain criteria you configure) are forwarded to your TicketSaver upload address.</li>
-          <li>Checking whether forwarding is active and which address is used, so the app can display the status to you.</li>
-        </ul>
-      </li>
-      <li><strong>Displaying and maintaining connection status within the App</strong>, which may include:
-        <ul>
-          <li>Reading your primary Gmail address and basic profile information to show that your Gmail account is connected to TicketSaver.</li>
-          <li>Displaying, in a user-friendly way, the current forwarding configuration and related settings so you understand what is active.</li>
-        </ul>
-      </li>
-      <li><strong>Improving the Gmail integration and ensuring it functions correctly</strong>, which may include:
-        <ul>
-          <li>Reading certain Gmail settings, filters, and forwarding configurations to troubleshoot and prevent wrong or duplicate configurations.</li>
-          <li>Updating or removing forwarding or filter settings that TicketSaver previously created when you disable the integration or change your preferences.</li>
-        </ul>
-      </li>
-      <li><strong>Security, abuse prevention, and compliance</strong>, which may include:
-        <ul>
-          <li>Detecting and preventing abusive use of the Gmail integration (for example, obvious attempts to mass-forward unrelated mail or violate Gmail’s or your organization’s policies).</li>
-          <li>Complying with Google’s API Services User Data Policy, Gmail policies, and applicable law.</li>
-        </ul>
-      </li>
-    </ul>
-
-    <h3>What we do NOT do with Gmail Data</h3>
-    <ul>
-      <li>We do not use Gmail API access to read the content of your email messages. Ticket content is processed from messages that are forwarded to your TicketSaver upload address (via Gmail’s forwarding features or manual forwarding), not by querying your mailbox contents via the API.</li>
-      <li>We do not use Gmail Data for advertising, profiling, or marketing.</li>
-      <li>We do not sell or rent Gmail Data to third parties.</li>
-      <li>We do not allow human access to Gmail Data except where strictly necessary for:
-        <ul>
-          <li>security (e.g., investigating abuse or fraud),</li>
-          <li>debugging and maintaining the Gmail integration, or</li>
-          <li>when required by law (e.g., pursuant to a lawful request).</li>
-        </ul>
-      </li>
-    </ul>
-
-    <h3>Storage of Gmail Data</h3>
-    <p>To provide Gmail Connect, we may store:</p>
-    <ul>
-      <li>OAuth tokens and refresh tokens needed to call the Gmail and Google APIs on your behalf.</li>
-      <li>Your primary Gmail address and limited profile information (name, profile image URL, language) to show the connection status.</li>
-      <li>A representation of the forwarding configuration and filters that TicketSaver created or manages, so we can show you what is active and allow you to modify or disable it.</li>
-    </ul>
-    <p>We do not store a full copy of all your Gmail settings. We generally retrieve settings on demand from the Gmail API and cache only what is strictly necessary for the integration to function.</p>
-
-    <p>You can revoke Gmail Connect at any time in the App (where provided) and also directly in your Google Account settings. When revoked, TicketSaver can no longer call the Gmail API on your behalf. We will then delete or invalidate stored tokens within a reasonable time period and will no longer update your Gmail settings.</p>
-
-    <h3>Responsibility for Filters and Forwarding</h3>
-    <p>You remain responsible for:</p>
-    <ul>
-      <li>Which emails are forwarded from Gmail to TicketSaver (e.g., your filter rules).</li>
-      <li>Verifying that the forwarding and filters behave as you expect in your Gmail account.</li>
-      <li>Ensuring that your use of forwarding does not violate your employer’s policies, Gmail policies, or obligations of confidentiality to third parties.</li>
-    </ul>
-    <p>TicketSaver is not responsible for unintended forwarding, misconfigured filters, or any consequences arising from your forwarding rules or Gmail account configuration. More details appear in the Terms of Service.</p>
-  </section>
-
-  <hr>
-
-  <section>
-    <h2>SDKs and Providers We Use</h2>
-
-    <h3>Firebase Analytics (Google)</h3>
-    <ul>
-      <li>We use Firebase Analytics to understand how the app is used and to improve functionality. When enabled:
-        <ul>
-          <li>It collects event data (e.g., successful login/sign-up, ticket categorized, premium purchase), app instance identifiers, device/OS info, and approximate location (country/region) derived from IP for aggregated reporting.</li>
-        </ul>
-      </li>
-      <li>We disable analytics until you give consent. You can withdraw consent at any time in the app settings, where available (or by contacting us).</li>
-      <li>We do not enable Google Advertising Features or Google Signals in TicketSaver.</li>
-      <li><strong>Retention:</strong> Firebase Analytics retains user and event data according to Google’s standard retention settings (typically 2 months by default and configurable up to 14 months, subject to Google’s policies).</li>
-    </ul>
-
-    <h3>Firebase Crashlytics</h3>
-    <ul>
-      <li>We use Firebase Crashlytics to monitor app stability and fix crashes. Crash reports may include:
-        <ul>
-          <li>Device model, OS version, app version, timestamp, non-sensitive logs around the crash.</li>
-        </ul>
-      </li>
-      <li>No advertising identifiers, and no content of your tickets.</li>
-      <li><strong>Retention:</strong> Crash data is typically retained by Google for around 90 days (subject to Google’s policies).</li>
-    </ul>
-
-    <h3>Mailgun (Email processing)</h3>
-    <p>If you forward confirmation emails/attachments, Mailgun processes and delivers these emails for ingestion by TicketSaver. Attachments may be temporarily processed to extract relevant ticket data.</p>
-
-    <h3>Apple App Store (In-App Purchases)</h3>
-    <p>Apple processes Subscription billing, renewals, refunds, and related financial information through your Apple ID. We may receive non-financial purchase metadata (e.g., transaction identifiers or signed receipts) to validate entitlements; we do not receive your full payment details from Apple.</p>
-
-    <h3>Google API Services and Gmail Connect</h3>
-    <p>Our Gmail integration uses Google’s OAuth and API services, including the Gmail API, to configure and manage automatic forwarding and related Gmail settings as described above.</p>
-    <p>We use and transfer information received from Google APIs in accordance with:</p>
-    <ul>
-      <li>the Google API Services User Data Policy, including the Limited Use requirements, and</li>
-      <li>Gmail and Google Workspace policies applicable to the relevant scopes.</li>
-    </ul>
-    <p>In particular:</p>
-    <ul>
-      <li>Gmail Data is used only to provide, maintain, and improve the Gmail Connect feature, for security (e.g., abuse/fraud detection), and to comply with legal obligations.</li>
-      <li>We do not use Gmail Data for advertising or to build profiles unrelated to the Gmail integration.</li>
-      <li>We do not sell Gmail Data or share it with third parties except as necessary to provide the Service (for example, hosting providers) under contractual safeguards.</li>
-    </ul>
-
-    <p>For all providers above, processing takes place under the providers’ terms and data processing agreements. International transfers may occur and are protected by appropriate safeguards (see <a href="#international-transfers">International Transfers</a>).</p>
-  </section>
-
-  <hr>
-
-  <section>
-    <h2>How We Use Your Personal Data</h2>
-    <p>The Company may use Personal Data for the following purposes:</p>
-    <ul>
-      <li>To provide and maintain the Service – including account creation, authentication, and storage of your tickets.</li>
-      <li>To enforce account restrictions – e.g., free accounts may store up to 5 events; premium accounts may store unlimited events.</li>
-      <li>To validate purchases – using server-side receipt validation to detect fraud or abuse of free trials.</li>
-      <li>To manage device sessions – including device/session binding to prevent account sharing. Device IDs may be retained even after account deletion to prevent repeated abuse.</li>
-      <li>To send transactional emails – via Mailgun, for example, to forward ticket confirmation emails.</li>
-      <li>To provide push notifications and reminders – only if you enable notifications on your Device.</li>
-      <li>To collect feedback – via Google Forms, if you voluntarily provide input.</li>
-      <li>To monitor app stability and crashes – via Firebase Crashlytics.</li>
-      <li>To analyze usage – via Firebase Analytics, only with your consent to improve the app and user experience.</li>
-      <li>To provide Gmail Connect and automatic email forwarding – including:
-        <ul>
-          <li>connecting your Google Account,</li>
-          <li>configuring, reading, and updating Gmail forwarding, filters, send-as addresses, and related settings, limited to what is necessary for forwarding tickets to TicketSaver,</li>
-          <li>showing you the status of your Gmail integration, and</li>
-          <li>disabling or cleaning up forwarding settings created by TicketSaver when you turn the feature off.</li>
-        </ul>
-      </li>
-      <li>To secure the Service – including detection, prevention, and response to security incidents and abuse (e.g., preventing abusive use of forwarding or mass ingestion of unrelated mail).</li>
-      <li>To comply with legal obligations – e.g., preventing fraud, abuse, or misuse of services, and responding to lawful requests.</li>
-    </ul>
-  </section>
-
-  <hr>
-
-  <section>
-    <h2>Legal Bases for Processing (GDPR/AVG)</h2>
-    <p>Where applicable law (e.g., EU/EEA, UK) requires a legal basis:</p>
-    <ul>
-      <li><strong>Contract/Performance:</strong> providing the core Service you request (account, ticket storage, email ingestion of tickets, including necessary configuration of forwarding where you enable Gmail Connect).</li>
-      <li><strong>Consent:</strong>
-        <ul>
-          <li>Analytics and optional features that are not strictly necessary (we collect analytics only after you consent).</li>
-          <li>Connecting your Google Account and enabling Gmail Connect; you may withdraw this consent at any time by disconnecting in the app (where available) and/or revoking access in your Google Account.</li>
-        </ul>
-      </li>
-      <li><strong>Legitimate Interests:</strong> security, anti-fraud (e.g., device/session binding, receipt validation), app stability (Crashlytics), and basic product improvement in a way that respects your rights.</li>
-      <li><strong>Legal Obligation:</strong> where we must comply with the law.</li>
-    </ul>
-    <p>You may withdraw consent at any time (see Your Choices &amp; Controls).</p>
-  </section>
-
-  <hr>
-
-  <section>
-    <h2>Your Choices &amp; Controls</h2>
-    <ul>
-      <li><strong>Analytics Consent:</strong> In-app analytics is off by default until you accept. You may later disable analytics in the app settings (where provided) or by contacting us; we will then stop sending future analytics events from that device/account.</li>
-      <li><strong>Device Permissions:</strong> You can manage camera/photos/files access in iOS Settings.</li>
-      <li><strong>Notifications:</strong> You can enable/disable push notifications in iOS Settings at any time. Disabling will stop future notifications.</li>
-      <li><strong>Email Preferences:</strong> Transactional emails are necessary for the Service; we do not send marketing emails.</li>
-      <li><strong>Gmail Connect:</strong>
-        <ul>
-          <li>You can disconnect your Gmail integration within the App (where supported).</li>
-          <li>You can always revoke TicketSaver’s access directly in your Google Account → Security → Third-party access (or similar section).</li>
-          <li>We recommend that you review your forwarding and filter settings in Gmail after connecting or disconnecting, to confirm they match your expectations.</li>
-        </ul>
-      </li>
-      <li><strong>Access/Deletion Requests:</strong> See Your Rights below.</li>
-    </ul>
-  </section>
-
-  <hr>
-
-  <section>
-    <h2>Consent Management</h2>
-    <p>Before you can use the Service, you must explicitly accept our Terms of Service and Privacy Policy. Your consent is stored locally on your Device and synchronized to your Account upon login. During synchronization, we record:</p>
-    <ul>
-      <li>the version of the Terms/Privacy you accepted,</li>
-      <li>the original date/time of first acceptance (from your Device),</li>
-      <li>the most recent confirmation date/time (at login),</li>
-      <li>app version and a device identifier used for consent sync.</li>
-    </ul>
-    <p>Using multiple Accounts on the same Device applies the same consent to each Account.</p>
-    <p>If you connect Gmail or other Google services, we also record the time and version of the integration consent so we can demonstrate compliance with Google’s requirements and applicable law.</p>
-  </section>
-
-  <hr>
-
-  <section>
-    <h2>Sharing Your Personal Data</h2>
-    <p>We may share your personal data in the following cases:</p>
-    <ul>
-      <li>With Service Providers – such as Firebase (authentication, database, crash reporting, analytics, cloud functions), Mailgun (email forwarding), and Google Forms (feedback collection).</li>
-      <li>With Google / Gmail – as necessary to call the Gmail and Google APIs on your behalf when you enable Gmail Connect. We do not share Gmail Data with third parties for advertising or unrelated purposes.</li>
-      <li>For fraud prevention and security – e.g., device/session binding, receipt validation.</li>
-      <li>For legal reasons – to comply with applicable law or protect rights, property, or safety.</li>
-      <li>Business transfers – in connection with any merger, sale of Company assets, financing, or acquisition of all or a portion of our business, subject to appropriate safeguards.</li>
-    </ul>
-    <p>We do not sell your data to third parties.</p>
-  </section>
-
-  <hr id="international-transfers">
-
-  <section>
-    <h2>International Transfers</h2>
-    <p>Our Service Providers may process data in the EU/EEA, the United States, and other jurisdictions. Where required, transfers are protected by recognized safeguards (e.g., Standard Contractual Clauses and provider-implemented measures). You can contact us for more details.</p>
-  </section>
-
-  <hr>
-
-  <section>
-    <h2>Data Retention</h2>
-    <ul>
-      <li>Account and ticket data are retained while your account is active.</li>
-      <li>If you delete your account, we will remove your personal data from our active systems.</li>
-      <li>Certain identifiers (e.g., device ID) may be temporarily retained to enforce fraud-prevention rules (e.g., repeat trial abuse).</li>
-      <li><strong>Gmail Connect:</strong>
-        <ul>
-          <li>OAuth tokens and related metadata are retained only while your Gmail integration is active and for a limited grace period after disconnection, to support safe cleanup and logging.</li>
-          <li>Configuration data related to forwarding and filters created or managed by TicketSaver is retained as long as needed to provide the feature and keep an audit trail of changes for security and compliance, then deleted or anonymized.</li>
-        </ul>
-      </li>
-      <li>Crash data (Crashlytics) is typically retained for about 90 days.</li>
-      <li>Analytics data retention follows Firebase Analytics’ settings/policies (commonly 2–14 months).</li>
-      <li>We may retain limited data where required by law or to resolve disputes.</li>
-      <li>Backups and logs: routine system backups and server logs may persist for limited periods and are purged on rolling schedules.</li>
-    </ul>
-  </section>
-
-  <hr>
-
-  <section>
-    <h2>Your Rights</h2>
-    <p>Subject to applicable law, you have the right to:</p>
-    <ul>
-      <li>Request access to the data we hold about you.</li>
-      <li>Request correction or deletion of your data (except where retention is required by law or necessary to enforce anti-abuse measures).</li>
-      <li>Withdraw consent for optional processing (e.g., analytics, Gmail Connect).</li>
-      <li>Object to or request restriction of certain processing.</li>
-      <li>Data portability, where applicable.</li>
-      <li>Lodge a complaint with a supervisory authority. In the Netherlands, this is the Autoriteit Persoonsgegevens.</li>
-    </ul>
-    <p>Requests can be submitted to <a href="mailto:maxbrouwermd@gmail.com">maxbrouwermd@gmail.com</a>. We may take reasonable steps to verify your identity before responding.</p>
-  </section>
-
-  <hr>
-
-  <section>
-    <h2>Automated Decision-Making</h2>
-    <p>We do not engage in profiling that produces legal or similarly significant effects, nor do we make decisions based solely on automated processing that significantly affect you.</p>
-  </section>
-
-  <hr>
-
-  <section>
-    <h2>Security of Data</h2>
-    <p>We take commercially reasonable steps to protect your information (including encryption in transit and the security controls of our cloud providers). However, no system is completely secure, and we cannot guarantee absolute security.</p>
-  </section>
-
-  <hr>
-
-  <section>
-    <h2>Children’s Privacy</h2>
-    <p>The Service is not directed to children under 13. We do not knowingly collect Personal Data from children under 13. If you are aware that a child has provided Personal Data, please contact us.</p>
-  </section>
-
-  <hr>
-
-  <section>
-    <h2>External Services and Links</h2>
-    <p>Our Service may contain links to third-party websites or use integrations with external services (e.g., Apple, Facebook, Google, Gmail). We are not responsible for their privacy practices. Your use of those services is governed by their own terms and policies (including, for Gmail/Google services, the Google Privacy Policy and the Google API Services User Data Policy).</p>
-  </section>
-
-  <hr>
-
-  <section>
-    <h2>Account Deletion and Apple Subscriptions</h2>
-    <p>Deleting your Account within the App removes your personal data from our active systems, subject to the retention rules set out above. <strong>Deleting your Account does not cancel your Apple Subscription.</strong> Subscriptions are managed through your Apple ID, and only you can cancel or modify them in your Apple settings (App Store → Account → Subscriptions). We cannot cancel a Subscription on your behalf.</p>
-  </section>
-
-  <hr>
-
-  <section>
-    <h2>Important Disclaimers</h2>
-    <ul>
-      <li>TicketSaver stores tickets locally on your Device and optionally in Firebase for backup purposes.</li>
-      <li>The Company is not responsible for lost, deleted, or corrupted tickets, including cases of device loss or app removal.</li>
-      <li>The Company is not responsible if event organizers refuse to accept or recognize tickets stored in the Application.</li>
-      <li>Users remain fully responsible for verifying ticket validity with event organizers.</li>
-      <li>Premium access is subscription-based; if canceled, you will lose access to tickets beyond the free account limit, though they remain stored.</li>
-      <li>When you use Gmail Connect or any email forwarding feature, you remain responsible for which messages are forwarded, who can view them, and for complying with any applicable confidentiality obligations and workplace or organizational policies.</li>
-    </ul>
-  </section>
-
-  <hr>
-
-  <section>
-    <h2>Data Breach Notification</h2>
-    <p>If we become aware of a personal data breach likely to result in a risk to your rights and freedoms, we will notify you and the relevant supervisory authority as required by law.</p>
-  </section>
-
-  <hr>
-
-  <section>
-    <h2>Changes to this Privacy Policy</h2>
-    <p>We may update this Privacy Policy from time to time. Updates will be posted here with the “Last updated” date.</p>
-  </section>
-
-  <hr>
-
-  <section>
-    <h2>Contact Us</h2>
-    <p>If you have questions about this Privacy Policy, contact us:<br>
-       Email: <a href="mailto:maxbrouwermd@gmail.com">maxbrouwermd@gmail.com</a>
-    </p>
-  </section>
-</main>
+  <div class="page">
+    <!-- NAV -->
+    <header class="nav">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo" id="nav-logo">TICKETSAVER</a>
+        <nav class="nav-links">
+          <a href="product.html" id="nav-product">Product</a>
+          <a href="features.html" id="nav-features">Features</a>
+          <a href="pricing.html" id="nav-pricing">Prijzen</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="main">
+      <div class="legal-wrapper">
+        <section class="hero">
+          <div class="hero-eyebrow" id="hero-eyebrow">Legal</div>
+          <h1 class="hero-title" id="hero-title">Privacy Policy</h1>
+          <p class="hero-meta">
+            <span id="hero-updated-label">Last updated:</span>
+            <time datetime="2025-12-26">December 26, 2025</time>
+          </p>
+          <p class="hero-lead" id="hero-lead">
+            This Privacy Policy describes how TicketSaver collects, uses and protects your information when you use the app, including the optional Gmail integration.
+          </p>
+        </section>
+
+        <section class="content">
+          <p>This Privacy Policy describes our policies and procedures on the collection, use, and disclosure of your information when you use the Service and explains your privacy rights and how the law protects you.</p>
+          <p>By using the Service, you agree to the collection and use of information in accordance with this Privacy Policy.</p>
+
+          <hr>
+
+          <section>
+            <h2>Interpretation and Definitions</h2>
+
+            <h3>Interpretation</h3>
+            <p>Words with an initial capital letter have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or plural.</p>
+
+            <h3>Definitions</h3>
+            <p>For this Privacy Policy:</p>
+            <ul>
+              <li><strong>Account</strong> means a unique account created for You to access our Service or parts of our Service.</li>
+              <li><strong>Application</strong> refers to TicketSaver, the software program provided by the Company.</li>
+              <li><strong>Company</strong> (referred to as “the Company”, “We”, “Us”, or “Our”) refers to TicketSaver.</li>
+              <li><strong>Country</strong> refers to: The Netherlands.</li>
+              <li><strong>Device</strong> means any device that can access the Service, such as a smartphone or tablet.</li>
+              <li><strong>Personal Data</strong> is any information that relates to an identified or identifiable individual.</li>
+              <li><strong>Service</strong> refers to the Application (TicketSaver).</li>
+              <li><strong>Service Providers</strong> means third-party companies or individuals employed by the Company to facilitate the Service (e.g., hosting, crash reporting, analytics, email delivery).</li>
+              <li><strong>Usage Data</strong> refers to data collected automatically, either generated by the use of the Service or from the Service infrastructure itself.</li>
+              <li><strong>You</strong> means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service.</li>
+              <li><strong>Subscription</strong> means a recurring in-app purchase managed by Apple’s App Store on your Apple ID. Subscription billing is controlled by Apple and not by the Company.</li>
+              <li><strong>Data Controller</strong> means the natural or legal person which, alone or jointly with others, determines the purposes and means of the processing of Personal Data. For this Service, the Company is the Data Controller.</li>
+              <li><strong>Google Account</strong> means the account you use with Google services, including Gmail.</li>
+              <li><strong>Gmail Connect</strong> means the optional integration where you grant the Application access to certain Gmail and Google Account settings and profile information via Google’s OAuth and API services, in order to configure and manage automatic email forwarding from Gmail to TicketSaver.</li>
+              <li><strong>Gmail Data</strong> means the settings and metadata we may access or manage from your Gmail account via the Gmail API (for example: forwarding settings, filters, send-as aliases, delegation status, IMAP/POP settings, and related configuration metadata), but not the content of your email messages themselves via the API.</li>
+            </ul>
+          </section>
+
+          <hr>
+
+          <section>
+            <h2>Data Controller and Contact Details</h2>
+            <p>The Data Controller is TicketSaver.</p>
+            <p>Contact email (also for privacy requests): <a href="mailto:maxbrouwermd@gmail.com">maxbrouwermd@gmail.com</a>. Registered Country: The Netherlands.</p>
+          </section>
+
+          <hr>
+
+          <section>
+            <h2>Collecting and Using Your Personal Data</h2>
+
+            <h3>Types of Data Collected</h3>
+
+            <h3>Personal Data</h3>
+            <p>While using Our Service, we may ask you to provide certain personally identifiable information, including but not limited to:</p>
+            <ul>
+              <li>Email address.</li>
+              <li>Authentication details (when using email/password, Apple, or Facebook login).</li>
+              <li>Purchase receipts (for premium validation).</li>
+              <li>Consent metadata (e.g., version/date of accepted Terms &amp; Privacy Policy, app version at acceptance, device identifier used for consent sync).</li>
+            </ul>
+
+            <h3>Usage Data</h3>
+            <p>Usage Data is collected automatically when using the Service. It may include:</p>
+            <ul>
+              <li>IP address, Device identifiers, operating system, app version, language, and region.</li>
+              <li>Diagnostic information and crash logs (via Firebase Crashlytics).</li>
+              <li>Interactions within the app (e.g., screens opened, certain actions) when analytics is enabled with your consent.</li>
+            </ul>
+            <p><em>Advertising IDs:</em> TicketSaver does not use IDFA/AdTracking. We do not use Google Signals or Advertising Features.</p>
+
+            <h3>Information from Third-Party Login Services</h3>
+            <p>If you log in via Apple or Facebook, we may receive your name, email address, and identifiers associated with those accounts, as permitted by you.</p>
+
+            <h3>Information from Device Access</h3>
+            <p>With your permission, the Service may access:</p>
+            <ul>
+              <li>Camera and photo library (to import tickets).</li>
+              <li>Files (to store tickets locally and export to the iOS Files app).</li>
+            </ul>
+            <p>You can enable or disable access via your Device settings at any time.</p>
+          </section>
+
+          <hr>
+
+          <section>
+            <h2>Information from Google / Gmail Integrations (“Gmail Connect”)</h2>
+
+            <p>You may optionally choose to connect your Google Account and enable Gmail Connect to configure automatic forwarding of (some of) your Gmail messages to your personal TicketSaver upload address (for example: <code>upload+@upload.ticketsaver.nl</code>).</p>
+
+            <p>When you explicitly grant permissions in the Google consent screen, the Google and Gmail APIs may allow the Application to:</p>
+            <ul>
+              <li>View and manage certain sensitive email-related settings in Gmail, including:
+                <ul>
+                  <li>Starting and stopping forwarding of your email to another address.</li>
+                  <li>Creating, updating, and deleting forwarding addresses.</li>
+                  <li>Viewing who else has delegated access to your Gmail account and revoking such access.</li>
+                  <li>Viewing, creating, updating, and deleting send-as aliases (for “Send mail as”).</li>
+                  <li>Viewing, creating, updating, and deleting filters that move, label, forward, or delete messages.</li>
+                  <li>Viewing and updating IMAP or POP settings.</li>
+                  <li>Viewing and updating certain Gmail settings, such as reply-to address, display name, signature, and automatic reply (vacation responder).</li>
+                </ul>
+              </li>
+              <li>View basic Google Account profile information, including:
+                <ul>
+                  <li>Your full name.</li>
+                  <li>Your profile photo.</li>
+                  <li>Your gender (where available).</li>
+                  <li>Your preferred languages.</li>
+                  <li>Other profile data you have made public in your Google Account.</li>
+                  <li>The primary email address associated with your Google Account.</li>
+                </ul>
+              </li>
+            </ul>
+
+            <h3>What we actually use this access for</h3>
+            <p>Although the granted scopes technically allow broad actions, TicketSaver commits contractually and as a matter of internal policy to use Gmail and Google Account access only for the limited purposes described below:</p>
+            <ul>
+              <li><strong>Setting up and maintaining automatic forwarding from Gmail to TicketSaver</strong>, which may include:
+                <ul>
+                  <li>Creating a forwarding address pointing to your TicketSaver upload address.</li>
+                  <li>Confirming and enabling that forwarding address (where the Gmail API allows).</li>
+                  <li>Creating or updating one or more filters in Gmail so that emails (for example, those matching certain criteria you configure) are forwarded to your TicketSaver upload address.</li>
+                  <li>Checking whether forwarding is active and which address is used, so the app can display the status to you.</li>
+                </ul>
+              </li>
+              <li><strong>Displaying and maintaining connection status within the App</strong>, which may include:
+                <ul>
+                  <li>Reading your primary Gmail address and basic profile information to show that your Gmail account is connected to TicketSaver.</li>
+                  <li>Displaying, in a user-friendly way, the current forwarding configuration and related settings so you understand what is active.</li>
+                </ul>
+              </li>
+              <li><strong>Improving the Gmail integration and ensuring it functions correctly</strong>, which may include:
+                <ul>
+                  <li>Reading certain Gmail settings, filters, and forwarding configurations to troubleshoot and prevent wrong or duplicate configurations.</li>
+                  <li>Updating or removing forwarding or filter settings that TicketSaver previously created when you disable the integration or change your preferences.</li>
+                </ul>
+              </li>
+              <li><strong>Security, abuse prevention, and compliance</strong>, which may include:
+                <ul>
+                  <li>Detecting and preventing abusive use of the Gmail integration (for example, obvious attempts to mass-forward unrelated mail or violate Gmail’s or your organization’s policies).</li>
+                  <li>Complying with Google’s API Services User Data Policy, Gmail policies, and applicable law.</li>
+                </ul>
+              </li>
+            </ul>
+
+            <h3>What we do NOT do with Gmail Data</h3>
+            <ul>
+              <li>We do not use Gmail API access to read the content of your email messages. Ticket content is processed from messages that are forwarded to your TicketSaver upload address (via Gmail’s forwarding features or manual forwarding), not by querying your mailbox contents via the API.</li>
+              <li>We do not use Gmail Data for advertising, profiling, or marketing.</li>
+              <li>We do not sell or rent Gmail Data to third parties.</li>
+              <li>We do not allow human access to Gmail Data except where strictly necessary for:
+                <ul>
+                  <li>security (e.g., investigating abuse or fraud),</li>
+                  <li>debugging and maintaining the Gmail integration, or</li>
+                  <li>when required by law (e.g., pursuant to a lawful request).</li>
+                </ul>
+              </li>
+            </ul>
+
+            <h3>Storage of Gmail Data</h3>
+            <p>To provide Gmail Connect, we may store:</p>
+            <ul>
+              <li>OAuth tokens and refresh tokens needed to call the Gmail and Google APIs on your behalf.</li>
+              <li>Your primary Gmail address and limited profile information (name, profile image URL, language) to show the connection status.</li>
+              <li>A representation of the forwarding configuration and filters that TicketSaver created or manages, so we can show you what is active and allow you to modify or disable it.</li>
+            </ul>
+            <p>We do not store a full copy of all your Gmail settings. We generally retrieve settings on demand from the Gmail API and cache only what is strictly necessary for the integration to function.</p>
+
+            <p>You can revoke Gmail Connect at any time in the App (where provided) and also directly in your Google Account settings. When revoked, TicketSaver can no longer call the Gmail API on your behalf. We will then delete or invalidate stored tokens within a reasonable time period and will no longer update your Gmail settings.</p>
+
+            <h3>Responsibility for Filters and Forwarding</h3>
+            <p>You remain responsible for:</p>
+            <ul>
+              <li>Which emails are forwarded from Gmail to TicketSaver (e.g., your filter rules).</li>
+              <li>Verifying that the forwarding and filters behave as you expect in your Gmail account.</li>
+              <li>Ensuring that your use of forwarding does not violate your employer’s policies, Gmail policies, or obligations of confidentiality to third parties.</li>
+            </ul>
+            <p>TicketSaver is not responsible for unintended forwarding, misconfigured filters, or any consequences arising from your forwarding rules or Gmail account configuration. More details appear in the Terms of Service.</p>
+          </section>
+
+          <hr>
+
+          <section>
+            <h2>SDKs and Providers We Use</h2>
+
+            <h3>Firebase Analytics (Google)</h3>
+            <ul>
+              <li>We use Firebase Analytics to understand how the app is used and to improve functionality. When enabled:
+                <ul>
+                  <li>It collects event data (e.g., successful login/sign-up, ticket categorized, premium purchase), app instance identifiers, device/OS info, and approximate location (country/region) derived from IP for aggregated reporting.</li>
+                </ul>
+              </li>
+              <li>We disable analytics until you give consent. You can withdraw consent at any time in the app settings, where available (or by contacting us).</li>
+              <li>We do not enable Google Advertising Features or Google Signals in TicketSaver.</li>
+              <li><strong>Retention:</strong> Firebase Analytics retains user and event data according to Google’s standard retention settings (typically 2 months by default and configurable up to 14 months, subject to Google’s policies).</li>
+            </ul>
+
+            <h3>Firebase Crashlytics</h3>
+            <ul>
+              <li>We use Firebase Crashlytics to monitor app stability and fix crashes. Crash reports may include:
+                <ul>
+                  <li>Device model, OS version, app version, timestamp, non-sensitive logs around the crash.</li>
+                </ul>
+              </li>
+              <li>No advertising identifiers, and no content of your tickets.</li>
+              <li><strong>Retention:</strong> Crash data is typically retained by Google for around 90 days (subject to Google’s policies).</li>
+            </ul>
+
+            <h3>Mailgun (Email processing)</h3>
+            <p>If you forward confirmation emails/attachments, Mailgun processes and delivers these emails for ingestion by TicketSaver. Attachments may be temporarily processed to extract relevant ticket data.</p>
+
+            <h3>Apple App Store (In-App Purchases)</h3>
+            <p>Apple processes Subscription billing, renewals, refunds, and related financial information through your Apple ID. We may receive non-financial purchase metadata (e.g., transaction identifiers or signed receipts) to validate entitlements; we do not receive your full payment details from Apple.</p>
+
+            <h3>Google API Services and Gmail Connect</h3>
+            <p>Our Gmail integration uses Google’s OAuth and API services, including the Gmail API, to configure and manage automatic forwarding and related Gmail settings as described above.</p>
+            <p>We use and transfer information received from Google APIs in accordance with:</p>
+            <ul>
+              <li>the Google API Services User Data Policy, including the Limited Use requirements, and</li>
+              <li>Gmail and Google Workspace policies applicable to the relevant scopes.</li>
+            </ul>
+            <p>In particular:</p>
+            <ul>
+              <li>Gmail Data is used only to provide, maintain, and improve the Gmail Connect feature, for security (e.g., abuse/fraud detection), and to comply with legal obligations.</li>
+              <li>We do not use Gmail Data for advertising or to build profiles unrelated to the Gmail integration.</li>
+              <li>We do not sell Gmail Data or share it with third parties except as necessary to provide the Service (for example, hosting providers) under contractual safeguards.</li>
+            </ul>
+
+            <p>For all providers above, processing takes place under the providers’ terms and data processing agreements. International transfers may occur and are protected by appropriate safeguards (see <a href="#international-transfers">International Transfers</a>).</p>
+          </section>
+
+          <hr>
+
+          <section>
+            <h2>How We Use Your Personal Data</h2>
+            <p>The Company may use Personal Data for the following purposes:</p>
+            <ul>
+              <li>To provide and maintain the Service – including account creation, authentication, and storage of your tickets.</li>
+              <li>To enforce account restrictions – e.g., free accounts may store up to 5 events; premium accounts may store unlimited events.</li>
+              <li>To validate purchases – using server-side receipt validation to detect fraud or abuse of free trials.</li>
+              <li>To manage device sessions – including device/session binding to prevent account sharing. Device IDs may be retained even after account deletion to prevent repeated abuse.</li>
+              <li>To send transactional emails – via Mailgun, for example, to forward ticket confirmation emails.</li>
+              <li>To provide push notifications and reminders – only if you enable notifications on your Device.</li>
+              <li>To collect feedback – via Google Forms, if you voluntarily provide input.</li>
+              <li>To monitor app stability and crashes – via Firebase Crashlytics.</li>
+              <li>To analyze usage – via Firebase Analytics, only with your consent to improve the app and user experience.</li>
+              <li>To provide Gmail Connect and automatic email forwarding – including:
+                <ul>
+                  <li>connecting your Google Account,</li>
+                  <li>configuring, reading, and updating Gmail forwarding, filters, send-as addresses, and related settings, limited to what is necessary for forwarding tickets to TicketSaver,</li>
+                  <li>showing you the status of your Gmail integration, and</li>
+                  <li>disabling or cleaning up forwarding settings created by TicketSaver when you turn the feature off.</li>
+                </ul>
+              </li>
+              <li>To secure the Service – including detection, prevention, and response to security incidents and abuse (e.g., preventing abusive use of forwarding or mass ingestion of unrelated mail).</li>
+              <li>To comply with legal obligations – e.g., preventing fraud, abuse, or misuse of services, and responding to lawful requests.</li>
+            </ul>
+          </section>
+
+          <hr>
+
+          <section>
+            <h2>Legal Bases for Processing (GDPR/AVG)</h2>
+            <p>Where applicable law (e.g., EU/EEA, UK) requires a legal basis:</p>
+            <ul>
+              <li><strong>Contract/Performance:</strong> providing the core Service you request (account, ticket storage, email ingestion of tickets, including necessary configuration of forwarding where you enable Gmail Connect).</li>
+              <li><strong>Consent:</strong>
+                <ul>
+                  <li>Analytics and optional features that are not strictly necessary (we collect analytics only after you consent).</li>
+                  <li>Connecting your Google Account and enabling Gmail Connect; you may withdraw this consent at any time by disconnecting in the app (where available) and/or revoking access in your Google Account.</li>
+                </ul>
+              </li>
+              <li><strong>Legitimate Interests:</strong> security, anti-fraud (e.g., device/session binding, receipt validation), app stability (Crashlytics), and basic product improvement in a way that respects your rights.</li>
+              <li><strong>Legal Obligation:</strong> where we must comply with the law.</li>
+            </ul>
+            <p>You may withdraw consent at any time (see Your Choices &amp; Controls).</p>
+          </section>
+
+          <hr>
+
+          <section>
+            <h2>Your Choices &amp; Controls</h2>
+            <ul>
+              <li><strong>Analytics Consent:</strong> In-app analytics is off by default until you accept. You may later disable analytics in the app settings (where provided) or by contacting us; we will then stop sending future analytics events from that device/account.</li>
+              <li><strong>Device Permissions:</strong> You can manage camera/photos/files access in iOS Settings.</li>
+              <li><strong>Notifications:</strong> You can enable/disable push notifications in iOS Settings at any time. Disabling will stop future notifications.</li>
+              <li><strong>Email Preferences:</strong> Transactional emails are necessary for the Service; we do not send marketing emails.</li>
+              <li><strong>Gmail Connect:</strong>
+                <ul>
+                  <li>You can disconnect your Gmail integration within the App (where supported).</li>
+                  <li>You can always revoke TicketSaver’s access directly in your Google Account → Security → Third-party access (or similar section).</li>
+                  <li>We recommend that you review your forwarding and filter settings in Gmail after connecting or disconnecting, to confirm they match your expectations.</li>
+                </ul>
+              </li>
+              <li><strong>Access/Deletion Requests:</strong> See Your Rights below.</li>
+            </ul>
+          </section>
+
+          <hr>
+
+          <section>
+            <h2>Consent Management</h2>
+            <p>Before you can use the Service, you must explicitly accept our Terms of Service and Privacy Policy. Your consent is stored locally on your Device and synchronized to your Account upon login. During synchronization, we record:</p>
+            <ul>
+              <li>the version of the Terms/Privacy you accepted,</li>
+              <li>the original date/time of first acceptance (from your Device),</li>
+              <li>the most recent confirmation date/time (at login),</li>
+              <li>app version and a device identifier used for consent sync.</li>
+            </ul>
+            <p>Using multiple Accounts on the same Device applies the same consent to each Account.</p>
+            <p>If you connect Gmail or other Google services, we also record the time and version of the integration consent so we can demonstrate compliance with Google’s requirements and applicable law.</p>
+          </section>
+
+          <hr>
+
+          <section>
+            <h2>Sharing Your Personal Data</h2>
+            <p>We may share your personal data in the following cases:</p>
+            <ul>
+              <li>With Service Providers – such as Firebase (authentication, database, crash reporting, analytics, cloud functions), Mailgun (email forwarding), and Google Forms (feedback collection).</li>
+              <li>With Google / Gmail – as necessary to call the Gmail and Google APIs on your behalf when you enable Gmail Connect. We do not share Gmail Data with third parties for advertising or unrelated purposes.</li>
+              <li>For fraud prevention and security – e.g., device/session binding, receipt validation.</li>
+              <li>For legal reasons – to comply with applicable law or protect rights, property, or safety.</li>
+              <li>Business transfers – in connection with any merger, sale of Company assets, financing, or acquisition of all or a portion of our business, subject to appropriate safeguards.</li>
+            </ul>
+            <p>We do not sell your data to third parties.</p>
+          </section>
+
+          <hr id="international-transfers">
+
+          <section>
+            <h2>International Transfers</h2>
+            <p>Our Service Providers may process data in the EU/EEA, the United States, and other jurisdictions. Where required, transfers are protected by recognized safeguards (e.g., Standard Contractual Clauses and provider-implemented measures). You can contact us for more details.</p>
+          </section>
+
+          <hr>
+
+          <section>
+            <h2>Data Retention</h2>
+            <ul>
+              <li>Account and ticket data are retained while your account is active.</li>
+              <li>If you delete your account, we will remove your personal data from our active systems.</li>
+              <li>Certain identifiers (e.g., device ID) may be temporarily retained to enforce fraud-prevention rules (e.g., repeat trial abuse).</li>
+              <li><strong>Gmail Connect:</strong>
+                <ul>
+                  <li>OAuth tokens and related metadata are retained only while your Gmail integration is active and for a limited grace period after disconnection, to support safe cleanup and logging.</li>
+                  <li>Configuration data related to forwarding and filters created or managed by TicketSaver is retained as long as needed to provide the feature and keep an audit trail of changes for security and compliance, then deleted or anonymized.</li>
+                </ul>
+              </li>
+              <li>Crash data (Crashlytics) is typically retained for about 90 days.</li>
+              <li>Analytics data retention follows Firebase Analytics’ settings/policies (commonly 2–14 months).</li>
+              <li>We may retain limited data where required by law or to resolve disputes.</li>
+              <li>Backups and logs: routine system backups and server logs may persist for limited periods and are purged on rolling schedules.</li>
+            </ul>
+          </section>
+
+          <hr>
+
+          <section>
+            <h2>Your Rights</h2>
+            <p>Subject to applicable law, you have the right to:</p>
+            <ul>
+              <li>Request access to the data we hold about you.</li>
+              <li>Request correction or deletion of your data (except where retention is required by law or necessary to enforce anti-abuse measures).</li>
+              <li>Withdraw consent for optional processing (e.g., analytics, Gmail Connect).</li>
+              <li>Object to or request restriction of certain processing.</li>
+              <li>Data portability, where applicable.</li>
+              <li>Lodge a complaint with a supervisory authority. In the Netherlands, this is the Autoriteit Persoonsgegevens.</li>
+            </ul>
+            <p>Requests can be submitted to <a href="mailto:maxbrouwermd@gmail.com">maxbrouwermd@gmail.com</a>. We may take reasonable steps to verify your identity before responding.</p>
+          </section>
+
+          <hr>
+
+          <section>
+            <h2>Automated Decision-Making</h2>
+            <p>We do not engage in profiling that produces legal or similarly significant effects, nor do we make decisions based solely on automated processing that significantly affect you.</p>
+          </section>
+
+          <hr>
+
+          <section>
+            <h2>Security of Data</h2>
+            <p>We take commercially reasonable steps to protect your information (including encryption in transit and the security controls of our cloud providers). However, no system is completely secure, and we cannot guarantee absolute security.</p>
+          </section>
+
+          <hr>
+
+          <section>
+            <h2>Children’s Privacy</h2>
+            <p>The Service is not directed to children under 13. We do not knowingly collect Personal Data from children under 13. If you are aware that a child has provided Personal Data, please contact us.</p>
+          </section>
+
+          <hr>
+
+          <section>
+            <h2>External Services and Links</h2>
+            <p>Our Service may contain links to third-party websites or use integrations with external services (e.g., Apple, Facebook, Google, Gmail). We are not responsible for their privacy practices. Your use of those services is governed by their own terms and policies (including, for Gmail/Google services, the Google Privacy Policy and the Google API Services User Data Policy).</p>
+          </section>
+
+          <hr>
+
+          <section>
+            <h2>Account Deletion and Apple Subscriptions</h2>
+            <p>Deleting your Account within the App removes your personal data from our active systems, subject to the retention rules set out above. <strong>Deleting your Account does not cancel your Apple Subscription.</strong> Subscriptions are managed through your Apple ID, and only you can cancel or modify them in your Apple settings (App Store → Account → Subscriptions). We cannot cancel a Subscription on your behalf.</p>
+          </section>
+
+          <hr>
+
+          <section>
+            <h2>Important Disclaimers</h2>
+            <ul>
+              <li>TicketSaver stores tickets locally on your Device and optionally in Firebase for backup purposes.</li>
+              <li>The Company is not responsible for lost, deleted, or corrupted tickets, including cases of device loss or app removal.</li>
+              <li>The Company is not responsible if event organizers refuse to accept or recognize tickets stored in the Application.</li>
+              <li>Users remain fully responsible for verifying ticket validity with event organizers.</li>
+              <li>Premium access is subscription-based; if canceled, you will lose access to tickets beyond the free account limit, though they remain stored.</li>
+              <li>When you use Gmail Connect or any email forwarding feature, you remain responsible for which messages are forwarded, who can view them, and for complying with any applicable confidentiality obligations and workplace or organizational policies.</li>
+            </ul>
+          </section>
+
+          <hr>
+
+          <section>
+            <h2>Data Breach Notification</h2>
+            <p>If we become aware of a personal data breach likely to result in a risk to your rights and freedoms, we will notify you and the relevant supervisory authority as required by law.</p>
+          </section>
+
+          <hr>
+
+          <section>
+            <h2>Changes to this Privacy Policy</h2>
+            <p>We may update this Privacy Policy from time to time. Updates will be posted here with the “Last updated” date.</p>
+          </section>
+
+          <hr>
+
+          <section>
+            <h2>Contact Us</h2>
+            <p>If you have questions about this Privacy Policy, contact us:<br>
+              Email: <a href="mailto:maxbrouwermd@gmail.com">maxbrouwermd@gmail.com</a>
+            </p>
+          </section>
+        </section>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>
+          &copy; <span id="year"></span> TICKETSAVER.
+          <span id="footer-rights">Alle rechten voorbehouden.</span>
+          <div class="footer-controls">
+            <button class="footer-toggle-btn" id="lang-toggle" type="button">
+              English
+            </button>
+            <button class="footer-toggle-btn" id="theme-toggle" type="button">
+              Donkere modus
+            </button>
+          </div>
+        </div>
+        <div class="footer-links">
+          <a href="privacy.html" id="footer-privacy">Privacybeleid</a>
+          <a href="terms.html" id="footer-terms">Servicevoorwaarden</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const texts = {
+      nl: {
+        htmlLang: "nl",
+        navProduct: "Product",
+        navFeatures: "Features",
+        navPricing: "Prijzen",
+        heroEyebrow: "Juridisch",
+        heroTitle: "Privacybeleid",
+        heroLead:
+          "In dit document lees je hoe TicketSaver jouw gegevens verwerkt en beschermt, inclusief de optionele Gmail-koppeling.",
+        heroUpdatedLabel: "Laatst bijgewerkt:",
+        footerRights: "Alle rechten voorbehouden.",
+        footerPrivacy: "Privacybeleid",
+        footerTerms: "Servicevoorwaarden",
+        langToggleLabel: "English",
+        themeToggleToDark: "Donkere modus",
+        themeToggleToLight: "Lichte modus"
+      },
+      en: {
+        htmlLang: "en",
+        navProduct: "Product",
+        navFeatures: "Features",
+        navPricing: "Pricing",
+        heroEyebrow: "Legal",
+        heroTitle: "Privacy Policy",
+        heroLead:
+          "This Privacy Policy explains how TicketSaver handles your data, including the optional Gmail integration.",
+        heroUpdatedLabel: "Last updated:",
+        footerRights: "All rights reserved.",
+        footerPrivacy: "Privacy Policy",
+        footerTerms: "Terms of Service",
+        langToggleLabel: "Nederlands",
+        themeToggleToDark: "Dark mode",
+        themeToggleToLight: "Light mode"
+      }
+    };
+
+    let currentLang = localStorage.getItem("ticketsaver-lang") || "en";
+    let currentTheme = localStorage.getItem("ticketsaver-theme") || "light";
+
+    const langToggleBtn = document.getElementById("lang-toggle");
+    const themeToggleBtn = document.getElementById("theme-toggle");
+
+    function applyTheme(theme) {
+      const body = document.body;
+      const t = texts[currentLang];
+      if (theme === "dark") {
+        body.classList.add("dark");
+        themeToggleBtn.textContent = t.themeToggleToLight;
+      } else {
+        body.classList.remove("dark");
+        themeToggleBtn.textContent = t.themeToggleToDark;
+      }
+      currentTheme = theme;
+      localStorage.setItem("ticketsaver-theme", theme);
+    }
+
+    function applyLanguage(lang) {
+      const t = texts[lang];
+      document.documentElement.lang = t.htmlLang;
+
+      document.getElementById("nav-product").textContent = t.navProduct;
+      document.getElementById("nav-features").textContent = t.navFeatures;
+      document.getElementById("nav-pricing").textContent = t.navPricing;
+
+      document.getElementById("hero-eyebrow").textContent = t.heroEyebrow;
+      document.getElementById("hero-title").textContent = t.heroTitle;
+      document.getElementById("hero-lead").textContent = t.heroLead;
+      document.getElementById("hero-updated-label").textContent = t.heroUpdatedLabel;
+
+      document.getElementById("footer-rights").textContent = t.footerRights;
+      document.getElementById("footer-privacy").textContent = t.footerPrivacy;
+      document.getElementById("footer-terms").textContent = t.footerTerms;
+
+      langToggleBtn.textContent = t.langToggleLabel;
+
+      if (currentTheme === "dark") {
+        themeToggleBtn.textContent = t.themeToggleToLight;
+      } else {
+        themeToggleBtn.textContent = t.themeToggleToDark;
+      }
+
+      currentLang = lang;
+      localStorage.setItem("ticketsaver-lang", lang);
+    }
+
+    applyLanguage(currentLang);
+    applyTheme(currentTheme);
+
+    langToggleBtn.addEventListener("click", () => {
+      const newLang = currentLang === "nl" ? "en" : "nl";
+      applyLanguage(newLang);
+    });
+
+    themeToggleBtn.addEventListener("click", () => {
+      const newTheme = currentTheme === "light" ? "dark" : "light";
+      applyTheme(newTheme);
+    });
+  </script>
 </body>
 </html>
