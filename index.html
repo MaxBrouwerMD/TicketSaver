@@ -60,6 +60,7 @@
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      color: #1d1d1f;
     }
 
     .nav-links {
@@ -212,13 +213,6 @@
       background: #111;
     }
 
-    .store-link span {
-      font-size: 0.73rem;
-      text-transform: uppercase;
-      letter-spacing: 0.13em;
-      opacity: 0.85;
-    }
-
     /* Footer */
     .footer {
       border-top: 1px solid rgba(0, 0, 0, 0.08);
@@ -293,7 +287,7 @@
       }
     }
 
-    /* Dark mode (marine donkerblauw) */
+    /* Dark mode */
     body.dark {
       background-color: #020b1a;
       color: #e5e7eb;
@@ -304,7 +298,8 @@
       border-bottom-color: rgba(148, 163, 184, 0.4);
     }
 
-    body.dark .nav-links a {
+    body.dark .nav-links a,
+    body.dark .nav-logo {
       color: #e5e7eb;
       opacity: 0.85;
     }
@@ -364,11 +359,11 @@
     <!-- Top navigation -->
     <header class="nav">
       <div class="nav-inner">
-        <div class="nav-logo" id="nav-logo">TICKETSAVER</div>
+        <a href="index.html" class="nav-logo" id="nav-logo">TICKETSAVER</a>
         <nav class="nav-links">
-          <a href="#product" id="nav-product">Product</a>
-          <a href="#features" id="nav-features">Features</a>
-          <a href="#pricing" id="nav-pricing">Prijzen</a>
+          <a href="product.html" id="nav-product">Product</a>
+          <a href="features.html" id="nav-features">Features</a>
+          <a href="pricing.html" id="nav-pricing">Prijzen</a>
         </nav>
       </div>
     </header>
@@ -385,7 +380,9 @@
           <button class="btn-primary" id="cta-primary">
             Download nu in de App Store
           </button>
-          <button class="btn-link" id="cta-secondary">Meer informatie &rsaquo;</button>
+          <a href="product.html" class="btn-link" id="cta-secondary">
+            Meer informatie &rsaquo;
+          </a>
         </div>
 
         <div id="store-panel" class="store-panel" aria-hidden="true">
@@ -395,8 +392,7 @@
             </p>
             <!-- TODO: vervang # later door de echte App Store-URL -->
             <a href="#" class="store-link" id="store-link" target="_blank" rel="noopener">
-              <span>Download</span>
-              <strong>App Store</strong>
+              Open in de App Store
             </a>
           </div>
         </div>
@@ -419,7 +415,6 @@
           </div>
         </div>
         <div class="footer-links">
-          <!-- echte links naar de documenten -->
           <a href="privacy.html" id="footer-privacy" target="_blank" rel="noopener">Privacybeleid</a>
           <a href="terms.html" id="footer-terms" target="_blank" rel="noopener">Servicevoorwaarden</a>
         </div>
@@ -516,7 +511,6 @@
       document.getElementById("cta-secondary").textContent = t.ctaSecondary;
 
       storePanelText.textContent = t.storePanelText;
-      // De linktekst is kort; we gebruiken alleen de label-tekst
       storeLink.textContent = t.storeButtonLabel;
 
       document.getElementById("footer-rights").textContent = t.footerRights;
@@ -525,7 +519,6 @@
 
       langToggleBtn.textContent = t.langToggleLabel;
 
-      // Update theme button text as well, depending on current theme
       if (currentTheme === "dark") {
         themeToggleBtn.textContent = t.themeToggleToLight;
       } else {
