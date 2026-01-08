@@ -2,7 +2,7 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8" />
-  <title>Minimal Page</title>
+  <title>TICKETSAVER</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     * {
@@ -12,11 +12,12 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, -system-ui,
+      font-family: -apple-system, BlinkMacSystemFont, system-ui, -system-ui,
         "Segoe UI", sans-serif;
       background-color: #f5f5f7;
       color: #1d1d1f;
       line-height: 1.5;
+      transition: background-color 0.25s ease, color 0.25s ease;
     }
 
     a {
@@ -42,6 +43,7 @@
       backdrop-filter: blur(20px);
       background-color: rgba(245, 245, 247, 0.8);
       border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      transition: background-color 0.25s ease, border-color 0.25s ease;
     }
 
     .nav-inner {
@@ -56,7 +58,8 @@
 
     .nav-logo {
       font-weight: 600;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .nav-links {
@@ -67,6 +70,7 @@
     .nav-links a {
       color: #1d1d1f;
       opacity: 0.8;
+      transition: opacity 0.15s ease;
     }
 
     .nav-links a:hover {
@@ -98,8 +102,11 @@
     .hero-title {
       font-size: clamp(2.5rem, 5vw, 3.5rem);
       font-weight: 600;
-      letter-spacing: -0.03em;
+      letter-spacing: 0.12em;
       margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      font-family: "Gill Sans", "Gill Sans MT", system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     .hero-subtitle {
@@ -143,10 +150,73 @@
       font-size: 0.95rem;
       color: #0071e3;
       cursor: pointer;
+      border: none;
+      background: none;
+      padding: 0;
     }
 
     .btn-link:hover {
       text-decoration: underline;
+    }
+
+    /* App Store dropdown panel */
+    .store-panel {
+      max-width: 360px;
+      margin: 0.9rem auto 0;
+      padding: 0 1.25rem;
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transform: translateY(-4px);
+      pointer-events: none;
+      transition: max-height 0.25s ease, opacity 0.25s ease,
+        transform 0.25s ease;
+    }
+
+    .store-panel.open {
+      max-height: 200px;
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .store-panel-inner {
+      border-radius: 16px;
+      padding: 0.85rem 1rem;
+      background: rgba(0, 0, 0, 0.03);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .store-panel-text {
+      font-size: 0.85rem;
+      color: #6e6e73;
+      margin-bottom: 0.6rem;
+    }
+
+    .store-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1.1rem;
+      border-radius: 999px;
+      background: #000;
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .store-link:hover {
+      text-decoration: none;
+      background: #111;
+    }
+
+    .store-link span {
+      font-size: 0.73rem;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      opacity: 0.85;
     }
 
     /* Footer */
@@ -155,6 +225,7 @@
       padding: 1.5rem 1.5rem 2rem;
       font-size: 0.75rem;
       color: #6e6e73;
+      transition: border-color 0.25s ease;
     }
 
     .footer-inner {
@@ -181,6 +252,31 @@
       text-decoration: underline;
     }
 
+    .footer-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.25rem;
+    }
+
+    .footer-toggle-btn {
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      padding: 0.25rem 0.75rem;
+      font-size: 0.7rem;
+      background: rgba(255, 255, 255, 0.7);
+      color: #424245;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      transition: background-color 0.2s ease, border-color 0.2s ease,
+        color 0.2s ease, transform 0.1s ease;
+    }
+
+    .footer-toggle-btn:hover {
+      background-color: #e5e5ea;
+      transform: translateY(-0.5px);
+    }
+
     @media (max-width: 640px) {
       .nav-inner {
         padding-inline: 1rem;
@@ -196,6 +292,71 @@
         align-items: flex-start;
       }
     }
+
+    /* Dark mode (marine donkerblauw) */
+    body.dark {
+      background-color: #020b1a;
+      color: #e5e7eb;
+    }
+
+    body.dark .nav {
+      background-color: rgba(15, 23, 42, 0.9);
+      border-bottom-color: rgba(148, 163, 184, 0.4);
+    }
+
+    body.dark .nav-links a {
+      color: #e5e7eb;
+      opacity: 0.85;
+    }
+
+    body.dark .hero-subtitle {
+      color: #cbd5f5;
+    }
+
+    body.dark .hero-eyebrow {
+      color: #9ca3af;
+    }
+
+    body.dark .btn-primary {
+      background-color: #2563eb;
+    }
+
+    body.dark .btn-primary:hover {
+      background-color: #1d4ed8;
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
+    }
+
+    body.dark .btn-link {
+      color: #60a5fa;
+    }
+
+    body.dark .store-panel-inner {
+      background: rgba(15, 23, 42, 0.96);
+      border-color: rgba(148, 163, 184, 0.6);
+    }
+
+    body.dark .store-panel-text {
+      color: #9ca3af;
+    }
+
+    body.dark .footer {
+      border-top-color: rgba(148, 163, 184, 0.4);
+      color: #9ca3af;
+    }
+
+    body.dark .footer-links a {
+      color: #e5e7eb;
+    }
+
+    body.dark .footer-toggle-btn {
+      background: rgba(15, 23, 42, 0.85);
+      border-color: rgba(148, 163, 184, 0.6);
+      color: #e5e7eb;
+    }
+
+    body.dark .footer-toggle-btn:hover {
+      background-color: #0f172a;
+    }
   </style>
 </head>
 <body>
@@ -203,11 +364,11 @@
     <!-- Top navigation -->
     <header class="nav">
       <div class="nav-inner">
-        <div class="nav-logo">MyBrand</div>
+        <div class="nav-logo" id="nav-logo">TICKETSAVER</div>
         <nav class="nav-links">
-          <a href="#product">Product</a>
-          <a href="#features">Features</a>
-          <a href="#pricing">Prijzen</a>
+          <a href="#product" id="nav-product">Product</a>
+          <a href="#features" id="nav-features">Features</a>
+          <a href="#pricing" id="nav-pricing">Prijzen</a>
         </nav>
       </div>
     </header>
@@ -215,15 +376,29 @@
     <!-- Main content -->
     <main class="main">
       <section class="hero">
-        <div class="hero-eyebrow">Nieuw</div>
-        <h1 class="hero-title">Een simpele, focuste pagina.</h1>
-        <p class="hero-subtitle">
-          Een rustige lay-out met één duidelijke boodschap. Geen ruis, alleen
-          wat belangrijk is voor jouw bezoeker.
+        <div class="hero-eyebrow" id="hero-eyebrow">Nieuw</div>
+        <h1 class="hero-title" id="hero-title">TICKETSAVER</h1>
+        <p class="hero-subtitle" id="hero-subtitle">
+          Bewaar al je tickets veilig op één plek.
         </p>
         <div class="hero-cta">
-          <button class="btn-primary">Begin nu</button>
-          <button class="btn-link">Meer informatie &rsaquo;</button>
+          <button class="btn-primary" id="cta-primary">
+            Download nu in de App Store
+          </button>
+          <button class="btn-link" id="cta-secondary">Meer informatie &rsaquo;</button>
+        </div>
+
+        <div id="store-panel" class="store-panel" aria-hidden="true">
+          <div class="store-panel-inner">
+            <p class="store-panel-text" id="store-panel-text">
+              Zodra TicketSaver live staat, kun je de app hier rechtstreeks uit de App Store downloaden.
+            </p>
+            <!-- TODO: vervang # later door de echte App Store-URL -->
+            <a href="#" class="store-link" id="store-link" target="_blank" rel="noopener">
+              <span>Download</span>
+              <strong>App Store</strong>
+            </a>
+          </div>
         </div>
       </section>
     </main>
@@ -231,18 +406,156 @@
     <!-- Footer -->
     <footer class="footer">
       <div class="footer-inner">
-        <div>&copy; <span id="year"></span> MyBrand. Alle rechten voorbehouden.</div>
+        <div>
+          &copy; <span id="year"></span> TICKETSAVER.
+          <span id="footer-rights">Alle rechten voorbehouden.</span>
+          <div class="footer-controls">
+            <button class="footer-toggle-btn" id="lang-toggle" type="button">
+              English
+            </button>
+            <button class="footer-toggle-btn" id="theme-toggle" type="button">
+              Donkere modus
+            </button>
+          </div>
+        </div>
         <div class="footer-links">
-          <a href="#privacy">Privacy Policy</a>
-          <a href="#terms">Terms of Service</a>
+          <!-- echte links naar de documenten -->
+          <a href="privacy.html" id="footer-privacy" target="_blank" rel="noopener">Privacybeleid</a>
+          <a href="terms.html" id="footer-terms" target="_blank" rel="noopener">Servicevoorwaarden</a>
         </div>
       </div>
     </footer>
   </div>
 
   <script>
-    // Zet automatisch het huidige jaar in de footer
+    // Jaar in de footer
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    const texts = {
+      nl: {
+        htmlLang: "nl",
+        navProduct: "Product",
+        navFeatures: "Features",
+        navPricing: "Prijzen",
+        heroEyebrow: "Nieuw",
+        heroTitle: "TICKETSAVER",
+        heroSubtitle: "Bewaar al je tickets veilig op één plek.",
+        ctaPrimary: "Download nu in de App Store",
+        ctaSecondary: "Meer informatie \u203a",
+        storePanelText:
+          "Zodra TicketSaver live staat, kun je de app hier rechtstreeks uit de App Store downloaden.",
+        storeButtonLabel: "Open in de App Store",
+        footerRights: "Alle rechten voorbehouden.",
+        footerPrivacy: "Privacybeleid",
+        footerTerms: "Servicevoorwaarden",
+        langToggleLabel: "English",
+        themeToggleToDark: "Donkere modus",
+        themeToggleToLight: "Lichte modus"
+      },
+      en: {
+        htmlLang: "en",
+        navProduct: "Product",
+        navFeatures: "Features",
+        navPricing: "Pricing",
+        heroEyebrow: "New",
+        heroTitle: "TICKETSAVER",
+        heroSubtitle: "Keep all your tickets safe in one place.",
+        ctaPrimary: "Download on the App Store",
+        ctaSecondary: "Learn more \u203a",
+        storePanelText:
+          "As soon as TicketSaver is live, you'll be able to download it directly from the App Store here.",
+        storeButtonLabel: "Open in the App Store",
+        footerRights: "All rights reserved.",
+        footerPrivacy: "Privacy Policy",
+        footerTerms: "Terms of Service",
+        langToggleLabel: "Nederlands",
+        themeToggleToDark: "Dark mode",
+        themeToggleToLight: "Light mode"
+      }
+    };
+
+    let currentLang = (localStorage.getItem("ticketsaver-lang") || "nl");
+    let currentTheme = (localStorage.getItem("ticketsaver-theme") || "light");
+
+    const langToggleBtn = document.getElementById("lang-toggle");
+    const themeToggleBtn = document.getElementById("theme-toggle");
+    const ctaPrimaryBtn = document.getElementById("cta-primary");
+    const storePanel = document.getElementById("store-panel");
+    const storePanelText = document.getElementById("store-panel-text");
+    const storeLink = document.getElementById("store-link");
+
+    function applyTheme(theme) {
+      const body = document.body;
+      const t = texts[currentLang];
+
+      if (theme === "dark") {
+        body.classList.add("dark");
+        themeToggleBtn.textContent = t.themeToggleToLight;
+      } else {
+        body.classList.remove("dark");
+        themeToggleBtn.textContent = t.themeToggleToDark;
+      }
+      currentTheme = theme;
+      localStorage.setItem("ticketsaver-theme", theme);
+    }
+
+    function applyLanguage(lang) {
+      const t = texts[lang];
+
+      document.documentElement.lang = t.htmlLang;
+
+      document.getElementById("nav-product").textContent = t.navProduct;
+      document.getElementById("nav-features").textContent = t.navFeatures;
+      document.getElementById("nav-pricing").textContent = t.navPricing;
+
+      document.getElementById("hero-eyebrow").textContent = t.heroEyebrow;
+      document.getElementById("hero-title").textContent = t.heroTitle;
+      document.getElementById("hero-subtitle").textContent = t.heroSubtitle;
+
+      document.getElementById("cta-primary").textContent = t.ctaPrimary;
+      document.getElementById("cta-secondary").textContent = t.ctaSecondary;
+
+      storePanelText.textContent = t.storePanelText;
+      // De linktekst is kort; we gebruiken alleen de label-tekst
+      storeLink.textContent = t.storeButtonLabel;
+
+      document.getElementById("footer-rights").textContent = t.footerRights;
+      document.getElementById("footer-privacy").textContent = t.footerPrivacy;
+      document.getElementById("footer-terms").textContent = t.footerTerms;
+
+      langToggleBtn.textContent = t.langToggleLabel;
+
+      // Update theme button text as well, depending on current theme
+      if (currentTheme === "dark") {
+        themeToggleBtn.textContent = t.themeToggleToLight;
+      } else {
+        themeToggleBtn.textContent = t.themeToggleToDark;
+      }
+
+      currentLang = lang;
+      localStorage.setItem("ticketsaver-lang", lang);
+    }
+
+    // Initial load
+    applyLanguage(currentLang);
+    applyTheme(currentTheme);
+
+    langToggleBtn.addEventListener("click", () => {
+      const newLang = currentLang === "nl" ? "en" : "nl";
+      applyLanguage(newLang);
+    });
+
+    themeToggleBtn.addEventListener("click", () => {
+      const newTheme = currentTheme === "light" ? "dark" : "light";
+      applyTheme(newTheme);
+    });
+
+    // Toggle App Store panel
+    ctaPrimaryBtn.addEventListener("click", () => {
+      const isOpen = storePanel.classList.contains("open");
+      storePanel.classList.toggle("open", !isOpen);
+      storePanel.setAttribute("aria-hidden", isOpen ? "true" : "false");
+    });
   </script>
 </body>
 </html>
