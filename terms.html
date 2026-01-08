@@ -97,6 +97,21 @@
     overflow-wrap: anywhere;   
     }
 
+.hero-title {
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+html[lang="nl"] .hero-title {
+  font-size: clamp(1.8rem, 4.2vw, 2.3rem);
+  letter-spacing: 0.06em;
+}
+
+html[lang="en"] .hero-title {
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  letter-spacing: 0.12em;
+}
+
     .hero-meta {
       font-size:.9rem;
       color:#6e6e73;
