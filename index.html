@@ -406,9 +406,13 @@
           &copy; <span id="year"></span> TICKETSAVER.
           <span id="footer-rights">Alle rechten voorbehouden.</span>
           <div class="footer-controls">
-            <button class="footer-toggle-btn" id="lang-toggle" type="button">
-              English
-            </button>
+            <select class="footer-toggle-btn" id="lang-toggle" aria-label="Language">
+              <option value="nl">Nederlands</option>
+              <option value="en">English</option>
+              <option value="fr">Français</option>
+              <option value="de">Deutsch</option>
+              <option value="es">Español</option>
+            </select>
             <button class="footer-toggle-btn" id="theme-toggle" type="button">
               Donkere modus
             </button>
@@ -466,10 +470,74 @@
         langToggleLabel: "Nederlands",
         themeToggleToDark: "Dark mode",
         themeToggleToLight: "Light mode"
+      },
+      fr: {
+      htmlLang: "fr",
+      navProduct: "Produit",
+      navFeatures: "Fonctionnalités",
+      navPricing: "Tarifs",
+      heroEyebrow: "Nouveau",
+      heroTitle: "TICKETSAVER",
+      heroSubtitle: "Conservez tous vos billets en sécurité au même endroit.",
+      ctaPrimary: "Télécharger sur l'App Store",
+      ctaSecondary: "En savoir plus ›",
+      storePanelText:
+        "Dès que TicketSaver sera disponible, vous pourrez le télécharger directement depuis l'App Store ici.",
+      storeButtonLabel: "Ouvrir dans l'App Store",
+      footerRights: "Tous droits réservés.",
+      footerPrivacy: "Politique de confidentialité",
+      footerTerms: "Conditions d'utilisation",
+      themeToggleToDark: "Mode sombre",
+      themeToggleToLight: "Mode clair"
+      },
+      de: {
+      htmlLang: "de",
+      navProduct: "Produkt",
+      navFeatures: "Funktionen",
+      navPricing: "Preise",
+      heroEyebrow: "Neu",
+      heroTitle: "TICKETSAVER",
+      heroSubtitle: "Bewahren Sie alle Ihre Tickets sicher an einem Ort auf.",
+      ctaPrimary: "Jetzt im App Store laden",
+      ctaSecondary: "Mehr erfahren ›",
+      storePanelText:
+        "Sobald TicketSaver verfügbar ist, können Sie die App hier direkt aus dem App Store herunterladen.",
+      storeButtonLabel: "Im App Store öffnen",
+      footerRights: "Alle Rechte vorbehalten.",
+      footerPrivacy: "Datenschutzerklärung",
+      footerTerms: "Nutzungsbedingungen",
+      themeToggleToDark: "Dunkler Modus",
+      themeToggleToLight: "Heller Modus"
+      },
+      es: {
+      htmlLang: "es",
+      navProduct: "Producto",
+      navFeatures: "Funciones",
+      navPricing: "Precios",
+      heroEyebrow: "Nuevo",
+      heroTitle: "TICKETSAVER",
+      heroSubtitle: "Guarda todas tus entradas a salvo en un solo sitio.",
+      ctaPrimary: "Descárgala en la App Store",
+      ctaSecondary: "Más información ›",
+      storePanelText:
+        "En cuanto TicketSaver esté disponible, podrás descargarla aquí directamente desde la App Store.",
+      storeButtonLabel: "Abrir en la App Store",
+      footerRights: "Todos los derechos reservados.",
+      footerPrivacy: "Política de privacidad",
+      footerTerms: "Condiciones del servicio",
+      themeToggleToDark: "Modo oscuro",
+      themeToggleToLight: "Modo claro"
       }
     };
 
-    let currentLang = (localStorage.getItem("ticketsaver-lang") || "nl");
+    const SUPPORTED_LANGS = ["nl", "en", "fr", "de", "es"];
+    function detectInitialLang() {
+      const stored = localStorage.getItem("ticketsaver-lang");
+      if (stored && SUPPORTED_LANGS.includes(stored)) return stored;
+      const browser = (navigator.language || "en").slice(0, 2).toLowerCase();
+      return SUPPORTED_LANGS.includes(browser) ? browser : "en";
+    }
+    let currentLang = detectInitialLang();
     let currentTheme = (localStorage.getItem("ticketsaver-theme") || "light");
 
     const langToggleBtn = document.getElementById("lang-toggle");
@@ -517,7 +585,7 @@
       document.getElementById("footer-privacy").textContent = t.footerPrivacy;
       document.getElementById("footer-terms").textContent = t.footerTerms;
 
-      langToggleBtn.textContent = t.langToggleLabel;
+      langToggleBtn.value = lang;
 
       if (currentTheme === "dark") {
         themeToggleBtn.textContent = t.themeToggleToLight;
@@ -533,9 +601,8 @@
     applyLanguage(currentLang);
     applyTheme(currentTheme);
 
-    langToggleBtn.addEventListener("click", () => {
-      const newLang = currentLang === "nl" ? "en" : "nl";
-      applyLanguage(newLang);
+    langToggleBtn.addEventListener("change", (e) => {
+      applyLanguage(e.target.value);
     });
 
     themeToggleBtn.addEventListener("click", () => {

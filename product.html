@@ -271,9 +271,13 @@
           &copy; <span id="year"></span> TICKETSAVER.
           <span id="footer-rights">Alle rechten voorbehouden.</span>
           <div class="footer-controls">
-            <button class="footer-toggle-btn" id="lang-toggle" type="button">
-              English
-            </button>
+            <select class="footer-toggle-btn" id="lang-toggle" aria-label="Language">
+              <option value="nl">Nederlands</option>
+              <option value="en">English</option>
+              <option value="fr">Français</option>
+              <option value="de">Deutsch</option>
+              <option value="es">Español</option>
+            </select>
             <button class="footer-toggle-btn" id="theme-toggle" type="button">
               Donkere modus
             </button>
@@ -342,10 +346,92 @@
         langToggleLabel: "Nederlands",
         themeToggleToDark: "Dark mode",
         themeToggleToLight: "Light mode"
+      },
+      fr: {
+      htmlLang: "fr",
+      navProduct: "Produit",
+      navFeatures: "Fonctionnalités",
+      navPricing: "Tarifs",
+      heroEyebrow: "Produit",
+      heroTitle: "Pourquoi TicketSaver existe",
+      heroSubtitle:
+        "Pour toutes celles et ceux qui se sont déjà retrouvés à l'entrée d'un festival sans retrouver leur billet.",
+      section1Title: "Le problème",
+      section1Body1:
+        "Aujourd'hui, les billets sont partout : dans les e-mails, les applis, les captures d'écran, les téléchargements et les albums photo. Au moment d'arriver à l'entrée d'un festival, d'un concert ou d'un événement sportif, votre billet devient soudain introuvable — voire complètement perdu.",
+      section1Body2:
+        "TicketSaver est né exactement de ce moment-là : fouiller son téléphone, stresser à l'entrée, et se demander : « Mais où est passé mon billet ? ».",
+      section2Title: "La solution",
+      section2Body1:
+        "TicketSaver est une application iOS personnelle qui rassemble tous vos billets en un seul endroit, organisés et en toute sécurité. Vous pouvez les ajouter manuellement ou les laisser arriver automatiquement par e-mail, pour qu'à l'entrée il vous suffise d'ouvrir TicketSaver.",
+      section2Body2:
+        "L'objectif est simple : plus de stress à l'entrée — il vous suffit d'un coup d'œil pour voir quel billet utiliser.",
+      footerRights: "Tous droits réservés.",
+      footerPrivacy: "Politique de confidentialité",
+      footerTerms: "Conditions d'utilisation",
+      themeToggleToDark: "Mode sombre",
+      themeToggleToLight: "Mode clair"
+      },
+      de: {
+      htmlLang: "de",
+      navProduct: "Produkt",
+      navFeatures: "Funktionen",
+      navPricing: "Preise",
+      heroEyebrow: "Produkt",
+      heroTitle: "Warum es TicketSaver gibt",
+      heroSubtitle:
+        "Für alle, die schon einmal am Festivaleingang standen und ihr Ticket nicht finden konnten.",
+      section1Title: "Das Problem",
+      section1Body1:
+        "Tickets sind heute überall verstreut: in E-Mails, Apps, Screenshots, Downloads und Fotoalben. Genau in dem Moment, in dem Sie am Eingang eines Festivals, Konzerts oder Sportevents stehen, ist Ihr Ticket plötzlich kaum noch zu finden – manchmal sogar ganz verschwunden.",
+      section1Body2:
+        "TicketSaver ist genau aus diesem vertrauten Moment heraus entstanden: Telefon durchsuchen, Stress am Eingang und die Frage: „Wo ist mein Ticket nur hin?“.",
+      section2Title: "Die Lösung",
+      section2Body1:
+        "TicketSaver ist eine persönliche iOS-App, in der Sie alle Ihre Tickets übersichtlich und sicher an einem Ort aufbewahren. Sie können Tickets manuell hinzufügen oder automatisch per E-Mail einfließen lassen, sodass Sie am Eingang nur noch TicketSaver öffnen müssen.",
+      section2Body2:
+        "Das Ziel ist einfach: kein Stress mehr am Einlass, sondern auf einen Blick sehen, welches Ticket Sie jetzt brauchen.",
+      footerRights: "Alle Rechte vorbehalten.",
+      footerPrivacy: "Datenschutzerklärung",
+      footerTerms: "Nutzungsbedingungen",
+      themeToggleToDark: "Dunkler Modus",
+      themeToggleToLight: "Heller Modus"
+      },
+      es: {
+      htmlLang: "es",
+      navProduct: "Producto",
+      navFeatures: "Funciones",
+      navPricing: "Precios",
+      heroEyebrow: "Producto",
+      heroTitle: "Por qué existe TicketSaver",
+      heroSubtitle:
+        "Para todo el que alguna vez se ha plantado en la entrada de un festival sin encontrar su entrada.",
+      section1Title: "El problema",
+      section1Body1:
+        "Hoy en día las entradas están por todas partes: en correos, apps, capturas, descargas y álbumes de fotos. Justo cuando llegas a la entrada de un festival, concierto o evento deportivo, suele ser imposible encontrarlas. A veces incluso desaparecen del todo.",
+      section1Body2:
+        "TicketSaver nació justo de ese momento que todos conocemos: rebuscando en el móvil, con los nervios a flor de piel en la puerta y esa pregunta clavada: “¿Dónde se ha metido mi entrada?”.",
+      section2Title: "La solución",
+      section2Body1:
+        "TicketSaver es una app personal para iOS en la que guardas todas tus entradas de forma clara y segura en un solo sitio. Puedes añadirlas a mano o recibirlas automáticamente por correo, así en la puerta solo tienes que abrir TicketSaver.",
+      section2Body2:
+        "El objetivo es sencillo: olvídate del estrés en la entrada y descubre de un vistazo qué entrada necesitas en cada momento.",
+      footerRights: "Todos los derechos reservados.",
+      footerPrivacy: "Política de privacidad",
+      footerTerms: "Condiciones del servicio",
+      themeToggleToDark: "Modo oscuro",
+      themeToggleToLight: "Modo claro"
       }
     };
 
-    let currentLang = localStorage.getItem("ticketsaver-lang") || "nl";
+    const SUPPORTED_LANGS = ["nl", "en", "fr", "de", "es"];
+    function detectInitialLang() {
+      const stored = localStorage.getItem("ticketsaver-lang");
+      if (stored && SUPPORTED_LANGS.includes(stored)) return stored;
+      const browser = (navigator.language || "en").slice(0, 2).toLowerCase();
+      return SUPPORTED_LANGS.includes(browser) ? browser : "en";
+    }
+    let currentLang = detectInitialLang();
     let currentTheme = localStorage.getItem("ticketsaver-theme") || "light";
 
     const langToggleBtn = document.getElementById("lang-toggle");
@@ -390,7 +476,7 @@
       document.getElementById("footer-privacy").textContent = t.footerPrivacy;
       document.getElementById("footer-terms").textContent = t.footerTerms;
 
-      langToggleBtn.textContent = t.langToggleLabel;
+      langToggleBtn.value = lang;
 
       if (currentTheme === "dark") {
         themeToggleBtn.textContent = t.themeToggleToLight;
@@ -405,9 +491,8 @@
     applyLanguage(currentLang);
     applyTheme(currentTheme);
 
-    langToggleBtn.addEventListener("click", () => {
-      const newLang = currentLang === "nl" ? "en" : "nl";
-      applyLanguage(newLang);
+    langToggleBtn.addEventListener("change", (e) => {
+      applyLanguage(e.target.value);
     });
 
     themeToggleBtn.addEventListener("click", () => {

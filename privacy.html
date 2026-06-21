@@ -561,9 +561,13 @@
           &copy; <span id="year"></span> TICKETSAVER.
           <span id="footer-rights">Alle rechten voorbehouden.</span>
           <div class="footer-controls">
-            <button class="footer-toggle-btn" id="lang-toggle" type="button">
-              English
-            </button>
+            <select class="footer-toggle-btn" id="lang-toggle" aria-label="Language">
+              <option value="nl">Nederlands</option>
+              <option value="en">English</option>
+              <option value="fr">Français</option>
+              <option value="de">Deutsch</option>
+              <option value="es">Español</option>
+            </select>
             <button class="footer-toggle-btn" id="theme-toggle" type="button">
               Donkere modus
             </button>
@@ -614,10 +618,65 @@
         langToggleLabel: "Nederlands",
         themeToggleToDark: "Dark mode",
         themeToggleToLight: "Light mode"
+      },
+      fr: {
+      htmlLang: "fr",
+      navProduct: "Produit",
+      navFeatures: "Fonctionnalités",
+      navPricing: "Tarifs",
+      heroEyebrow: "Mentions légales",
+      heroTitle: "Politique de confidentialité",
+      heroLead:
+        "Ce document explique comment TicketSaver traite et protège vos données, y compris l'intégration optionnelle avec Gmail.",
+      heroUpdatedLabel: "Dernière mise à jour :",
+      footerRights: "Tous droits réservés.",
+      footerPrivacy: "Politique de confidentialité",
+      footerTerms: "Conditions d'utilisation",
+      themeToggleToDark: "Mode sombre",
+      themeToggleToLight: "Mode clair"
+      },
+      de: {
+      htmlLang: "de",
+      navProduct: "Produkt",
+      navFeatures: "Funktionen",
+      navPricing: "Preise",
+      heroEyebrow: "Rechtliches",
+      heroTitle: "Datenschutzerklärung",
+      heroLead:
+        "In diesem Dokument erfahren Sie, wie TicketSaver Ihre Daten verarbeitet und schützt – einschließlich der optionalen Gmail-Anbindung.",
+      heroUpdatedLabel: "Zuletzt aktualisiert:",
+      footerRights: "Alle Rechte vorbehalten.",
+      footerPrivacy: "Datenschutzerklärung",
+      footerTerms: "Nutzungsbedingungen",
+      themeToggleToDark: "Dunkler Modus",
+      themeToggleToLight: "Heller Modus"
+      },
+      es: {
+      htmlLang: "es",
+      navProduct: "Producto",
+      navFeatures: "Funciones",
+      navPricing: "Precios",
+      heroEyebrow: "Aviso legal",
+      heroTitle: "Política de privacidad",
+      heroLead:
+        "En este documento te explicamos cómo TicketSaver trata y protege tus datos, incluida la conexión opcional con Gmail.",
+      heroUpdatedLabel: "Última actualización:",
+      footerRights: "Todos los derechos reservados.",
+      footerPrivacy: "Política de privacidad",
+      footerTerms: "Condiciones del servicio",
+      themeToggleToDark: "Modo oscuro",
+      themeToggleToLight: "Modo claro"
       }
     };
 
-    let currentLang = localStorage.getItem("ticketsaver-lang") || "en";
+    const SUPPORTED_LANGS = ["nl", "en", "fr", "de", "es"];
+    function detectInitialLang() {
+      const stored = localStorage.getItem("ticketsaver-lang");
+      if (stored && SUPPORTED_LANGS.includes(stored)) return stored;
+      const browser = (navigator.language || "en").slice(0, 2).toLowerCase();
+      return SUPPORTED_LANGS.includes(browser) ? browser : "en";
+    }
+    let currentLang = detectInitialLang();
     let currentTheme = localStorage.getItem("ticketsaver-theme") || "light";
 
     const langToggleBtn = document.getElementById("lang-toggle");
@@ -654,7 +713,7 @@
       document.getElementById("footer-privacy").textContent = t.footerPrivacy;
       document.getElementById("footer-terms").textContent = t.footerTerms;
 
-      langToggleBtn.textContent = t.langToggleLabel;
+      langToggleBtn.value = lang;
 
       if (currentTheme === "dark") {
         themeToggleBtn.textContent = t.themeToggleToLight;
@@ -669,9 +728,8 @@
     applyLanguage(currentLang);
     applyTheme(currentTheme);
 
-    langToggleBtn.addEventListener("click", () => {
-      const newLang = currentLang === "nl" ? "en" : "nl";
-      applyLanguage(newLang);
+    langToggleBtn.addEventListener("change", (e) => {
+      applyLanguage(e.target.value);
     });
 
     themeToggleBtn.addEventListener("click", () => {
