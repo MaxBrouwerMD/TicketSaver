@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["626P55PXC8.Max.TicketSaver"],
+        "components": [
+          {
+            "/": "/share/*",
+            "comment": "Universal Link voor gedeelde tickets — opent direct in TicketSaver"
+          }
+        ]
+      }
+    ]
+  }
+}

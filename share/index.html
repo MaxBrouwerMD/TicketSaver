@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>TicketSaver — geopend ticket</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root { color-scheme: light dark; }
+    html, body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    body {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      background: linear-gradient(180deg, #0a1928 0%, #142d4d 60%, #1d3a6b 100%);
+      color: #fff; padding: 24px; text-align: center;
+    }
+    .card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 24px; padding: 32px 28px;
+      max-width: 380px; width: 100%;
+      backdrop-filter: blur(8px);
+    }
+    .logo { font-size: 56px; margin-bottom: 4px; }
+    h1 { font-size: 24px; margin: 12px 0 8px; font-weight: 700; }
+    p { color: rgba(255,255,255,0.78); font-size: 15px; line-height: 1.5; margin: 0 0 18px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: #1e88ff; color: #fff; text-decoration: none;
+      font-weight: 600; font-size: 16px;
+      padding: 14px 22px; border-radius: 14px;
+      width: 100%; box-sizing: border-box;
+      margin-bottom: 10px;
+    }
+    .btn.secondary { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.18); }
+    .footer { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 18px; }
+    .token { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 8px; word-break: break-all; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">🎟️</div>
+    <h1 id="title">Open ticket in TicketSaver</h1>
+    <p id="desc">Je hebt een ticket ontvangen. Open het in de TicketSaver-app om 'm op te slaan.</p>
+    <a id="openApp" class="btn" href="#">Open in TicketSaver</a>
+    <a class="btn secondary" href="https://apps.apple.com/app/ticketsaver">Download TicketSaver</a>
+    <div class="footer">Heb je de app al? Tik op "Open in TicketSaver".</div>
+    <div class="token" id="tokenLine"></div>
+  </div>
+
+  <script>
+    (function () {
+      // Extract token from path like /share/{token} or query ?t={token}
+      var parts = window.location.pathname.split('/').filter(Boolean);
+      var token = null;
+      var shareIdx = parts.indexOf('share');
+      if (shareIdx !== -1 && parts.length > shareIdx + 1) {
+        token = parts[shareIdx + 1];
+      }
+      if (!token) {
+        var params = new URLSearchParams(window.location.search);
+        token = params.get('t');
+      }
+      if (token) {
+        var appLink = document.getElementById('openApp');
+        appLink.href = 'https://www.ticketsaver.nl/share/' + token;
+        document.getElementById('tokenLine').textContent = 'Token: ' + token;
+
+        // Auto-fire de Universal Link probeer-op-iOS na korte vertraging,
+        // zodat als de app geïnstalleerd is iOS 'm afvangt en opent.
+        if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
+          setTimeout(function () {
+            window.location.href = appLink.href;
+          }, 250);
+        }
+      } else {
+        document.getElementById('title').textContent = 'Ongeldige link';
+        document.getElementById('desc').textContent = 'Deze TicketSaver-link is niet (meer) geldig.';
+      }
+    })();
+  </script>
+</body>
+</html>
