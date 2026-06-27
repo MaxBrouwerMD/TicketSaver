@@ -259,6 +259,14 @@
           </p>
         </section>
 
+        <!-- Translation notice (shown only for non-NL/EN languages) -->
+        <aside id="translation-notice" style="display:none; background:rgba(0,113,227,.08); border:1px solid rgba(0,113,227,.25); border-radius:12px; padding:1.25rem 1.5rem; margin-bottom:1.5rem;">
+          <h3 id="tn-title" style="font-size:1rem; font-weight:600; margin-bottom:.6rem; color:#0071e3;"></h3>
+          <p id="tn-summary" style="font-size:.92rem; line-height:1.55; margin-bottom:.7rem; color:#1d1d1f;"></p>
+          <ul id="tn-points" style="font-size:.88rem; line-height:1.65; margin-bottom:.8rem; padding-left:1.2rem; color:#1d1d1f;"></ul>
+          <p id="tn-fallback" style="font-size:.85rem; color:#6e6e73;"></p>
+        </aside>
+
 <section class="content">
   <p>This Privacy Policy explains how TicketSaver collects, uses, stores, and protects personal data when you use the TicketSaver app and related services, including optional email forwarding and the optional Gmail Connect feature.</p>
   <p>By using the Service, you acknowledge this Privacy Policy. Where required by law, we ask for separate consent for specific processing activities.</p>
@@ -696,6 +704,49 @@
       localStorage.setItem("ticketsaver-theme", theme);
     }
 
+    // Korte vertaalde key-points voor non-NL/EN talen.
+    // De volledige privacy policy blijft Engels — dit is de App Store-conforme
+    // aanpak voor kleine indie-apps: korte vertaalde samenvatting + duidelijke
+    // verwijzing naar de full version.
+    const translationNotices = {
+      fr: {
+        title: "Résumé en français",
+        summary: "La version complète de cette politique de confidentialité est disponible en anglais ci-dessous. Voici les points clés en français :",
+        points: [
+          "TicketSaver stocke vos billets (PDF, photos, e-mails) sur votre appareil et, avec Premium, dans le cloud Firebase (chiffré).",
+          "Nous utilisons votre e-mail uniquement pour vous connecter et envoyer des e-mails de service essentiels.",
+          "Vous avez le droit d'accéder, de corriger, d'exporter et de supprimer vos données (RGPD Art. 15-22). Exportez via Réglages → Confidentialité → Exporter mes données.",
+          "Nous ne vendons jamais vos données. Pas de publicité, pas de partage à des tiers à des fins commerciales.",
+          "Contact : maxbrouwermd@gmail.com pour toute question relative à la confidentialité."
+        ],
+        fallback: "Pour le texte juridique complet, veuillez lire la version anglaise ci-dessous."
+      },
+      de: {
+        title: "Zusammenfassung auf Deutsch",
+        summary: "Die vollständige Datenschutzerklärung ist nur in englischer Sprache unten verfügbar. Hier sind die wichtigsten Punkte auf Deutsch:",
+        points: [
+          "TicketSaver speichert deine Tickets (PDFs, Fotos, E-Mails) auf deinem Gerät und mit Premium zusätzlich verschlüsselt in Firebase Cloud.",
+          "Wir nutzen deine E-Mail-Adresse ausschließlich für den Login und unverzichtbare Service-Mails.",
+          "Du hast das Recht auf Auskunft, Berichtigung, Datenübertragbarkeit und Löschung (DSGVO Art. 15-22). Export über Einstellungen → Datenschutz → Meine Daten exportieren.",
+          "Wir verkaufen deine Daten niemals. Keine Werbung, keine Weitergabe an Dritte zu Werbezwecken.",
+          "Kontakt: maxbrouwermd@gmail.com bei Fragen zum Datenschutz."
+        ],
+        fallback: "Den vollständigen Rechtstext findest du in der englischen Version unten."
+      },
+      es: {
+        title: "Resumen en español",
+        summary: "La política de privacidad completa solo está disponible en inglés más abajo. Estos son los puntos clave en español:",
+        points: [
+          "TicketSaver guarda tus entradas (PDF, fotos, correos) en tu dispositivo y, con Premium, también en Firebase Cloud (cifrado).",
+          "Tu correo electrónico solo se usa para iniciar sesión y enviar mensajes de servicio imprescindibles.",
+          "Tienes derecho a acceder, rectificar, portar y eliminar tus datos (RGPD Art. 15-22). Exporta desde Ajustes → Privacidad → Exportar mis datos.",
+          "Nunca vendemos tus datos. Sin publicidad, sin compartir con terceros con fines comerciales.",
+          "Contacto: maxbrouwermd@gmail.com para cualquier consulta sobre privacidad."
+        ],
+        fallback: "Para el texto legal completo, consulta la versión en inglés a continuación."
+      }
+    };
+
     function applyLanguage(lang) {
       const t = texts[lang];
       document.documentElement.lang = t.htmlLang;
@@ -708,6 +759,25 @@
       document.getElementById("hero-title").textContent = t.heroTitle;
       document.getElementById("hero-lead").textContent = t.heroLead;
       document.getElementById("hero-updated-label").textContent = t.heroUpdatedLabel;
+
+      // Translation notice voor FR/DE/ES
+      const notice = document.getElementById("translation-notice");
+      const tn = translationNotices[lang];
+      if (tn) {
+        document.getElementById("tn-title").textContent = tn.title;
+        document.getElementById("tn-summary").textContent = tn.summary;
+        const ul = document.getElementById("tn-points");
+        ul.innerHTML = "";
+        tn.points.forEach((point) => {
+          const li = document.createElement("li");
+          li.textContent = point;
+          ul.appendChild(li);
+        });
+        document.getElementById("tn-fallback").textContent = tn.fallback;
+        notice.style.display = "block";
+      } else {
+        notice.style.display = "none";
+      }
 
       document.getElementById("footer-rights").textContent = t.footerRights;
       document.getElementById("footer-privacy").textContent = t.footerPrivacy;

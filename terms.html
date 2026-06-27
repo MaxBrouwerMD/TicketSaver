@@ -277,6 +277,14 @@ html[lang="en"] .hero-title {
           </p>
         </section>
 
+        <!-- Translation notice (shown only for non-NL/EN languages) -->
+        <aside id="translation-notice" style="display:none; background:rgba(0,113,227,.08); border:1px solid rgba(0,113,227,.25); border-radius:12px; padding:1.25rem 1.5rem; margin-bottom:1.5rem;">
+          <h3 id="tn-title" style="font-size:1rem; font-weight:600; margin-bottom:.6rem; color:#0071e3;"></h3>
+          <p id="tn-summary" style="font-size:.92rem; line-height:1.55; margin-bottom:.7rem; color:#1d1d1f;"></p>
+          <ul id="tn-points" style="font-size:.88rem; line-height:1.65; margin-bottom:.8rem; padding-left:1.2rem; color:#1d1d1f;"></ul>
+          <p id="tn-fallback" style="font-size:.85rem; color:#6e6e73;"></p>
+        </aside>
+
 
         
 <section class="content">
@@ -633,6 +641,49 @@ html[lang="en"] .hero-title {
       localStorage.setItem("ticketsaver-theme", theme);
     }
 
+    // Korte vertaalde key-points voor non-NL/EN talen.
+    const translationNotices = {
+      fr: {
+        title: "Résumé en français",
+        summary: "La version complète des conditions est disponible en anglais ci-dessous. Voici les points clés en français :",
+        points: [
+          "TicketSaver est un service personnel : ne partagez pas votre compte ni vos billets achetés avec d'autres personnes.",
+          "Premium est un abonnement annuel via App Store (renouvellement automatique, annulable à tout moment dans les Réglages Apple).",
+          "Vous restez propriétaire de vos billets et de vos données. Vous pouvez exporter et supprimer votre compte à tout moment.",
+          "Nous fournissons le service \"tel quel\". Conservez toujours vos billets originaux en sauvegarde.",
+          "Litiges régis par le droit néerlandais. Vous conservez vos droits de consommateur de l'UE.",
+          "Contact : maxbrouwermd@gmail.com"
+        ],
+        fallback: "Pour le texte juridique complet, veuillez consulter la version anglaise ci-dessous."
+      },
+      de: {
+        title: "Zusammenfassung auf Deutsch",
+        summary: "Die vollständigen Nutzungsbedingungen sind nur in englischer Sprache unten verfügbar. Hier sind die wichtigsten Punkte auf Deutsch:",
+        points: [
+          "TicketSaver ist ein persönlicher Dienst: Teile dein Konto und gekaufte Tickets nicht mit anderen Personen.",
+          "Premium ist ein Jahresabo über den App Store (verlängert sich automatisch, jederzeit in Apple-Einstellungen kündbar).",
+          "Du bleibst Eigentümer deiner Tickets und Daten. Du kannst dein Konto jederzeit exportieren und löschen.",
+          "Wir bieten den Dienst \"wie besehen\" an. Behalte stets deine Originaltickets als Backup.",
+          "Streitigkeiten unterliegen niederländischem Recht. Deine EU-Verbraucherrechte bleiben unberührt.",
+          "Kontakt: maxbrouwermd@gmail.com"
+        ],
+        fallback: "Den vollständigen Rechtstext findest du in der englischen Version unten."
+      },
+      es: {
+        title: "Resumen en español",
+        summary: "Las condiciones completas solo están disponibles en inglés más abajo. Estos son los puntos clave en español:",
+        points: [
+          "TicketSaver es un servicio personal: no compartas tu cuenta ni tus entradas con otras personas.",
+          "Premium es una suscripción anual a través de App Store (se renueva automáticamente, cancelable en Ajustes de Apple).",
+          "Tú sigues siendo el propietario de tus entradas y datos. Puedes exportar y eliminar tu cuenta en cualquier momento.",
+          "El servicio se ofrece \"tal cual\". Guarda siempre tus entradas originales como copia de seguridad.",
+          "Disputas regidas por la ley neerlandesa. Conservas tus derechos como consumidor de la UE.",
+          "Contacto: maxbrouwermd@gmail.com"
+        ],
+        fallback: "Para el texto legal completo, consulta la versión en inglés a continuación."
+      }
+    };
+
     function applyLanguage(lang) {
       const t = texts[lang];
       document.documentElement.lang = t.htmlLang;
@@ -645,6 +696,25 @@ html[lang="en"] .hero-title {
       document.getElementById("hero-title").textContent = t.heroTitle;
       document.getElementById("hero-lead").textContent = t.heroLead;
       document.getElementById("hero-updated-label").textContent = t.heroUpdatedLabel;
+
+      // Translation notice voor FR/DE/ES
+      const notice = document.getElementById("translation-notice");
+      const tn = translationNotices[lang];
+      if (tn) {
+        document.getElementById("tn-title").textContent = tn.title;
+        document.getElementById("tn-summary").textContent = tn.summary;
+        const ul = document.getElementById("tn-points");
+        ul.innerHTML = "";
+        tn.points.forEach((point) => {
+          const li = document.createElement("li");
+          li.textContent = point;
+          ul.appendChild(li);
+        });
+        document.getElementById("tn-fallback").textContent = tn.fallback;
+        notice.style.display = "block";
+      } else {
+        notice.style.display = "none";
+      }
 
       document.getElementById("footer-rights").textContent = t.footerRights;
       document.getElementById("footer-privacy").textContent = t.footerPrivacy;
