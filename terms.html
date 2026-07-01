@@ -267,7 +267,7 @@ html[lang="en"] .hero-title {
           <h1 class="hero-title" id="hero-title">Terms of Service</h1>
 <p class="hero-meta">
   <span id="hero-updated-label">Last updated:</span>
-  <time datetime="2026-05-31">May 31, 2026</time>
+  <time datetime="2026-07-01">July 1, 2026</time>
 </p>
 
 
@@ -299,6 +299,9 @@ html[lang="en"] .hero-title {
     <li>Import files such as PDFs or images.</li>
     <li>Forward emails and attachments to TicketSaver for automated ticket detection and processing.</li>
     <li>Optionally connect a Google Account to set up Gmail forwarding and Gmail filters through Gmail Connect.</li>
+    <li>Optionally back up your tickets to the cloud and restore them on another device (Premium feature).</li>
+    <li>Generate time-limited share links to send a specific ticket file to another person.</li>
+    <li>Receive push notifications for events such as a new ticket email or a ticket reminder.</li>
     <li>Use free or Premium subscription features.</li>
   </ul>
   <p>TicketSaver is not an event organizer, ticket issuer, ticket marketplace, reseller, payment service, or identity verification service.</p>
@@ -375,9 +378,42 @@ html[lang="en"] .hero-title {
 
   <hr>
 
+  <h2>Cloud Backup and Restore</h2>
+  <p>Cloud Backup and Restore is an optional Premium feature. When enabled, TicketSaver uploads a copy of your ticket metadata and ticket files to Firebase Firestore and Firebase Cloud Storage under your account, so you can restore your tickets on another device or after re-installation.</p>
+  <ul>
+    <li>Cloud Backup requires an active Premium subscription. If Premium ends, existing backups may become read-only or subject to removal in accordance with the Data Retention section of the Privacy Policy.</li>
+    <li>Cloud Backup is provided on an "as is" and "as available" basis. We do not guarantee that every ticket, file, or metadata field will be preserved without error, that restores will be complete, or that the service will be uninterrupted.</li>
+    <li>You remain responsible for keeping originals of any tickets, confirmations, or important files outside the App. Cloud Backup is a convenience, not a replacement for your own record-keeping.</li>
+    <li>Ticket-file downloads from Cloud Backup are served through an authenticated Cloud Function with per-user rate limits to prevent abuse. If a limit is reached, downloads may be temporarily throttled.</li>
+    <li>Deleting your account also removes Cloud Backup contents, subject to standard backup and log retention windows described in the Privacy Policy.</li>
+  </ul>
+
+  <hr>
+
+  <h2>Ticket Share Links</h2>
+  <p>TicketSaver lets you generate a share link for a specific ticket file that opens inside the App via Universal Links when installed on iOS.</p>
+  <ul>
+    <li>Share Links are tokenized and time-limited. Anyone with a valid, unexpired link can access the referenced ticket file. You are responsible for who you share the link with.</li>
+    <li>You must have the right to share the ticket content and must not use share links to distribute stolen, forged, or otherwise unauthorized ticket material.</li>
+    <li>Share Links may be revoked automatically when the referenced ticket is deleted, when the token expires, or where we determine that the link is being misused.</li>
+    <li>TicketSaver is not responsible if a recipient forwards a share link further, misuses it, or attempts to redeem the referenced ticket at a venue.</li>
+  </ul>
+
+  <hr>
+
+  <h2>Push Notifications</h2>
+  <p>TicketSaver may send push notifications for events such as the arrival of a new ticket email or an upcoming-ticket reminder. Push notifications are delivered through Apple's Push Notification service using Firebase Cloud Messaging.</p>
+  <ul>
+    <li>You may enable or disable push notifications at any time in the iOS Settings app or, where applicable, inside TicketSaver.</li>
+    <li>Delivery of push notifications depends on Apple's infrastructure, your network connectivity, and your device settings. We do not guarantee that every notification will be delivered on time or at all.</li>
+    <li>You should not rely on push notifications as the sole reminder for time-critical events.</li>
+  </ul>
+
+  <hr>
+
   <h2>Premium and Subscriptions</h2>
   <ul>
-  <li>Some features require an active Premium subscription.</li>
+  <li>Some features require an active Premium subscription, including Cloud Backup and Restore and other premium-only capabilities described in the App.</li>
   <li>Subscriptions are sold, billed, renewed, and refunded by Apple under App Store rules.</li>
   <li>The subscription price, trial period, renewal period, and cancellation terms are shown in the App Store purchase flow before purchase.</li>
   <li>Premium entitlement may be linked to both your TicketSaver account and your Apple subscription status.</li>
@@ -648,7 +684,8 @@ html[lang="en"] .hero-title {
         summary: "La version complète des conditions est disponible en anglais ci-dessous. Voici les points clés en français :",
         points: [
           "TicketSaver est un service personnel : ne partagez pas votre compte ni vos billets achetés avec d'autres personnes.",
-          "Premium est un abonnement annuel via App Store (renouvellement automatique, annulable à tout moment dans les Réglages Apple).",
+          "Premium est un abonnement via App Store (renouvellement automatique, annulable à tout moment dans les Réglages Apple). Il inclut la sauvegarde et la restauration cloud.",
+          "Les liens de partage de billets sont à durée limitée. Vous êtes responsable des personnes à qui vous les envoyez.",
           "Vous restez propriétaire de vos billets et de vos données. Vous pouvez exporter et supprimer votre compte à tout moment.",
           "Nous fournissons le service \"tel quel\". Conservez toujours vos billets originaux en sauvegarde.",
           "Litiges régis par le droit néerlandais. Vous conservez vos droits de consommateur de l'UE.",
@@ -661,7 +698,8 @@ html[lang="en"] .hero-title {
         summary: "Die vollständigen Nutzungsbedingungen sind nur in englischer Sprache unten verfügbar. Hier sind die wichtigsten Punkte auf Deutsch:",
         points: [
           "TicketSaver ist ein persönlicher Dienst: Teile dein Konto und gekaufte Tickets nicht mit anderen Personen.",
-          "Premium ist ein Jahresabo über den App Store (verlängert sich automatisch, jederzeit in Apple-Einstellungen kündbar).",
+          "Premium ist ein Abo über den App Store (verlängert sich automatisch, jederzeit in Apple-Einstellungen kündbar). Es enthält Cloud-Backup und Wiederherstellung.",
+          "Ticket-Freigabelinks sind zeitlich begrenzt. Du bist dafür verantwortlich, wem du sie sendest.",
           "Du bleibst Eigentümer deiner Tickets und Daten. Du kannst dein Konto jederzeit exportieren und löschen.",
           "Wir bieten den Dienst \"wie besehen\" an. Behalte stets deine Originaltickets als Backup.",
           "Streitigkeiten unterliegen niederländischem Recht. Deine EU-Verbraucherrechte bleiben unberührt.",
@@ -674,7 +712,8 @@ html[lang="en"] .hero-title {
         summary: "Las condiciones completas solo están disponibles en inglés más abajo. Estos son los puntos clave en español:",
         points: [
           "TicketSaver es un servicio personal: no compartas tu cuenta ni tus entradas con otras personas.",
-          "Premium es una suscripción anual a través de App Store (se renueva automáticamente, cancelable en Ajustes de Apple).",
+          "Premium es una suscripción a través de App Store (se renueva automáticamente, cancelable en Ajustes de Apple). Incluye copia de seguridad y restauración en la nube.",
+          "Los enlaces para compartir entradas tienen tiempo limitado. Eres responsable de las personas a las que se los envías.",
           "Tú sigues siendo el propietario de tus entradas y datos. Puedes exportar y eliminar tu cuenta en cualquier momento.",
           "El servicio se ofrece \"tal cual\". Guarda siempre tus entradas originales como copia de seguridad.",
           "Disputas regidas por la ley neerlandesa. Conservas tus derechos como consumidor de la UE.",

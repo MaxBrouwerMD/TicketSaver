@@ -252,7 +252,7 @@
           <h1 class="hero-title" id="hero-title">Privacy Policy</h1>
           <p class="hero-meta">
             <span id="hero-updated-label">Last updated:</span>
-            <time datetime="2026-05-31">May 31, 2026</time>
+            <time datetime="2026-07-01">July 1, 2026</time>
           </p>
           <p class="hero-lead" id="hero-lead">
             This Privacy Policy describes how TicketSaver collects, uses and protects your information when you use the app, including the optional Gmail integration.
@@ -298,6 +298,9 @@
       <li><strong>Gmail Connect</strong> means the optional feature that allows TicketSaver to configure or remove Gmail forwarding and Gmail filters on your behalf so certain emails can be forwarded to your personal TicketSaver upload address.</li>
       <li><strong>Google API Data</strong> means limited Google or Gmail account data and settings metadata that TicketSaver accesses through Google APIs to provide Gmail Connect. It does not include reading the content of your Gmail inbox via the Gmail API.</li>
       <li><strong>Forwarded Email Data</strong> means emails, attachments, metadata, and derived ticket information that are sent to your TicketSaver upload address by you manually or through email forwarding rules.</li>
+      <li><strong>Cloud Backup</strong> means the optional Premium feature that stores an encrypted copy of your tickets, event metadata, and ticket files in Firebase Firestore and Firebase Cloud Storage so you can restore them on another device or after a re-installation.</li>
+      <li><strong>Share Link</strong> means a time-limited, tokenized URL that you can generate inside the App to share a specific ticket file with another person; the link is served via our web domain and resolves in the TicketSaver app through Universal Links.</li>
+      <li><strong>Push Notification</strong> means an alert delivered to your device through the Apple Push Notification service (APNs), using a device-scoped token that we store to route notifications about incoming ticket emails or reminders.</li>
     </ul>
   </section>
 
@@ -403,10 +406,78 @@
   <hr>
 
   <section>
+    <h2>Cloud Backup and Restore</h2>
+
+    <p>Cloud Backup is an optional Premium feature. When enabled, TicketSaver syncs an encrypted copy of your ticket metadata and ticket files from your device to Firebase Firestore and Firebase Cloud Storage under your account identifier.</p>
+
+    <h3>What is backed up</h3>
+    <ul>
+      <li>Ticket metadata such as event name, date, location, folder structure, and ticket-related notes.</li>
+      <li>Ticket files (PDFs, images, and PKPass files) that you have imported or that arrived through forwarded emails.</li>
+      <li>Reference records that link your device copies to the cloud copy.</li>
+    </ul>
+
+    <h3>How Cloud Backup is protected</h3>
+    <ul>
+      <li>Data in transit is protected via HTTPS/TLS.</li>
+      <li>Data at rest is stored on Google Cloud infrastructure through Firebase Firestore and Cloud Storage, which apply Google-managed encryption at rest by default.</li>
+      <li>Access is restricted through Firestore Security Rules and Storage rules so that only your authenticated account can read or write your backup.</li>
+      <li>Downloads of backed-up ticket attachments go through an authenticated Cloud Function with per-user rate limiting to reduce abuse and enumeration risk.</li>
+    </ul>
+
+    <h3>Restoring your data</h3>
+    <p>When you re-install TicketSaver or install it on a new device and sign in, the App can restore your ticket metadata and offer to re-download your ticket files from Cloud Backup. Restoring is initiated by you in the App.</p>
+
+    <h3>Disabling or removing Cloud Backup</h3>
+    <p>You can stop using Cloud Backup by cancelling your Premium subscription and letting your access lapse, or by deleting your account. When you delete your account, backup contents are removed from Firestore and Cloud Storage as part of the account-deletion cleanup, subject to normal backup and log retention timelines.</p>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>Ticket Share Links</h2>
+
+    <p>If you generate a Share Link to send a ticket file to another person, TicketSaver creates a short-lived token entry in Firestore and hosts the underlying file in Firebase Cloud Storage. The link is served through our website domain and opens inside the App via Universal Links when installed.</p>
+
+    <ul>
+      <li>Share Links are tokenized so they cannot be guessed and are not indexed by search engines.</li>
+      <li>Share Links may expire after a limited period and can also be invalidated by removing the underlying ticket.</li>
+      <li>Anyone who receives a Share Link can view the referenced ticket file until the token expires or is revoked. You should only send Share Links to people you trust.</li>
+      <li>We do not scan the recipient's device, contacts, or account when a Share Link is opened. We may log basic technical access events for abuse prevention and rate limiting.</li>
+    </ul>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>Push Notifications</h2>
+
+    <p>TicketSaver can send push notifications for events such as the arrival of a new ticket email or a ticket reminder. Push notifications are delivered through Apple's Push Notification service (APNs) using Firebase Cloud Messaging.</p>
+
+    <ul>
+      <li>To route push notifications to your device, we store a device push token linked to your account.</li>
+      <li>Push tokens are refreshed automatically by the operating system; stale tokens are removed on our side when Apple reports them as invalid.</li>
+      <li>You can disable push notifications at any time in the iOS Settings app under Notifications, or by disabling reminders in TicketSaver.</li>
+      <li>The push token itself is not used for advertising, profiling, or cross-device tracking.</li>
+    </ul>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>Data Export (GDPR Article 20)</h2>
+
+    <p>If GDPR or a comparable law applies to you, you have the right to receive a copy of the personal data you provided to us in a structured, commonly used, machine-readable format. TicketSaver offers a self-service export inside the App under Settings → Privacy → Export my data. The export includes your account information, ticket metadata, folder structure, subscription state, and consent records where technically available.</p>
+    <p>If you cannot access the in-app export, you can also request an export by contacting <a href="mailto:maxbrouwermd@gmail.com">maxbrouwermd@gmail.com</a>. We may ask you to verify your identity before responding.</p>
+  </section>
+
+  <hr>
+
+  <section>
     <h2>Service Providers and SDKs</h2>
 
     <h3>Firebase</h3>
-    <p>We use Firebase services for authentication, database/storage, cloud functions, analytics (if enabled), and crash reporting.</p>
+    <p>We use Firebase services for authentication, database (Firestore), file storage (Cloud Storage), cloud functions, push notification delivery (Firebase Cloud Messaging), analytics (if enabled), and crash reporting.</p>
 
     <h3>Firebase Analytics</h3>
     <p>If enabled with your consent, Firebase Analytics helps us understand app usage and improve the product. We do not enable advertising features or Google Signals.</p>
@@ -487,6 +558,10 @@
     <li>Gmail Connect tokens are retained while Gmail Connect is active. If you disconnect Gmail Connect or delete your account, we will delete or invalidate stored tokens where technically possible.</li>
     <li>Gmail Connect setup metadata may be retained for a limited period for security, auditing, troubleshooting, and cleanup.</li>
     <li>Rejected forwarded-email logs and processing metadata may be retained for debugging, abuse prevention, quality control, cost monitoring, and filter improvement. These logs may include limited metadata such as subject line, timestamps, decision outcome, forwarding type, and classification reason.</li>
+    <li>Cloud Backup contents (ticket metadata and ticket files) are retained while Premium is active. After account deletion, they are removed from Firestore and Cloud Storage subject to standard backup and log retention windows.</li>
+    <li>Share Link tokens are retained only for their configured lifetime and are removed when the link expires or is revoked. Underlying ticket files remain governed by your normal storage settings.</li>
+    <li>Device push tokens used for push notifications are removed when Apple reports them as invalid, when you disable notifications, or when your account is deleted.</li>
+    <li>Rate-limit counters and abuse-prevention metrics are retained only for a short rolling window necessary to enforce the limits.</li>
     <li>Crash data and analytics data are retained according to the relevant provider settings and policies.</li>
     <li>Routine backups and server logs may persist temporarily on rolling deletion schedules.</li>
   </ul>
@@ -713,8 +788,9 @@
         title: "Résumé en français",
         summary: "La version complète de cette politique de confidentialité est disponible en anglais ci-dessous. Voici les points clés en français :",
         points: [
-          "TicketSaver stocke vos billets (PDF, photos, e-mails) sur votre appareil et, avec Premium, dans le cloud Firebase (chiffré).",
-          "Nous utilisons votre e-mail uniquement pour vous connecter et envoyer des e-mails de service essentiels.",
+          "TicketSaver stocke vos billets (PDF, photos, e-mails) sur votre appareil et, avec Premium, dans une sauvegarde cloud Firebase chiffrée que vous pouvez restaurer sur un autre appareil.",
+          "Les liens de partage de billets sont tokenisés, ont une durée limitée et ne sont pas indexés par les moteurs de recherche.",
+          "Nous utilisons votre e-mail uniquement pour vous connecter et envoyer des e-mails de service essentiels. Les notifications push utilisent un jeton d'appareil qui n'est jamais utilisé pour la publicité.",
           "Vous avez le droit d'accéder, de corriger, d'exporter et de supprimer vos données (RGPD Art. 15-22). Exportez via Réglages → Confidentialité → Exporter mes données.",
           "Nous ne vendons jamais vos données. Pas de publicité, pas de partage à des tiers à des fins commerciales.",
           "Contact : maxbrouwermd@gmail.com pour toute question relative à la confidentialité."
@@ -725,8 +801,9 @@
         title: "Zusammenfassung auf Deutsch",
         summary: "Die vollständige Datenschutzerklärung ist nur in englischer Sprache unten verfügbar. Hier sind die wichtigsten Punkte auf Deutsch:",
         points: [
-          "TicketSaver speichert deine Tickets (PDFs, Fotos, E-Mails) auf deinem Gerät und mit Premium zusätzlich verschlüsselt in Firebase Cloud.",
-          "Wir nutzen deine E-Mail-Adresse ausschließlich für den Login und unverzichtbare Service-Mails.",
+          "TicketSaver speichert deine Tickets (PDFs, Fotos, E-Mails) auf deinem Gerät und mit Premium zusätzlich in einer verschlüsselten Firebase-Cloud-Sicherung, die du auf einem anderen Gerät wiederherstellen kannst.",
+          "Ticket-Freigabelinks sind tokenisiert, zeitlich begrenzt und werden nicht von Suchmaschinen indexiert.",
+          "Wir nutzen deine E-Mail-Adresse ausschließlich für den Login und unverzichtbare Service-Mails. Push-Benachrichtigungen verwenden ein Geräte-Token, das nicht für Werbung genutzt wird.",
           "Du hast das Recht auf Auskunft, Berichtigung, Datenübertragbarkeit und Löschung (DSGVO Art. 15-22). Export über Einstellungen → Datenschutz → Meine Daten exportieren.",
           "Wir verkaufen deine Daten niemals. Keine Werbung, keine Weitergabe an Dritte zu Werbezwecken.",
           "Kontakt: maxbrouwermd@gmail.com bei Fragen zum Datenschutz."
@@ -737,8 +814,9 @@
         title: "Resumen en español",
         summary: "La política de privacidad completa solo está disponible en inglés más abajo. Estos son los puntos clave en español:",
         points: [
-          "TicketSaver guarda tus entradas (PDF, fotos, correos) en tu dispositivo y, con Premium, también en Firebase Cloud (cifrado).",
-          "Tu correo electrónico solo se usa para iniciar sesión y enviar mensajes de servicio imprescindibles.",
+          "TicketSaver guarda tus entradas (PDF, fotos, correos) en tu dispositivo y, con Premium, también en una copia de seguridad cifrada en Firebase Cloud que puedes restaurar en otro dispositivo.",
+          "Los enlaces para compartir entradas son tokenizados, tienen tiempo limitado y no se indexan en buscadores.",
+          "Tu correo electrónico solo se usa para iniciar sesión y enviar mensajes de servicio imprescindibles. Las notificaciones push usan un token de dispositivo que nunca se utiliza para publicidad.",
           "Tienes derecho a acceder, rectificar, portar y eliminar tus datos (RGPD Art. 15-22). Exporta desde Ajustes → Privacidad → Exportar mis datos.",
           "Nunca vendemos tus datos. Sin publicidad, sin compartir con terceros con fines comerciales.",
           "Contacto: maxbrouwermd@gmail.com para cualquier consulta sobre privacidad."
