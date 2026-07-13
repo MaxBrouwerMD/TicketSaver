@@ -299,8 +299,8 @@
     }
     .splash-stage {
       position: relative;
-      width: 200px;
-      height: 175px;
+      width: 230px;
+      height: 185px;
       animation: splashFade 0.2s ease-out both;
     }
     .splash-stage img {
@@ -314,12 +314,12 @@
     }
     .tkt-left {
       z-index: 0;
-      transform: translate(-11px, 0) rotate(-20deg);
+      transform: translate(-34px, 8px) rotate(-20deg);
       animation: tktLeft 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) 0.1s both;
     }
     .tkt-right {
       z-index: 1;
-      transform: translate(11px, -11px) rotate(20deg);
+      transform: translate(34px, -22px) rotate(20deg);
       animation: tktRight 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) 0.1s both;
     }
     @keyframes splashFade {
@@ -327,12 +327,12 @@
       to   { opacity: 1; }
     }
     @keyframes tktLeft {
-      from { transform: translate(-42px, 0) rotate(20deg); }
-      to   { transform: translate(-11px, 0) rotate(-20deg); }
+      from { transform: translate(-88px, 8px) rotate(20deg); }
+      to   { transform: translate(-34px, 8px) rotate(-20deg); }
     }
     @keyframes tktRight {
-      from { transform: translate(42px, -11px) rotate(-20deg); }
-      to   { transform: translate(11px, -11px) rotate(20deg); }
+      from { transform: translate(88px, -22px) rotate(-20deg); }
+      to   { transform: translate(34px, -22px) rotate(20deg); }
     }
     @media (prefers-reduced-motion: reduce) {
       .splash-stage, .tkt-left, .tkt-right { animation: none; }
