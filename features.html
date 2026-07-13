@@ -222,6 +222,11 @@
       background-color: #0f172a;
     }
   </style>
+  <script>
+    // Voorkom een lichte flits vóór de thema-JS onderaan laadt.
+    if ((localStorage.getItem("ticketsaver-theme") || "dark") === "dark")
+      document.documentElement.style.backgroundColor = "#020b1a";
+  </script>
 </head>
 <body>
   <div class="page">
@@ -430,7 +435,7 @@
       return SUPPORTED_LANGS.includes(browser) ? browser : "en";
     }
     let currentLang = detectInitialLang();
-    let currentTheme = localStorage.getItem("ticketsaver-theme") || "light";
+    let currentTheme = localStorage.getItem("ticketsaver-theme") || "dark";
 
     const langToggleBtn = document.getElementById("lang-toggle");
     const themeToggleBtn = document.getElementById("theme-toggle");
