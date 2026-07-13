@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <title>TICKETSAVER</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <style>
     * {
       box-sizing: border-box;
@@ -287,6 +289,46 @@
       }
     }
 
+
+    /* Geanimeerd hero-logo (twee tickets waaieren uit, zoals de app-splash) */
+    .hero-logo {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      animation: logoRise 0.7s ease-out both;
+    }
+    .hero-logo svg {
+      width: 148px;
+      height: auto;
+      overflow: visible;
+    }
+    .tkt {
+      filter: drop-shadow(0 12px 22px rgba(20, 40, 80, 0.35));
+    }
+    .tkt-back-rot {
+      transform-origin: 60px 75px;
+      animation: fanBack 0.9s cubic-bezier(0.2, 0.7, 0.3, 1.1) 0.15s both;
+    }
+    .tkt-front-rot {
+      transform-origin: 60px 75px;
+      animation: fanFront 0.9s cubic-bezier(0.2, 0.7, 0.3, 1.1) 0.25s both;
+    }
+    @keyframes logoRise {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fanBack {
+      from { transform: rotate(3deg); }
+      to   { transform: rotate(-12deg); }
+    }
+    @keyframes fanFront {
+      from { transform: rotate(-3deg); }
+      to   { transform: rotate(8deg); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-logo, .tkt-back-rot, .tkt-front-rot { animation: none; }
+    }
+
     /* Dark mode */
     body.dark {
       background-color: #020b1a;
@@ -371,6 +413,43 @@
     <!-- Main content -->
     <main class="main">
       <section class="hero">
+        <div class="hero-logo" aria-hidden="true">
+          <svg viewBox="-20 -15 270 220" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="tkTop" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#8ec6f9"/>
+                <stop offset="1" stop-color="#5f9df0"/>
+              </linearGradient>
+              <linearGradient id="tkBottom" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#4d82e0"/>
+                <stop offset="1" stop-color="#3a63c8"/>
+              </linearGradient>
+              <mask id="tkMask">
+                <rect width="120" height="150" rx="16" fill="#fff"/>
+                <circle cx="0" cy="52" r="10" fill="#000"/>
+                <circle cx="120" cy="52" r="10" fill="#000"/>
+              </mask>
+            </defs>
+            <g transform="translate(88,4)">
+              <g class="tkt tkt-back-rot">
+                <g mask="url(#tkMask)">
+                  <rect width="120" height="150" fill="url(#tkBottom)"/>
+                  <rect width="120" height="52" fill="url(#tkTop)"/>
+                </g>
+                <line x1="14" y1="52" x2="106" y2="52" stroke="#fff" stroke-width="5.5" stroke-dasharray="11 9" stroke-linecap="round"/>
+              </g>
+            </g>
+            <g transform="translate(24,42)">
+              <g class="tkt tkt-front-rot">
+                <g mask="url(#tkMask)">
+                  <rect width="120" height="150" fill="url(#tkBottom)"/>
+                  <rect width="120" height="52" fill="url(#tkTop)"/>
+                </g>
+                <line x1="14" y1="52" x2="106" y2="52" stroke="#fff" stroke-width="5.5" stroke-dasharray="11 9" stroke-linecap="round"/>
+              </g>
+            </g>
+          </svg>
+        </div>
         <div class="hero-eyebrow" id="hero-eyebrow">Nieuw</div>
         <h1 class="hero-title" id="hero-title">TICKETSAVER</h1>
         <p class="hero-subtitle" id="hero-subtitle">
