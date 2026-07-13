@@ -314,12 +314,12 @@
     }
     .tkt-left {
       z-index: 0;
-      transform: translate(-34px, 8px) rotate(-20deg);
+      transform: translate(-28px, 8px) rotate(-19deg);
       animation: tktLeft 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) 0.1s both;
     }
     .tkt-right {
       z-index: 1;
-      transform: translate(34px, -22px) rotate(20deg);
+      transform: translate(28px, -18px) rotate(-19deg);
       animation: tktRight 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) 0.1s both;
     }
     @keyframes splashFade {
@@ -327,12 +327,12 @@
       to   { opacity: 1; }
     }
     @keyframes tktLeft {
-      from { transform: translate(-88px, 8px) rotate(20deg); }
-      to   { transform: translate(-34px, 8px) rotate(-20deg); }
+      from { transform: translate(-85px, 8px) rotate(18deg); }
+      to   { transform: translate(-28px, 8px) rotate(-19deg); }
     }
     @keyframes tktRight {
-      from { transform: translate(88px, -22px) rotate(-20deg); }
-      to   { transform: translate(34px, -22px) rotate(20deg); }
+      from { transform: translate(85px, -18px) rotate(10deg); }
+      to   { transform: translate(28px, -18px) rotate(-19deg); }
     }
     @media (prefers-reduced-motion: reduce) {
       .splash-stage, .tkt-left, .tkt-right { animation: none; }
