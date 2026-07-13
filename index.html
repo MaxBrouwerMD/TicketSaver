@@ -314,28 +314,52 @@
     }
     .tkt-left {
       z-index: 0;
-      transform: translate(-28px, 8px) rotate(-19deg);
-      animation: tktLeft 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) 0.1s both;
+      transform: translate(-35px, 10px) rotate(-19deg);
+      animation: tktLeft 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) 0.1s both,
+                 tktHide 0.3s ease-out 1.05s forwards;
     }
     .tkt-right {
       z-index: 1;
-      transform: translate(28px, -18px) rotate(-19deg);
-      animation: tktRight 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) 0.1s both;
+      transform: translate(34px, -12px) rotate(11deg);
+      animation: tktRight 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) 0.1s both,
+                 tktHide 0.3s ease-out 1.05s forwards;
+    }
+    /* Na de landing vloeit de compositie naadloos over in het échte
+       logobestand — het eindbeeld is dus per definitie pixel-perfect. */
+    .splash-stage img.lockup {
+      width: 250px;
+      margin: -125px 0 0 -125px;
+      transform: translate(-5px, 8px);
+      filter: none;
+      opacity: 0;
+      animation: lockShow 0.3s ease-out 1.05s forwards;
+    }
+    @keyframes tktHide { to { opacity: 0; } }
+    @keyframes lockShow { to { opacity: 1; } }
+    /* Titel schuift van rechts in, zoals fase 2 van de app-splash */
+    .hero-title {
+      animation: titleIn 0.7s cubic-bezier(0.25, 0.1, 0.25, 1) 0.95s both;
+    }
+    @keyframes titleIn {
+      from { opacity: 0; transform: translateX(70px); }
+      to   { opacity: 1; transform: none; }
     }
     @keyframes splashFade {
       from { opacity: 0; }
       to   { opacity: 1; }
     }
     @keyframes tktLeft {
-      from { transform: translate(-85px, 8px) rotate(18deg); }
-      to   { transform: translate(-28px, 8px) rotate(-19deg); }
+      from { transform: translate(-95px, 10px) rotate(-13deg); }
+      to   { transform: translate(-35px, 10px) rotate(-19deg); }
     }
     @keyframes tktRight {
-      from { transform: translate(85px, -18px) rotate(10deg); }
-      to   { transform: translate(28px, -18px) rotate(-19deg); }
+      from { transform: translate(95px, -12px) rotate(-4deg); }
+      to   { transform: translate(34px, -12px) rotate(11deg); }
     }
     @media (prefers-reduced-motion: reduce) {
-      .splash-stage, .tkt-left, .tkt-right { animation: none; }
+      .splash-stage, .hero-title { animation: none; }
+      .tkt-left, .tkt-right { animation: none; opacity: 0; }
+      .splash-stage img.lockup { animation: none; opacity: 1; }
     }
 
 
@@ -428,6 +452,7 @@
           <div class="splash-stage">
             <img class="tkt-left" src="splash-ticket.png" alt="" />
             <img class="tkt-right" src="splash-ticket.png" alt="" />
+            <img class="lockup" src="hero-logo.png" alt="" />
           </div>
         </div>
         <div class="hero-eyebrow" id="hero-eyebrow">Nieuw</div>
