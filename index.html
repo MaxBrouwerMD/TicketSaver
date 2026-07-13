@@ -289,78 +289,17 @@
       }
     }
 
-    /* Hero-logo: exact de app-splash — twee tickets draaien naar elkaar
-       toe in de logo-eindpositie. Waarden uit Splash.swift (Config),
-       proportioneel geschaald op de getoonde ticketbreedte. */
+    /* Statisch hero-logo */
     .hero-logo {
       display: flex;
       justify-content: center;
       margin-bottom: 1.25rem;
     }
-    .splash-stage {
-      position: relative;
-      width: 230px;
-      height: 185px;
-      animation: splashFade 0.2s ease-out both;
-    }
-    .splash-stage img {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 150px;
+    .hero-logo img {
+      width: 190px;
       height: auto;
-      margin: -75px 0 0 -75px;
-      filter: drop-shadow(0 12px 22px rgba(20, 40, 80, 0.3));
     }
-    .tkt-left {
-      z-index: 0;
-      transform: translate(-35px, 10px) rotate(-19deg);
-      animation: tktLeft 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) 0.1s both,
-                 tktHide 0.3s ease-out 1.05s forwards;
-    }
-    .tkt-right {
-      z-index: 1;
-      transform: translate(34px, -12px) rotate(11deg);
-      animation: tktRight 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) 0.1s both,
-                 tktHide 0.3s ease-out 1.05s forwards;
-    }
-    /* Na de landing vloeit de compositie naadloos over in het échte
-       logobestand — het eindbeeld is dus per definitie pixel-perfect. */
-    .splash-stage img.lockup {
-      width: 250px;
-      margin: -125px 0 0 -125px;
-      transform: translate(-5px, 8px);
-      filter: none;
-      opacity: 0;
-      animation: lockShow 0.3s ease-out 1.05s forwards;
-    }
-    @keyframes tktHide { to { opacity: 0; } }
-    @keyframes lockShow { to { opacity: 1; } }
-    /* Titel schuift van rechts in, zoals fase 2 van de app-splash */
-    .hero-title {
-      animation: titleIn 0.7s cubic-bezier(0.25, 0.1, 0.25, 1) 0.95s both;
-    }
-    @keyframes titleIn {
-      from { opacity: 0; transform: translateX(70px); }
-      to   { opacity: 1; transform: none; }
-    }
-    @keyframes splashFade {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-    @keyframes tktLeft {
-      from { transform: translate(-95px, 10px) rotate(-13deg); }
-      to   { transform: translate(-35px, 10px) rotate(-19deg); }
-    }
-    @keyframes tktRight {
-      from { transform: translate(95px, -12px) rotate(-4deg); }
-      to   { transform: translate(34px, -12px) rotate(11deg); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .splash-stage, .hero-title { animation: none; }
-      .tkt-left, .tkt-right { animation: none; opacity: 0; }
-      .splash-stage img.lockup { animation: none; opacity: 1; }
-    }
+
 
 
 
@@ -449,11 +388,7 @@
     <main class="main">
       <section class="hero">
         <div class="hero-logo" aria-hidden="true">
-          <div class="splash-stage">
-            <img class="tkt-left" src="splash-ticket.png" alt="" />
-            <img class="tkt-right" src="splash-ticket.png" alt="" />
-            <img class="lockup" src="hero-logo.png" alt="" />
-          </div>
+          <img src="hero-logo.png" alt="" width="480" height="480" />
         </div>
         <div class="hero-eyebrow" id="hero-eyebrow">Nieuw</div>
         <h1 class="hero-title" id="hero-title">TICKETSAVER</h1>
